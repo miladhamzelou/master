@@ -1,0 +1,1 @@
+# crud package for laravel 5.2

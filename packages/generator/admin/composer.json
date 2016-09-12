@@ -1,0 +1,20 @@
+{
+    "name": "generator/admin",
+    "description": "admin generator",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mehrdad masoumi",
+            "email": "mehrdad.masoumi517@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Generator\\Admin\\": "src/"
+        }
+    }
+
+}

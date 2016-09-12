@@ -1,0 +1,24 @@
+body{
+    font-family: Tahoma;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: Tahoma;
+}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+    height: auto;
+    font-family: Tahoma;
+}
+
+.skin-blue .main-header .navbar {
+    font-family: Tahoma;
+}
+.search-box .btn-primary{
+    margin-right: 5px;
+}
+.modal-body .table td{
+    text-align: left !important;
+}
+.sidebar-menu li>a>.fa-angle-left {
+    position: absolute;
+    right: 0px;
+}

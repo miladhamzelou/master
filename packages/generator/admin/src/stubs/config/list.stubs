@@ -1,0 +1,11 @@
+<?php
+
+return [
+    'id' => [
+        'text' => 'ID',
+        'trans' => 'public',
+        'sort' => true,
+        'data-field' => 'id',
+        'db_field' => 'id'
+    ],
+];
