@@ -22,8 +22,8 @@
                             <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                                 <label class="col-md-3 control-label">پست الکترونیک:</label>
                                 <div class="col-md-5">
-                                    <input type="email" class="form-control text-left" name="email" value="<?php echo e(old('email')); ?>">
-                                    <?php foreach($errors->get('email') as $error): ?>
+                                    <input type="text" class="form-control text-left" name="field" value="<?php echo e(old('field')); ?>">
+                                    <?php foreach($errors->get('field') as $error): ?>
                                         <span style="color: red;display: block;position: relative;top: 10px;"><?php echo e($error); ?></span>
                                     <?php endforeach; ?>
                                 </div>

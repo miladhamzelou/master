@@ -13,7 +13,7 @@ class UserInfo extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Http\Controllers\Auth\Model\User');
+        return $this->belongsTo(User::class);
     }
 
     public static function getResult()

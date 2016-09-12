@@ -27,34 +27,18 @@ class User extends Authenticatable
      */
     protected $primaryKey = 'id';
 
-    /**
-     * @param string $user_id
-     * @return mixed
-     */
-    public static function info($user_id = '')
+
+    public function userInfo()
     {
-        $user_id = $user_id ? $user_id : Auth::id();
-        return DB::table('user')
-            ->leftJoin('user_info', 'user.id', '=', 'user_info.user_id')
-            ->where('user.id', $user_id)
-            ->first();
+        return $this->hasOne(UserInfo::class);
     }
 
 
-    /**
-     * @param string $user_id
-     * @return mixed
-     */
-    public static function role($user_id = '')
+    public function role()
     {
-        $user_id = $user_id ? $user_id : Auth::id();
-        $role = DB::table('user_role')
-            ->leftJoin('role','role.id','=','user_role.role_id')
-            ->where('user_role.user_id', $user_id)
-            ->select('role.title')
-            ->get();
-        return $role;
+        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
     }
+
 
     /**
      * @param $frm

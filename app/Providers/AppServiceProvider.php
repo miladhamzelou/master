@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\GeneralBundle\Model\City;
-use App\Http\Controllers\RestaurantBundle\Model\Category;
-use App\Http\Controllers\RestaurantBundle\Model\RestaurantType;
+use App\Http\Controllers\Auth\Model\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        view()->share([
+            'auth' => User::find(Auth::id())
+        ]);
     }
 
     /**

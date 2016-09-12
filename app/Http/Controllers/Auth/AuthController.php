@@ -36,27 +36,25 @@ class AuthController extends Controller
 
         if($request->all()){
             $validator = Validator::make($request->all(), [
-                'email' => 'required|email',
+                'field' => 'required',
                 'password' => 'required',
             ],[
                 'password.required' => 'این فیلد الزامی است.',
-                'email.unique' => 'قبلا در سیستم ثبت شده است.',
+                'field.required' => 'این فیلد الزامی است.',
             ]);
             if ($validator->fails()) {
-                return redirect('/Auth/login')
+                return redirect(getLocale().'/Auth/login')
                     ->withErrors($validator)
                     ->withInput();
             } else {
-                if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']]))
+                if (Auth::attempt(['username' => $request['field'], 'password' => $request['password']]) || Auth::attempt(['email' => $request['field'], 'password' => $request['password']]))
                 {
-                    $role = User::role();
-                    $username = User::username();
-                    if (in_array($role, Config::get('ACL.admin_access')))
-                        return redirect()->intended(getLocale().'/Admin');
-                    else
-                        return redirect()->intended(getLocale(). '/user/' . $username);
+                    $auth = User::find(Auth::id());
+                    foreach($auth['role'] as $role)
+                        if (in_array($role['title'], Config::get('ACL.admin_access')))
+                            return redirect()->intended(getLocale().'/Admin');
                 } else {
-                    return redirect('/Auth/login')->with(['alert-danger' => 'نام کاربری و رمز عبور اشتباه است.']);
+                    return redirect(getLocale().'/Auth/login')->with(['alert-danger' => 'نام کاربری و رمز عبور اشتباه است.']);
                 }
             }
         }

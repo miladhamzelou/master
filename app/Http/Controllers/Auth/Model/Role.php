@@ -13,7 +13,7 @@ class Role extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class,'user_role', 'user_id', 'role_id');
     }
 
     public static function getResult()
@@ -31,7 +31,6 @@ class Role extends Model
      */
     public static function store($frm, $id = null)
     {
-        unset($frm['_token']);
         $instance = new Static();
         if (!$id)
             return DB::table($instance->table)->insertGetId($frm);
