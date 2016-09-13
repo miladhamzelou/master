@@ -1,3 +1,7 @@
 @section('content')
-sssss
+<div id="content">
+    <div class="panel">
+
+    </div>
+</div>
 @endsection
