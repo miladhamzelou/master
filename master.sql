@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Server version:               5.6.21 - MySQL Community Server (GPL)
+-- Host:                         127.0.0.1
+-- Server version:               10.1.10-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win32
 -- HeidiSQL Version:             9.3.0.4984
 -- --------------------------------------------------------
@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `holiday` tinyint(4) NOT NULL DEFAULT '0',
   `holiday_type` enum('all','exam') COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.calendar: ~0 rows (approximately)
+-- Dumping data for table master.calendar: 0 rows
 /*!40000 ALTER TABLE `calendar` DISABLE KEYS */;
 /*!40000 ALTER TABLE `calendar` ENABLE KEYS */;
 
@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS `day` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` enum('saturday','sunday','monday','tuesday','wednesday','thursday','friday') COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.day: ~0 rows (approximately)
+-- Dumping data for table master.day: 0 rows
 /*!40000 ALTER TABLE `day` DISABLE KEYS */;
 /*!40000 ALTER TABLE `day` ENABLE KEYS */;
 
@@ -40,11 +40,11 @@ CREATE TABLE IF NOT EXISTS `day` (
 -- Dumping structure for table master.place
 CREATE TABLE IF NOT EXISTS `place` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Column 2` int(11) NOT NULL DEFAULT '0',
+  `name` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.place: ~0 rows (approximately)
+-- Dumping data for table master.place: 0 rows
 /*!40000 ALTER TABLE `place` DISABLE KEYS */;
 /*!40000 ALTER TABLE `place` ENABLE KEYS */;
 
@@ -71,9 +71,9 @@ CREATE TABLE IF NOT EXISTS `session` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.session: ~0 rows (approximately)
+-- Dumping data for table master.session: 0 rows
 /*!40000 ALTER TABLE `session` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session` ENABLE KEYS */;
 
@@ -86,9 +86,9 @@ CREATE TABLE IF NOT EXISTS `session_day` (
   PRIMARY KEY (`id`),
   KEY `session_id` (`session_id`),
   KEY `day_id` (`day_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.session_day: ~0 rows (approximately)
+-- Dumping data for table master.session_day: 0 rows
 /*!40000 ALTER TABLE `session_day` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session_day` ENABLE KEYS */;
 
@@ -102,9 +102,9 @@ CREATE TABLE IF NOT EXISTS `session_day_time` (
   `status` enum('fix','rotating') COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `place_id` (`place_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.session_day_time: ~0 rows (approximately)
+-- Dumping data for table master.session_day_time: 0 rows
 /*!40000 ALTER TABLE `session_day_time` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session_day_time` ENABLE KEYS */;
 
@@ -118,9 +118,9 @@ CREATE TABLE IF NOT EXISTS `session_metting` (
   PRIMARY KEY (`id`),
   KEY `calendar_id` (`calendar_id`),
   KEY `session_day_time_id` (`session_day_time_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.session_metting: ~0 rows (approximately)
+-- Dumping data for table master.session_metting: 0 rows
 /*!40000 ALTER TABLE `session_metting` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session_metting` ENABLE KEYS */;
 
@@ -132,9 +132,9 @@ CREATE TABLE IF NOT EXISTS `term` (
   `form_date` date NOT NULL,
   `to_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.term: ~0 rows (approximately)
+-- Dumping data for table master.term: 0 rows
 /*!40000 ALTER TABLE `term` DISABLE KEYS */;
 /*!40000 ALTER TABLE `term` ENABLE KEYS */;
 
@@ -183,9 +183,9 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`role_id`,`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.user_role: ~0 rows (approximately)
+-- Dumping data for table master.user_role: 4 rows
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 	(1, 1),

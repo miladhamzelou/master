@@ -4,7 +4,7 @@ $(document).ready(function() {
         var listener_id = $(this).val();
         var listener = $(this).attr('id');
         var result = $(this).attr('data-result');
-        var url = 'HSelect';
+        var url = $(this).attr('data-url');
         $("select#"+result+" option").remove();
         $.ajax({
             headers: {

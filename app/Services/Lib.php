@@ -31,10 +31,10 @@ Class Lib{
 
 		// create controller
 		$controller_file = 'App\\Http\\Controllers\\'
-			. ($bundle ? $bundle. '\\' : '')
-			. ($prefix ? (studly_case($prefix) . '\\')  : '')
-			. (studly_case($controller) ? studly_case($controller) : $prefix)
-			. "Controller";
+				. ($bundle ? $bundle. '\\' : '')
+				. ($prefix ? (studly_case($prefix) . '\\')  : '')
+				. (studly_case($controller) ? studly_case($controller) : $prefix)
+				. "Controller";
 
 		// not exist controller
 		if (!class_exists($controller_file)) {
@@ -44,14 +44,24 @@ Class Lib{
 
 		// check Admin access
 		if($prefix != 'Auth' && $prefix != 'Home'){
-			$role = User::role();
-			if(!in_array($role, Config::get('ACL.' . lcfirst($prefix) . '_access'))) {
-				return redirect('Auth/login');
+			$user = User::find(Auth::id());
+			foreach($user['role'] as $role) {
+				if(in_array($role['title'], Config::get('ACL.' . lcfirst($prefix) . '_access'))) {
+					$access = true;
+					break;
+				} else {
+					continue;
+				}
 			}
-			// check the role access specific action or controller
-			if (Config::get('ACL.'.$role)) {
-				if (in_array(@$prefix . '.' . @$bundle . '.' . @$controller,  Config::get('ACL.'.$role)) ||	in_array(@$prefix . '.'  . @$bundle . '.' . @$controller . '.' . @$action, Config::get('ACL.'.$role))) {
-					return abort(403);
+			if(!@$access) {
+				return redirect(getLocale().'/Auth/login');
+			} else {
+				foreach($user['role'] as $role) {
+					if (Config::get('ACL.'.$role['title'])) {
+						if (in_array(@$prefix . '.' . @$bundle . '.' . @$controller,  Config::get('ACL.'.$role['title'])) ||	in_array(@$prefix . '.'  . @$bundle . '.' . @$controller . '.' . @$action, Config::get('ACL.'.$role['title']))) {
+							return abort(403);
+						}
+					}
 				}
 			}
 		}
@@ -68,7 +78,7 @@ Class Lib{
 		$action = !method_exists($controller_file, $action) ? 'Index' : $action;
 		$controller = $app->make($controller_file);
 		return $controller->callAction(ucfirst($action), $params);
-		
+
 	}
 
 	/**
@@ -86,7 +96,7 @@ Class Lib{
 			$localization = '';
 		}
 		$prefix = config('app.prefix');
-		
+
 		switch ($partname) {
 			case 'locale':
 				$url .= @$localization ;

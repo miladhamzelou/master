@@ -21,8 +21,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $layout = strtolower(config('app.prefix')) ? strtolower(config('app.prefix')) : 'home';
-        $this->setLayout('layout.' . $layout);
+        $this->setLayout('layout.base');
 
         $search = Request::get('search');
         if ($search) {
