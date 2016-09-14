@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\MasterBundle\Model;
+namespace App\Http\Controllers\GeneralBundle\Model;
 
+use App\Http\Controllers\MasterBundle\Model\MyClassSession;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Session extends Model
+class Tree extends Model
 {
-    protected $table = 'session';
+    protected $table = 'tree';
 
     protected  $primaryKey = 'id';
 
-    public static function getResult()
+    public function myclassDateTime()
     {
-       $instance = new static();
-       return DB::table($instance->table)
-              ->select(['*', $instance->table . '.' . $instance->primaryKey . ' AS xid'])
-              ;
+        return $this->hasMany(MyClassSession::class);
     }
 
     /**
@@ -26,7 +24,6 @@ class Session extends Model
      */
     public static function store($frm, $id = null)
     {
-        unset($frm['_token']);
         $instance = new Static();
         if (!$id)
             return DB::table($instance->table)->insertGetId($frm);

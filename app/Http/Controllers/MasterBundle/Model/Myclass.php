@@ -1,20 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\GeneralBundle\Model;
+namespace App\Http\Controllers\MasterBundle\Model;
 
-use App\Http\Controllers\MasterBundle\Model\MyClassSession;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Calendar extends Model
+class Myclass extends Model
 {
-    protected $table = 'calendar';
+    protected $table = 'myclass';
 
     protected  $primaryKey = 'id';
 
-    public function myclassSession()
+    public function term()
     {
-        return $this->hasMany(MyclassSession::class);
+        return $this->hasMany(Term::class);
+    }
+
+    public function myclassDateTime()
+    {
+        return $this->hasMany(MyclassDateTime::class);
     }
 
     /**

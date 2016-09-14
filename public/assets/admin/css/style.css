@@ -3,16 +3,18 @@ body{
     font-size: 14px;
     font-weight: normal;
     background-color: #f7f7f7;
-    color: #333333;
+    color: #000;
 
 }
 #sidebar .list-group{
     /*padding: 10px 10px;*/
     margin:20px 0;
+    border: 1px solid #f7f3f7;
+    box-shadow: 0 1px 2px 0 #e7e7e7;
 
 }
 #sidebar .panel{
-    border-top:5px solid #1e99b0;
+    /*border-top:5px solid #1e99b0;*/
     margin-top: 20px;
 }
 #sidebar .panel h2 .fa{
@@ -27,12 +29,10 @@ body{
     color: #333;
 }
 #sidebar .list-group .list-group-item{
-    padding:14px 25px;
+    padding:10px 15px;
     border: 0;
     border-top: 1px solid #F7F7F7 !important;
-    color: #565a5f;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
 }
 /*#sidebar .list-group .active-list-item{*/
     /*border-right: 5px solid #E13826;*/
@@ -53,7 +53,6 @@ body{
     margin-left: 7px;
 }
 #content .panel{
-    border-top:5px solid #1e99b0;
     margin-top: 20px;
     min-height: 500px;
 }
