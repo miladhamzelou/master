@@ -10719,13 +10719,62 @@ INSERT INTO `calendar` (`id`, `calendar`, `day`, `holiday`, `holiday_type`) VALU
 /*!40000 ALTER TABLE `calendar` ENABLE KEYS */;
 
 
+-- Dumping structure for table master.field_tree
+CREATE TABLE IF NOT EXISTS `field_tree` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `lft` int(11) NOT NULL,
+  `rgt` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `lft` (`lft`),
+  KEY `rgt` (`rgt`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.field_tree: ~0 rows (approximately)
+/*!40000 ALTER TABLE `field_tree` DISABLE KEYS */;
+/*!40000 ALTER TABLE `field_tree` ENABLE KEYS */;
+
+
+-- Dumping structure for table master.lesson
+CREATE TABLE IF NOT EXISTS `lesson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.lesson: ~0 rows (approximately)
+/*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
+
+
+-- Dumping structure for table master.migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.migrations: ~1 rows (approximately)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` (`migration`, `batch`) VALUES
+	('2016_09_16_092004_create_nested_table', 1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
+
 -- Dumping structure for table master.myclass
 CREATE TABLE IF NOT EXISTS `myclass` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `term_id` int(11) DEFAULT NULL,
+  `university_id` int(11) DEFAULT NULL,
+  `lesson_id` int(11) DEFAULT NULL,
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `group` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `term_id` (`term_id`)
+  KEY `term_id` (`term_id`),
+  KEY `university_id` (`university_id`),
+  KEY `lesson_id` (`lesson_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.myclass: 0 rows
@@ -10792,10 +10841,12 @@ CREATE TABLE IF NOT EXISTS `term` (
   `form_date` date NOT NULL,
   `to_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.term: 0 rows
+-- Dumping data for table master.term: 1 rows
 /*!40000 ALTER TABLE `term` DISABLE KEYS */;
+INSERT INTO `term` (`id`, `title`, `form_date`, `to_date`) VALUES
+	(1, 'ترم پاییز 95', '2016-09-15', '2016-09-15');
 /*!40000 ALTER TABLE `term` ENABLE KEYS */;
 
 
@@ -10812,6 +10863,39 @@ CREATE TABLE IF NOT EXISTS `tree` (
 -- Dumping data for table master.tree: 0 rows
 /*!40000 ALTER TABLE `tree` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tree` ENABLE KEYS */;
+
+
+-- Dumping structure for table master.university_tree
+CREATE TABLE IF NOT EXISTS `university_tree` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `lft` int(11) NOT NULL,
+  `rgt` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `lft` (`lft`),
+  KEY `rgt` (`rgt`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.university_tree: ~14 rows (approximately)
+/*!40000 ALTER TABLE `university_tree` DISABLE KEYS */;
+INSERT INTO `university_tree` (`id`, `name`, `parent_id`, `lft`, `rgt`) VALUES
+	(1, 'دانشگاه ملی ملایر', 0, 1, 26),
+	(2, 'دانشکده فنی مهندسی', 1, 2, 3),
+	(3, 'دانشکده عمران معماری', 1, 4, 13),
+	(4, 'دانشکده منابع طبیعی', 1, 14, 15),
+	(5, 'دانشکده علوم انسانی', 1, 16, 17),
+	(6, 'دانشکده علوم پایه', 1, 18, 19),
+	(7, 'ساختمان IT', 1, 20, 21),
+	(8, 'گلخانه', 1, 22, 23),
+	(9, 'سالن ورزشی', 1, 24, 25),
+	(10, 'کارگاه عمومی', 3, 5, 6),
+	(11, 'سالن ورزشی', 3, 7, 8),
+	(12, 'ساختمان IT', 3, 9, 10),
+	(13, 'کارگاه کامپیوتر', 3, 11, 12),
+	(14, 'دانشگاه آزاد ملایر', 0, 27, 28);
+/*!40000 ALTER TABLE `university_tree` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.user

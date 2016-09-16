@@ -15,5 +15,6 @@ class VerifyCsrfToken extends BaseVerifier
         'en/Auth/*',
         'fa/Auth/*',
         'Auth/*',
+        'Admin/*'
     ];
 }
