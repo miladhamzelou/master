@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 
 class UniversityTreeController extends Controller
 {
+    /**
+     * return all nodes
+     */
     public function index()
     {
         $this->layout->content = view('generalBundle.universityTree.admin.index');
@@ -29,5 +33,15 @@ class UniversityTreeController extends Controller
         $traverse($nodes);
         $tree .= '</div>';
         $this->layout->content->tree = $tree;
+    }
+
+    /**
+     * @param $id
+     */
+    public function remove($id)
+    {
+//        dd('xxxx');
+//        UniversityTree::remove($id);
+        return response('ok');
     }
 }

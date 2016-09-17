@@ -42,4 +42,12 @@ class UniversityTree extends Model
             return DB::table($instance->table)->where($instance->primaryKey, $id)->update($frm);
     }
 
+    /**
+     * @param $ids
+     */
+    public static function remove($ids)
+    {
+        self::destroy($ids);
+    }
+
 }
