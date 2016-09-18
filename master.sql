@@ -10719,6 +10719,41 @@ INSERT INTO `calendar` (`id`, `calendar`, `day`, `holiday`, `holiday_type`) VALU
 /*!40000 ALTER TABLE `calendar` ENABLE KEYS */;
 
 
+-- Dumping structure for table master.class_datetime
+CREATE TABLE IF NOT EXISTS `class_datetime` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_id` int(11) NOT NULL,
+  `university_tree_id` int(11) NOT NULL,
+  `day` enum('saturday','sunday','monday','tuesday','wednesday','thursday','friday') COLLATE utf8_unicode_ci NOT NULL,
+  `start_time` time DEFAULT NULL,
+  `end_time` time DEFAULT NULL,
+  `status` enum('fix','rotating') COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `class_id` (`class_id`),
+  KEY `university_tree_id` (`university_tree_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.class_datetime: 0 rows
+/*!40000 ALTER TABLE `class_datetime` DISABLE KEYS */;
+/*!40000 ALTER TABLE `class_datetime` ENABLE KEYS */;
+
+
+-- Dumping structure for table master.class_session
+CREATE TABLE IF NOT EXISTS `class_session` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `calendar_id` int(11) DEFAULT NULL,
+  `class_datetime_id` int(11) DEFAULT NULL,
+  `status` enum('not be held','extra','mid term exam') COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `calendar_id` (`calendar_id`),
+  KEY `class_datetime_id` (`class_datetime_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.class_session: 0 rows
+/*!40000 ALTER TABLE `class_session` DISABLE KEYS */;
+/*!40000 ALTER TABLE `class_session` ENABLE KEYS */;
+
+
 -- Dumping structure for table master.field_tree
 CREATE TABLE IF NOT EXISTS `field_tree` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -10737,11 +10772,25 @@ CREATE TABLE IF NOT EXISTS `field_tree` (
 /*!40000 ALTER TABLE `field_tree` ENABLE KEYS */;
 
 
+-- Dumping structure for table master.field_tree_lesson
+CREATE TABLE IF NOT EXISTS `field_tree_lesson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `field_tree_id` int(11) DEFAULT NULL,
+  `lesson_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `field_tree_id` (`field_tree_id`),
+  KEY `lesson_id` (`lesson_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.field_tree_lesson: ~0 rows (approximately)
+/*!40000 ALTER TABLE `field_tree_lesson` DISABLE KEYS */;
+/*!40000 ALTER TABLE `field_tree_lesson` ENABLE KEYS */;
+
+
 -- Dumping structure for table master.lesson
 CREATE TABLE IF NOT EXISTS `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -10750,71 +10799,27 @@ CREATE TABLE IF NOT EXISTS `lesson` (
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
 
 
--- Dumping structure for table master.migrations
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table master.migrations: ~1 rows (approximately)
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` (`migration`, `batch`) VALUES
-	('2016_09_16_092004_create_nested_table', 1);
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-
-
--- Dumping structure for table master.myclass
-CREATE TABLE IF NOT EXISTS `myclass` (
+-- Dumping structure for table master.master_class
+CREATE TABLE IF NOT EXISTS `master_class` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `term_id` int(11) DEFAULT NULL,
-  `university_id` int(11) DEFAULT NULL,
+  `university_tree_id` int(11) DEFAULT NULL,
   `lesson_id` int(11) DEFAULT NULL,
-  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `exam_date` date DEFAULT NULL,
+  `exam_time` time DEFAULT NULL,
   `group` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `term_id` (`term_id`),
-  KEY `university_id` (`university_id`),
+  KEY `university_tree_id` (`university_tree_id`),
   KEY `lesson_id` (`lesson_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.myclass: 0 rows
-/*!40000 ALTER TABLE `myclass` DISABLE KEYS */;
-/*!40000 ALTER TABLE `myclass` ENABLE KEYS */;
-
-
--- Dumping structure for table master.myclass_datetime
-CREATE TABLE IF NOT EXISTS `myclass_datetime` (
-  `id` int(11) NOT NULL,
-  `myclass_id` int(11) NOT NULL,
-  `tree_id` int(11) DEFAULT NULL,
-  `day` enum('saturday','sunday','monday','tuesday','wednesday','thursday','friday') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `start_time` time DEFAULT NULL,
-  `end_time` time DEFAULT NULL,
-  `status` enum('fix','rotating') COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `myclass_id` (`myclass_id`),
-  KEY `tree_id` (`tree_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table master.myclass_datetime: 0 rows
-/*!40000 ALTER TABLE `myclass_datetime` DISABLE KEYS */;
-/*!40000 ALTER TABLE `myclass_datetime` ENABLE KEYS */;
-
-
--- Dumping structure for table master.myclass_session
-CREATE TABLE IF NOT EXISTS `myclass_session` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `calendar_id` int(11) DEFAULT NULL,
-  `myclass_datetime_id` int(11) DEFAULT NULL,
-  `status` enum('not be held','extra') COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `calendar_id` (`calendar_id`),
-  KEY `myclass_datetime_id` (`myclass_datetime_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table master.myclass_session: 0 rows
-/*!40000 ALTER TABLE `myclass_session` DISABLE KEYS */;
-/*!40000 ALTER TABLE `myclass_session` ENABLE KEYS */;
+-- Dumping data for table master.master_class: 0 rows
+/*!40000 ALTER TABLE `master_class` DISABLE KEYS */;
+/*!40000 ALTER TABLE `master_class` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.role
@@ -10822,16 +10827,52 @@ CREATE TABLE IF NOT EXISTS `role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.role: 4 rows
+-- Dumping data for table master.role: 6 rows
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
 INSERT INTO `role` (`id`, `title`) VALUES
 	(1, 'programmer'),
 	(2, 'super admin'),
 	(3, 'admin'),
-	(5, 'student');
+	(5, 'student'),
+	(6, 'agent'),
+	(4, 'master');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
+
+
+-- Dumping structure for view master.student
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `student` (
+	`id` INT(10) UNSIGNED NOT NULL,
+	`username` VARCHAR(255) NOT NULL COLLATE 'utf8_unicode_ci',
+	`email` VARCHAR(255) NOT NULL COLLATE 'utf8_unicode_ci',
+	`is_active` TINYINT(1) NOT NULL,
+	`name` VARCHAR(101) NULL COLLATE 'utf8_unicode_ci',
+	`mobile` VARCHAR(20) NULL COLLATE 'utf8_unicode_ci',
+	`stnum` VARCHAR(20) NULL COLLATE 'utf8_unicode_ci',
+	`national_code` VARCHAR(20) NULL COLLATE 'utf8_unicode_ci',
+	`age` TINYINT(2) NULL,
+	`gender` ENUM('male','famale') NULL COLLATE 'utf8_unicode_ci',
+	`img` VARCHAR(50) NULL COLLATE 'utf8_unicode_ci',
+	`university` VARCHAR(50) NULL COLLATE 'utf8_unicode_ci',
+	`trend` VARCHAR(50) NULL COLLATE 'utf8_unicode_ci'
+) ENGINE=MyISAM;
+
+
+-- Dumping structure for table master.student_class
+CREATE TABLE IF NOT EXISTS `student_class` (
+  `id` int(11) NOT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `class_id` (`class_id`),
+  KEY `student_id` (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.student_class: ~0 rows (approximately)
+/*!40000 ALTER TABLE `student_class` DISABLE KEYS */;
+/*!40000 ALTER TABLE `student_class` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.term
@@ -10848,21 +10889,6 @@ CREATE TABLE IF NOT EXISTS `term` (
 INSERT INTO `term` (`id`, `title`, `form_date`, `to_date`) VALUES
 	(1, 'ترم پاییز 95', '2016-09-15', '2016-09-15');
 /*!40000 ALTER TABLE `term` ENABLE KEYS */;
-
-
--- Dumping structure for table master.tree
-CREATE TABLE IF NOT EXISTS `tree` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` int(11) NOT NULL,
-  `root_id` int(11) NOT NULL DEFAULT '0',
-  `lft` int(11) NOT NULL DEFAULT '0',
-  `rgt` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table master.tree: 0 rows
-/*!40000 ALTER TABLE `tree` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tree` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.university_tree
@@ -10904,6 +10930,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -10913,27 +10940,37 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 -- Dumping data for table master.user: 4 rows
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `remember_token`, `created_at`) VALUES
-	(1, 'programmer', 'programmer@gmail.com', '$2y$10$72Hdaq5kMQF42p0DFNxLYOYETB5N9C43B8.u/6Zcd15bYZg1PsOly', 'nlepX62IANFDF4SoV1j7XUdPXoaGGzJ7tAy1yZxw7GQkFJXsfwpkFYmKOOPY', NULL),
-	(2, 'sa', 'sa@gmail.com', '$2y$10$aLbIsH72fMehQrYa2fy/mev0KZkQvghfjWK9XB0ABa5FDZ.7Ip6ue', NULL, NULL),
-	(3, 'admin', 'admin@gmail.com', '$2y$10$U/XJx70UikQxaHdK2Eu.ZexWqgKNeBgxIgeXrsaVssORGAz0UTN6e', NULL, NULL),
-	(5, 'user', 'user@gmail.com', '$2y$10$nIe9lNRxNhPAIOoF7zOiVeLJuV.CYnarsuAYVAGmlqTNbr7QFmdQi', 'sKpTBt1U8MmvpTBdRwoGZAFSsBLOWovLUsgvkl5jx4hthn3nTW6EUaoUFvHW', NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `is_active`, `remember_token`, `created_at`) VALUES
+	(1, 'programmer', 'programmer@gmail.com', '$2y$10$72Hdaq5kMQF42p0DFNxLYOYETB5N9C43B8.u/6Zcd15bYZg1PsOly', 1, 'nlepX62IANFDF4SoV1j7XUdPXoaGGzJ7tAy1yZxw7GQkFJXsfwpkFYmKOOPY', NULL),
+	(2, 'sa', 'sa@gmail.com', '$2y$10$aLbIsH72fMehQrYa2fy/mev0KZkQvghfjWK9XB0ABa5FDZ.7Ip6ue', 1, NULL, NULL),
+	(3, 'admin', 'admin@gmail.com', '$2y$10$U/XJx70UikQxaHdK2Eu.ZexWqgKNeBgxIgeXrsaVssORGAz0UTN6e', 1, NULL, NULL),
+	(5, 'user', 'user@gmail.com', '$2y$10$nIe9lNRxNhPAIOoF7zOiVeLJuV.CYnarsuAYVAGmlqTNbr7QFmdQi', 1, 'sKpTBt1U8MmvpTBdRwoGZAFSsBLOWovLUsgvkl5jx4hthn3nTW6EUaoUFvHW', NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.user_info
 CREATE TABLE IF NOT EXISTS `user_info` (
   `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fieldd_tree_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `university_tree_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `family` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `mobile` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `shortIntroduce` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `stnum` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `national_code` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `age` tinyint(2) NOT NULL,
+  `gender` enum('male','famale') COLLATE utf8_unicode_ci NOT NULL,
+  `education_level` enum('diploma','bachelor','associates','MA','PHD') COLLATE utf8_unicode_ci NOT NULL,
   `img` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY (`user_id`),
+  KEY `university_tree_id` (`university_tree_id`),
+  KEY `fieldd_tree_id` (`fieldd_tree_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.user_info: 0 rows
+-- Dumping data for table master.user_info: 1 rows
 /*!40000 ALTER TABLE `user_info` DISABLE KEYS */;
+INSERT INTO `user_info` (`user_id`, `fieldd_tree_id`, `university_tree_id`, `name`, `family`, `mobile`, `stnum`, `national_code`, `age`, `gender`, `education_level`, `img`) VALUES
+	(1, '', '', 'مهرداد', 'معصومی', '', '', '', 0, 'male', '', NULL);
 /*!40000 ALTER TABLE `user_info` ENABLE KEYS */;
 
 
@@ -10944,14 +10981,28 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   PRIMARY KEY (`role_id`,`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.user_role: 4 rows
+-- Dumping data for table master.user_role: 5 rows
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
-	(1, 4);
+	(1, 4),
+	(1, 5);
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+
+
+-- Dumping structure for view master.student
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `student`;
+CREATE ALGORITHM=TEMPTABLE DEFINER=`root`@`localhost` VIEW `student` AS SELECT user.id as id,user.username as username ,user.email as email,user.is_active as is_active,concat(user_info.name,' ',user_info.family) as name,user_info.mobile as mobile,
+user_info.stnum as stnum,user_info.national_code as national_code ,user_info.age,user_info.gender,user_info.img,university_tree.name as university,field_tree.name as trend
+from user 
+left join user_info on user.id=user_info.user_id
+left join user_role on user.id=user_role.user_id
+left join university_tree on user_info.university_tree_id=university_tree.id
+left join field_tree on field_tree.id=user_info.fieldd_tree_id
+where user_role.role_id=4 ;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
