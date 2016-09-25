@@ -42,8 +42,8 @@
 </head>
 <body>
 @include('admin.zone.header')
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
         <div class="col-md-3">
             @include('admin.zone.sidebar')
         </div>
