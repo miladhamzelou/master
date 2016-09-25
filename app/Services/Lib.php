@@ -45,7 +45,8 @@ Class Lib{
 		// check Admin access
 		if($prefix != 'Auth' && $prefix != 'Home'){
 			$user = User::find(Auth::id());
-			foreach($user['role'] as $role) {
+			if(empty($user['role'])) return redirect(getLocale().'/Auth/login')->with(['alert-danger' => trans('public.your session has expired')]);
+			foreach(@$user['role'] as $role) {
 				if(in_array($role['title'], Config::get('ACL.' . lcfirst($prefix) . '_access'))) {
 					$access = true;
 					break;

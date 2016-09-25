@@ -5,18 +5,20 @@ namespace App\Http\Controllers\MasterBundle\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Session extends Model
+class Myclass extends Model
 {
-    protected $table = 'session';
+    protected $table = 'myclass';
 
     protected  $primaryKey = 'id';
 
-    public static function getResult()
+    public function term()
     {
-       $instance = new static();
-       return DB::table($instance->table)
-              ->select(['*', $instance->table . '.' . $instance->primaryKey . ' AS xid'])
-              ;
+        return $this->hasMany(Term::class);
+    }
+
+    public function myclassDateTime()
+    {
+        return $this->hasMany(MyclassDateTime::class);
     }
 
     /**
@@ -26,7 +28,6 @@ class Session extends Model
      */
     public static function store($frm, $id = null)
     {
-        unset($frm['_token']);
         $instance = new Static();
         if (!$id)
             return DB::table($instance->table)->insertGetId($frm);

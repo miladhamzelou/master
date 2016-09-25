@@ -45,11 +45,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            @include('admin.zone.sidebar')
+{{--            @include('admin.zone.sidebar')--}}
         </div>
         <div class="col-md-9">
-            @yield('content')
+            <div id="content">
+                @yield('content')
+            </div>
         </div>
+        {{--<div class="col-md-3">--}}
+{{--            @include('admin.zone.sidebar')--}}
+        {{--</div>--}}
     </div>
 </div>
 @include('admin.zone.footer')

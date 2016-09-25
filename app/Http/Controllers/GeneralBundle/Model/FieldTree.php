@@ -2,20 +2,32 @@
 
 namespace App\Http\Controllers\GeneralBundle\Model;
 
-use App\Http\Controllers\MasterBundle\Model\MyClassSession;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Kalnoy\Nestedset\NodeTrait;
 
-class Calendar extends Model
+class FieldTree extends Model
 {
-    protected $table = 'calendar';
+    use NodeTrait;
+
+    protected $table = 'field_tree';
 
     protected  $primaryKey = 'id';
 
-    public function myclassSession()
+    protected $fillable = ['name'];
+
+    public $timestamps = false;
+
+    public function getLftName()
     {
-        return $this->hasMany(MyclassSession::class);
+        return 'lft';
     }
+
+    public function getRgtName()
+    {
+        return 'rgt';
+    }
+
 
     /**
      * @param $frm

@@ -1,19 +1,23 @@
 body{
-    font-family: byekan;
+    font-family: "Segoe UI Light";
     font-size: 14px;
     font-weight: normal;
     background-color: #f7f7f7;
-    color: #333333;
+    color: #000;
 
+}
+ul,li{
+    list-style: none;
+}
+h1,h2,h3,h4,h5{
+    font-family: byekan;
 }
 #sidebar .list-group{
     /*padding: 10px 10px;*/
     margin:20px 0;
+    border: 1px solid #f7f3f7;
+    box-shadow: 0 1px 2px 0 #e7e7e7;
 
-}
-#sidebar .panel{
-    border-top:5px solid #1e99b0;
-    margin-top: 20px;
 }
 #sidebar .panel h2 .fa{
     position: relative;
@@ -27,12 +31,10 @@ body{
     color: #333;
 }
 #sidebar .list-group .list-group-item{
-    padding:14px 25px;
+    padding:10px 15px;
     border: 0;
     border-top: 1px solid #F7F7F7 !important;
-    color: #565a5f;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
 }
 /*#sidebar .list-group .active-list-item{*/
     /*border-right: 5px solid #E13826;*/
@@ -52,8 +54,78 @@ body{
 .fa {
     margin-left: 7px;
 }
+#content{
+    margin: 20px 0;
+}
 #content .panel{
-    border-top:5px solid #1e99b0;
-    margin-top: 20px;
     min-height: 500px;
+    border-top: 2px solid #337ab7;
+}
+#content .form-control{
+    border-radius: 0px;
+    background-color: #fafafa;
+    box-shadow: none;
+    border: 1px solid #eaeaea;
+    color: #cbcbcb;
+}
+#content .form-control:focus{
+    border: 2px solid #337ab7;
+}
+
+#content label{
+    font-weight: normal;
+}
+#content  .btn-default{
+    background: #ffffff;
+    border: 2px solid #e7eef1;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    margin: 0;
+    padding: 6px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 2px;
+}
+#content  .btn-default:hover{
+    border: 2px solid #337ab7;
+}
+#content .panel .panel-heading{
+    border-bottom: 1px solid rgba(0,0,0,.02);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #666;
+}
+#content h3.panel-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+#content .has-error label{
+    color: #ff1165;
+    font-weight: bold;
+}
+#content .has-error .form-control{
+    color: #ff1165 !important;
+    border: 2px solid #ff1165;
+}
+/*#content .tree ul{*/
+    /*width: 400px;*/
+/*}*/
+/*#content .tree {*/
+    /*max-width: 200px;*/
+    /*overflow-x: scroll;*/
+/*}*/
+
+#content .tree ul:first-child{
+    padding-right: 0;
+}
+#content .tree li{
+    cursor: pointer;
 }

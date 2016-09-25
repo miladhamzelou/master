@@ -1,22 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\GeneralBundle\Model;
+namespace App\Http\Controllers\MasterBundle\Model;
 
+use App\Http\Controllers\GeneralBundle\Model\Tree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Day extends Model
+class MyclassDateTime extends Model
 {
-    protected $table = 'day';
+    protected $table = 'class_datetime';
 
     protected  $primaryKey = 'id';
 
-    public static function getResult()
+    public function myclass()
     {
-       $instance = new static();
-       return DB::table($instance->table)
-              ->select(['*', $instance->table . '.' . $instance->primaryKey . ' AS xid'])
-              ;
+        return $this->belongsTo(Myclass::class);
+    }
+
+    public function myclassSession()
+    {
+        return $this->hasMany(MyclassSession::class);
+    }
+
+    public function tree()
+    {
+        return $this->belongsTo(Tree::class);
     }
 
     /**
@@ -26,7 +34,6 @@ class Day extends Model
      */
     public static function store($frm, $id = null)
     {
-        unset($frm['_token']);
         $instance = new Static();
         if (!$id)
             return DB::table($instance->table)->insertGetId($frm);

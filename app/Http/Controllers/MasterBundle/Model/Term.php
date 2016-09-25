@@ -11,13 +11,11 @@ class Term extends Model
 
     protected  $primaryKey = 'id';
 
-    public static function getResult()
+    public function myclass()
     {
-       $instance = new static();
-       return DB::table($instance->table)
-              ->select(['*', $instance->table . '.' . $instance->primaryKey . ' AS xid'])
-              ;
+        return $this->belongsTo(Myclass::class);
     }
+
 
     /**
      * @param $frm
@@ -26,7 +24,6 @@ class Term extends Model
      */
     public static function store($frm, $id = null)
     {
-        unset($frm['_token']);
         $instance = new Static();
         if (!$id)
             return DB::table($instance->table)->insertGetId($frm);

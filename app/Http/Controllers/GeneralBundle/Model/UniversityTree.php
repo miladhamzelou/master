@@ -2,19 +2,30 @@
 
 namespace App\Http\Controllers\GeneralBundle\Model;
 
-use App\Http\Controllers\MasterBundle\Model\MyClassSession;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Kalnoy\Nestedset\NodeTrait;
 
-class Calendar extends Model
+class UniversityTree extends Model
 {
-    protected $table = 'calendar';
+    use NodeTrait;
+
+    protected $table = 'university_tree';
 
     protected  $primaryKey = 'id';
 
-    public function myclassSession()
+    protected $fillable = ['name'];
+
+    public $timestamps = false;
+
+    public function getLftName()
     {
-        return $this->hasMany(MyclassSession::class);
+        return 'lft';
+    }
+
+    public function getRgtName()
+    {
+        return 'rgt';
     }
 
     /**
@@ -29,6 +40,14 @@ class Calendar extends Model
             return DB::table($instance->table)->insertGetId($frm);
         else
             return DB::table($instance->table)->where($instance->primaryKey, $id)->update($frm);
+    }
+
+    /**
+     * @param $ids
+     */
+    public static function remove($ids)
+    {
+        self::destroy($ids);
     }
 
 }
