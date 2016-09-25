@@ -1,33 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\GeneralBundle\Model;
+namespace App\Http\Controllers\MasterBundle\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Kalnoy\Nestedset\NodeTrait;
 
-class FieldTree extends Model
+class ClassSession extends Model
 {
-    use NodeTrait;
-
-    protected $table = 'field_tree';
+    protected $table = 'class_session';
 
     protected  $primaryKey = 'id';
-
-    protected $fillable = ['name'];
-
-    public $timestamps = false;
-
-    public function getLftName()
-    {
-        return 'lft';
-    }
-
-    public function getRgtName()
-    {
-        return 'rgt';
-    }
-
 
     /**
      * @param $frm

@@ -5,21 +5,11 @@ namespace App\Http\Controllers\MasterBundle\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Myclass extends Model
+class MasterClass extends Model
 {
-    protected $table = 'myclass';
+    protected $table = 'class';
 
     protected  $primaryKey = 'id';
-
-    public function term()
-    {
-        return $this->hasMany(Term::class);
-    }
-
-    public function myclassDateTime()
-    {
-        return $this->hasMany(MyclassDateTime::class);
-    }
 
     /**
      * @param $frm

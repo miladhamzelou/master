@@ -2,25 +2,14 @@
 
 namespace App\Http\Controllers\MasterBundle\Model;
 
-use App\Http\Controllers\GeneralBundle\Model\Calendar;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class MyclassSession extends Model
+class Lesson extends Model
 {
-    protected $table = 'class_session';
+    protected $table = 'lesson';
 
     protected  $primaryKey = 'id';
-
-    public function myclassDateTime()
-    {
-        return $this->belongsTo(MyclassDateTime::class);
-    }
-
-    public function calendar()
-    {
-        return $this->belongsTo(Calendar::class);
-    }
 
     /**
      * @param $frm

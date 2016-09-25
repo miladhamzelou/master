@@ -2,30 +2,14 @@
 
 namespace App\Http\Controllers\MasterBundle\Model;
 
-use App\Http\Controllers\GeneralBundle\Model\Tree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class MyclassDateTime extends Model
+class UniversityTree extends Model
 {
-    protected $table = 'class_datetime';
+    protected $table = 'university_tree';
 
     protected  $primaryKey = 'id';
-
-    public function myclass()
-    {
-        return $this->belongsTo(Myclass::class);
-    }
-
-    public function myclassSession()
-    {
-        return $this->hasMany(MyclassSession::class);
-    }
-
-    public function tree()
-    {
-        return $this->belongsTo(Tree::class);
-    }
 
     /**
      * @param $frm

@@ -5,9 +5,9 @@ namespace App\Http\Controllers\MasterBundle\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Term extends Model
+class FieldTree extends Model
 {
-    protected $table = 'term';
+    protected $table = 'field_tree';
 
     protected  $primaryKey = 'id';
 
