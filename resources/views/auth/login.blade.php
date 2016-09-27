@@ -1,4 +1,4 @@
-@extends('layout.base')
+@extends('layout.admin')
 @section('content')
     <div class="wrapper" style="margin-top: 20px;">
         <div class="mbot clearfix">

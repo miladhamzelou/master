@@ -44,17 +44,16 @@
 @include('admin.zone.header')
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            @include('admin.zone.sidebar')
-        </div>
-        <div class="col-md-9">
-            <div id="content">
-                @yield('content')
+        <div id="main-content">
+            <div class="col-md-3">
+                @include('admin.zone.sidebar')
+            </div>
+            <div class="col-md-9">
+                <div id="content">
+                    @yield('content')
+                </div>
             </div>
         </div>
-        {{--<div class="col-md-3">--}}
-{{--            @include('admin.zone.sidebar')--}}
-        {{--</div>--}}
     </div>
 </div>
 @include('admin.zone.footer')

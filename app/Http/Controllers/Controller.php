@@ -21,7 +21,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $this->setLayout('layout.base');
+        $this->setLayout('layout.admin');
 
         $search = Request::get('search');
         if ($search) {

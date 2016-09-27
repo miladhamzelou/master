@@ -1,4 +1,4 @@
-@extends('layout.base')
+@extends('layout.admin')
 @section('content')
     <div class="box">
         <div class="box-header with-border">
