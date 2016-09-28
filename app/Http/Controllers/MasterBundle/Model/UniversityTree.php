@@ -4,12 +4,29 @@ namespace App\Http\Controllers\MasterBundle\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Kalnoy\Nestedset\NodeTrait;
 
 class UniversityTree extends Model
 {
+    use NodeTrait;
+
+    public $timestamps = false;
+
+    protected $fillable = ['name'];
+
     protected $table = 'university_tree';
 
     protected  $primaryKey = 'id';
+
+    public function getLftName()
+    {
+        return 'lft';
+    }
+
+    public function getRgtName()
+    {
+        return 'rgt';
+    }
 
     /**
      * @param $frm

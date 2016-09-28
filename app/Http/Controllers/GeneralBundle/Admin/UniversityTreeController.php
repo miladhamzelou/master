@@ -22,7 +22,7 @@ class UniversityTreeController extends Controller
         $traverse = function ($categories) use (&$traverse , &$tree) {
                 $tree .= '<ul>';
                 foreach ($categories as $key=>$category) {
-                    $tree .= '<li data-id="'.$category->id.'"><span class="fa fa-angle-left"></span>'.$category->name.'</li>';
+                    $tree .= '<li data-id="'.$category->id.'">'.$category->name.'</li>';
                     if(count($category->children) > 0) {
                         $traverse($category->children);
                     }

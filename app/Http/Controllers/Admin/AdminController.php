@@ -8,10 +8,9 @@ use App\Services\Farsi;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class AdminController extends \App\Http\Controllers\AdminController
 {
    public function index()
    {

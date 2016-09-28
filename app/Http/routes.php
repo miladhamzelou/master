@@ -21,7 +21,7 @@ Route::group(['prefix' => $locale], function () use ($prefix) {
             Route::auth();
         });
     } elseif($prefix == 'Admin') {
-        Route::group(['prefix' => $prefix , 'namespace' => studly_case($prefix)], function () use ($prefix) {
+        Route::group(['prefix' => $prefix , 'middleware' => 'auth' ,'namespace' => studly_case($prefix)], function () use ($prefix) {
             Route::any('/', function() use ($prefix) {
                 return Lib::callAction($prefix);
             });

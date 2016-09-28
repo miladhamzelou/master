@@ -6,7 +6,6 @@ body{
 }
 a,a:focus,a:hover{
     text-decoration: none;
-    color: #36a4e5;
 }
 h1,h2,h3,h4,h5,h6{
     font-family: byekan;
@@ -21,7 +20,7 @@ h1,h2,h3,h4,h5,h6{
     /*color: #97a0b3;*/
 }
 #content .panel .panel-body{
-    /*min-height: 500px;*/
+    min-height: 400px;
     height: auto;
     color: #000;
 }
@@ -30,11 +29,18 @@ h1,h2,h3,h4,h5,h6{
     font-weight: bold;
 }
 #sidebar .panel .panel-heading{
-    background-color: #666;
+    background-color: #4f4f4f;
+    color: #ffffff;
+}
+#sidebar .panel .panel-heading:hover{
+    background-color: #444;
     color: #ffffff;
 }
 #sidebar .panel h4.panel-title{
     font-size: 14px;
+}
+#sidebar .panel h4.panel-title a:hover{
+    color: #CCCCCC;
 }
 #sidebar .panel{
     border: 1px solid #e7e7e7;
@@ -58,7 +64,7 @@ ul.pagination li a, ul.pagination li.disabled span, ul.pagination li.active span
     border: 1px solid #bbb;
     border-radius: 3px;
     /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
-    color: #666;
+    color: #4f4f4f;
     font-weight: normal;
     line-height: 20px;
     margin: 0 2px;
@@ -67,27 +73,31 @@ ul.pagination li a, ul.pagination li.disabled span, ul.pagination li.active span
     text-align: center;
 }
 ul.pagination li.active span:hover {
-    background-color: #333;
+    background-color: #4f4f4f;
     color: #ffffff;
+    border: 1px solid #4f4f4f;
 }
 .pagination > li:last-child > a, .pagination > li:last-child > span {
     border-radius: 4px;
     margin-right: 1px;
 }
 ul.pagination li.disabled span {
-    background: #666666 none repeat scroll 0 0;
-    border: 1px solid #666666;
+    background: #4f4f4f;
+    border: 1px solid #4f4f4f;
     border-radius: 4px;
     color: #ffffff;
 }
 ul.pagination li.active span {
-    background: #666666 none repeat scroll 0 0;
-    border: 1px solid #666666;
+    background: #4f4f4f;
+    border: 1px solid #4f4f4f;
     border-radius: 4px;
     color: #ffffff;
 }
+#content .table thead th,td{
+    text-align: center;
+}
 #content .table thead a{
-    color: #000000;
+    color: #52535b;
     font-size: 13px;
 }
 #content .panel .panel-heading div.pull-left a{
@@ -95,5 +105,37 @@ ul.pagination li.active span {
     /*font-size: 15px;*/
     padding: 0;
     margin-bottom: 0;
-    color: #36a4e5;
+    color: #4f4f4f;
+}
+/*a.has-sort{*/
+    /*background: url("../img/sort_both.png") left no-repeat;*/
+    /*padding-left: 20px;*/
+    /*cursor: pointer;*/
+/*}*/
+a.ASC-sort{
+    background: url("../img/sort_asc.png") left no-repeat;
+    padding-left: 20px;
+    cursor: pointer;
+}
+a.DESC-sort{
+    background: url("../img/sort_desc.png") left no-repeat;
+    padding-left: 20px;
+    cursor: pointer;
+}
+ul ,li{
+    list-style: none;
+}
+.tree ul li {
+    font-family: byekan;
+    /*font-size: 13px;*/
+    text-decoration: none;
+}
+.jstree-proton.jstree-rtl .jstree-node {
+    background: none !important;
+}
+.text-success{
+    color:#49c668;
+}
+.text-danger{
+    color: #ff5a5f;
 }

@@ -6,9 +6,9 @@
                     <h4 class="panel-title">مدیریت منابع سیستمی</h4>
                 </div>
                 <div class="pull-left">
-                    <a href=""><span class="fa fa-plus-square"></span> </a>
                     <a href=""><span class="fa fa-search"></span> </a>
-                    <a href=""><span class="fa fa-refresh"></span> </a>
+                    <a href=""><span class="fa fa-refresh"></span></a>
+                    <a href=""><span class="fa fa-plus-square"></span> </a>
                 </div>
                 <div class="row"></div>
             </div>
@@ -57,7 +57,7 @@
                                     <td></td>
                                     <td>0</td>
                                     <td><a href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/changeEnum/6001" data-status="1" data-field="approve" onclick="Admin.changeEnum(this, event)"><span class="fa  fa-check-circle text-success "></span></a></td>
-                                    <td><a href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/changeEnum/6001" data-status="0" data-field="is_closed" onclick="Admin.changeEnum(this, event)"><span class="fa  fa-check-circle text-success "></span></a></td>
+                                    <td><a href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/changeEnum/6001" data-status="0" data-field="is_closed" onclick="Admin.changeEnum(this, event)"><span class="fa  fa-check text-success "></span></a></td>
                                     <td class="table-action">
                                         <a onclick="Admin.delete(this,event)" href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/destroy/6001"><span class="fa fa fa-trash-o"></span></a>
                                         <a onclick="Admin.show(this, event)" href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/show/6001"><span class="fa fa-tv"></span></a>
@@ -146,7 +146,7 @@
                                     <td>1395/07/04 14:31</td>
                                     <td></td>
                                     <td>0</td>
-                                    <td><a href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/changeEnum/5995" data-status="0" data-field="approve" onclick="Admin.changeEnum(this, event)"><span class="fa  fa-minus-circle text-danger "></span></a></td>
+                                    <td><a href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/changeEnum/5995" data-status="0" data-field="approve" onclick="Admin.changeEnum(this, event)"><span class="fa  fa-minus text-danger "></span></a></td>
                                     <td><a href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/changeEnum/5995" data-status="0" data-field="is_closed" onclick="Admin.changeEnum(this, event)"><span class="fa  fa-check-circle text-success "></span></a></td>
                                     <td class="table-action">
                                         <a onclick="Admin.delete(this,event)" href="http://118food.basalamat.com/Admin/RestaurantBundle/Restaurant/destroy/5995"><span class="fa fa fa-trash-o"></span></a>
