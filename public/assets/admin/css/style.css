@@ -1,3 +1,17 @@
+.display-none{
+    display: none;
+}
+.ajax{
+    position: absolute;
+    top: 40%;
+    right: 50%;
+}
+.btn{
+    font-size: 12px;
+}
+label{
+    /*font-weight: normal;*/
+}
 body{
     font-family: byekan;
     font-size: 12px;
@@ -125,10 +139,10 @@ a.DESC-sort{
 ul ,li{
     list-style: none;
 }
-.tree ul li {
+.tree ul li,.tree-checkbox ul li {
     font-family: byekan;
     /*font-size: 13px;*/
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 .jstree-proton.jstree-rtl .jstree-node {
     background: none !important;
@@ -137,5 +151,11 @@ ul ,li{
     color:#49c668;
 }
 .text-danger{
+    color: #ff5a5f;
+}
+.has-error .form-control{
+    border: 1px solid #ff5a5f;
+}
+.has-error label,.has-error .form-control,p{
     color: #ff5a5f;
 }

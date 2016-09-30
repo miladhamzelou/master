@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\Model\UserExtra;
 use App\Http\Controllers\Auth\Model\UserFollow;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController as Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Config;

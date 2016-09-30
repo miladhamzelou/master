@@ -4,17 +4,9 @@ namespace App\Http\Controllers\Auth\Admin;
 
 use App\Http\Controllers\Auth\Form\UserForm;
 use App\Http\Controllers\Auth\Form\UserSearchForm;
-use App\Http\Controllers\Auth\Model\UserCollection;
-use App\Http\Controllers\Auth\Model\UserExtra;
-use App\Http\Controllers\Auth\Model\UserFollow;
 use App\Http\Controllers\Auth\Model\UserInfo;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController as Controller;
 use App\Http\Controllers\Auth\Model\User;
-use App\Http\Controllers\RestaurantBundle\Model\Restaurant;
-use App\Http\Controllers\RestaurantBundle\Model\RestaurantGallery;
-use App\Http\Controllers\RestaurantBundle\Model\RestaurantMenu;
-use App\Http\Controllers\ReviewBundle\Model\Review;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;

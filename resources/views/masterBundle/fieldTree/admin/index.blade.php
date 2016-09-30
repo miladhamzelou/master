@@ -11,7 +11,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <div class="pull-right">
-                    <h4 class="panel-title">{{ trans('tree.university collection') }}</h4>
+                    <h4 class="panel-title">{{ trans('public.field collection') }}</h4>
                 </div>
                 <div class="pull-left">
                     <a href="{{ url(getCurrentURL('controller')).'/NewTree' }}"  class="btn-box-tool pull-left" onclick="Admin.newTree(this,event)"><i class="fa fa-plus"></i></a>

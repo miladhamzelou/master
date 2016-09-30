@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\MasterBundle\Admin;
 
 use App\Http\Controllers\AdminController as Controller;
-use App\Http\Controllers\MasterBundle\Model\UniversityTree;
+use App\Http\Controllers\MasterBundle\Model\FieldTree;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 use Request;
 use Validator;
 
-class UniversityTreeController extends Controller
+class FieldTreeController extends Controller
 {
 
     /**
@@ -17,26 +17,12 @@ class UniversityTreeController extends Controller
      */
     public function treeList()
     {
-        $nodes = UniversityTree::get()->toTree();
-        $tree = '<div class="tree">';
-        $traverse = function ($categories) use (&$traverse , &$tree) {
-            $tree .= '<ul>';
-            foreach ($categories as $key=>$category) {
-                $tree .= '<li data-id="'.$category->id.'">'.$category->name;
-                if(count($category->children) > 0) {
-                    $traverse($category->children);
-                }
-                $tree .= '</li>';
-            }
-            $tree .= '</ul>';
-        };
-        $traverse($nodes);
-        $tree .= '</div>';
+        $tree = FieldTree::tree();
         if(Request::ajax()) {
             return response()
-                ->view('masterBundle.universityTree.admin.tree-ajax', ['tree' => $tree], 200);
+                ->view('masterBundle.fieldTree.admin.tree-ajax', ['tree' => $tree], 200);
         }
-        $this->layout->content = view('masterBundle.universityTree.admin.index');
+        $this->layout->content = view('masterBundle.fieldTree.admin.index');
         $this->layout->content->tree = $tree;
     }
 
@@ -47,7 +33,7 @@ class UniversityTreeController extends Controller
     public function newTree()
     {
         $item_selected = Input::get('item_id');
-        return response()->view('masterBundle.universityTree.admin.new',with(['modal_title' => trans('tree.create new node'),'item_selected' => $item_selected]));
+        return response()->view('masterBundle.fieldTree.admin.new',with(['modal_title' => trans('tree.create new node'),'item_selected' => $item_selected]));
     }
 
     /**
@@ -61,7 +47,7 @@ class UniversityTreeController extends Controller
             'frm.name' => 'required',
         ]);
         if ($validator->fails()) {
-            return Response()->view('masterBundle.universityTree.admin.new-frm',
+            return Response()->view('masterBundle.fieldTree.admin.new-frm',
                 [
                     'errors' => $validator->errors(),
                 ]
@@ -73,15 +59,15 @@ class UniversityTreeController extends Controller
         if(!empty($selected)) {
             foreach($selected as $item) {
                 foreach($new_node as $new) {
-                    $node = new UniversityTree(['name' => trim($new)]);
-                    $node->appendToNode(UniversityTree::find($item));
+                    $node = new FieldTree(['name' => trim($new)]);
+                    $node->appendToNode(FieldTree::find($item));
                     $node->save();
                 }
             }
             die('ok');
         } else {
             foreach($new_node as $new)
-                UniversityTree::create(['name' => $new]);
+                FieldTree::create(['name' => $new]);
             die('ok');
         }
     }
@@ -98,14 +84,14 @@ class UniversityTreeController extends Controller
             'frm.name' => 'required',
         ]);
         if ($validator->fails()) {
-            return Response()->view('masterBundle.universityTree.admin.edit-frm',
+            return Response()->view('masterBundle.fieldTree.admin.edit-frm',
                 [
                     'errors' => $validator->errors(),
-                    'entity' => UniversityTree::find($id),
+                    'entity' => FieldTree::find($id),
                 ]
                 ,200);
         }
-        $id = UniversityTree::store($request->get('frm'),$id);
+        $id = FieldTree::store($request->get('frm'),$id);
         die('ok');
     }
 
@@ -115,8 +101,8 @@ class UniversityTreeController extends Controller
     public function editTree()
     {
         $id = Input::get('item_id');
-        $entity = UniversityTree::find($id);
-        return response()->view('masterBundle.universityTree.admin.edit',with(['entity' => $entity,'modal_title' => trans('tree.edit node')]));
+        $entity = FieldTree::find($id);
+        return response()->view('masterBundle.fieldTree.admin.edit',with(['entity' => $entity,'modal_title' => trans('tree.edit node')]));
     }
 
     /**
@@ -126,7 +112,7 @@ class UniversityTreeController extends Controller
     {
         $input = Input::get('items');
         foreach($input as $item) {
-            $node = UniversityTree::find($item);
+            $node = FieldTree::find($item);
             $node->delete();
         }
         die;

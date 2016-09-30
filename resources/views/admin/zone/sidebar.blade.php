@@ -13,9 +13,9 @@
                     <div class="list-group">
                         <a href="#" class="list-group-item">تعریف کلاس</a>
                         <a href="#" class="list-group-item">تعریف ترم آموزشی</a>
-                        <a href="{{ getCurrentURL('prefix').'/MasterBundle/UniversityTree' }}" class="list-group-item">دانشگاه ها و زیرمجموعه ها</a>
-                        <a href="#" class="list-group-item">رشته ها و گرایشات</a>
-                        <a href="#" class="list-group-item">دروس تخصصی استاد</a>
+                        <a href="{{ getCurrentURL('prefix').'/MasterBundle/UniversityTree/TreeList' }}" class="list-group-item">دانشگاه ها و زیرمجموعه ها</a>
+                        <a href="{{ getCurrentURL('prefix').'/MasterBundle/FieldTree/TreeList' }}" class="list-group-item">رشته ها و گرایشات</a>
+                        <a href="{{ getCurrentURL('prefix').'/MasterBundle/Lesson/LessonList' }}" class="list-group-item">دروس تخصصی استاد</a>
                     </div>
             </div>
         </div>

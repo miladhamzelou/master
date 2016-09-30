@@ -10765,25 +10765,35 @@ CREATE TABLE IF NOT EXISTS `field_tree` (
   KEY `parent_id` (`parent_id`),
   KEY `lft` (`lft`),
   KEY `rgt` (`rgt`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.field_tree: ~0 rows (approximately)
+-- Dumping data for table master.field_tree: 2 rows
 /*!40000 ALTER TABLE `field_tree` DISABLE KEYS */;
+INSERT INTO `field_tree` (`id`, `name`, `parent_id`, `lft`, `rgt`) VALUES
+	(1, 'کامپیوتر', 0, 1, 6),
+	(2, 'عمران', 0, 7, 8),
+	(3, 'نرم افزار', 1, 2, 3),
+	(4, 'سخت افزار', 1, 4, 5);
 /*!40000 ALTER TABLE `field_tree` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.field_tree_lesson
 CREATE TABLE IF NOT EXISTS `field_tree_lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `field_tree_id` int(11) DEFAULT NULL,
   `lesson_id` int(11) DEFAULT NULL,
+  `field_tree_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `field_tree_id` (`field_tree_id`),
   KEY `lesson_id` (`lesson_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.field_tree_lesson: ~0 rows (approximately)
+-- Dumping data for table master.field_tree_lesson: 0 rows
 /*!40000 ALTER TABLE `field_tree_lesson` DISABLE KEYS */;
+INSERT INTO `field_tree_lesson` (`id`, `lesson_id`, `field_tree_id`) VALUES
+	(1, 1, 1),
+	(2, 1, 3),
+	(3, 1, 4),
+	(4, 1, 2);
 /*!40000 ALTER TABLE `field_tree_lesson` ENABLE KEYS */;
 
 
@@ -10792,10 +10802,12 @@ CREATE TABLE IF NOT EXISTS `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.lesson: ~0 rows (approximately)
+-- Dumping data for table master.lesson: 0 rows
 /*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
+INSERT INTO `lesson` (`id`, `title`) VALUES
+	(1, 'ssssss');
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
 
 
@@ -10868,9 +10880,9 @@ CREATE TABLE IF NOT EXISTS `student_class` (
   PRIMARY KEY (`id`),
   KEY `class_id` (`class_id`),
   KEY `student_id` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.student_class: ~0 rows (approximately)
+-- Dumping data for table master.student_class: 0 rows
 /*!40000 ALTER TABLE `student_class` DISABLE KEYS */;
 /*!40000 ALTER TABLE `student_class` ENABLE KEYS */;
 
@@ -10887,7 +10899,7 @@ CREATE TABLE IF NOT EXISTS `term` (
 -- Dumping data for table master.term: 1 rows
 /*!40000 ALTER TABLE `term` DISABLE KEYS */;
 INSERT INTO `term` (`id`, `title`, `form_date`, `to_date`) VALUES
-	(1, 'ترم پاییز 95', '2016-09-15', '2016-09-15');
+	(1, 'طھط±ظ… ظ¾ط§غŒغŒط² 95', '2016-09-15', '2016-09-15');
 /*!40000 ALTER TABLE `term` ENABLE KEYS */;
 
 
@@ -10902,25 +10914,25 @@ CREATE TABLE IF NOT EXISTS `university_tree` (
   KEY `parent_id` (`parent_id`),
   KEY `lft` (`lft`),
   KEY `rgt` (`rgt`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.university_tree: ~14 rows (approximately)
+-- Dumping data for table master.university_tree: 14 rows
 /*!40000 ALTER TABLE `university_tree` DISABLE KEYS */;
 INSERT INTO `university_tree` (`id`, `name`, `parent_id`, `lft`, `rgt`) VALUES
-	(1, 'دانشگاه ملی ملایر', 0, 1, 26),
-	(2, 'دانشکده فنی مهندسی', 1, 2, 3),
-	(3, 'دانشکده عمران معماری', 1, 4, 13),
-	(4, 'دانشکده منابع طبیعی', 1, 14, 15),
-	(5, 'دانشکده علوم انسانی', 1, 16, 17),
-	(6, 'دانشکده علوم پایه', 1, 18, 19),
-	(7, 'ساختمان IT', 1, 20, 21),
-	(8, 'گلخانه', 1, 22, 23),
-	(9, 'سالن ورزشی', 1, 24, 25),
-	(10, 'کارگاه عمومی', 3, 5, 6),
-	(11, 'سالن ورزشی', 3, 7, 8),
-	(12, 'ساختمان IT', 3, 9, 10),
-	(13, 'کارگاه کامپیوتر', 3, 11, 12),
-	(14, 'دانشگاه آزاد ملایر', 0, 27, 28);
+	(1, 'دانشگاه ملی ملایر', 0, 1, 22),
+	(2, 'دانشگاه آزاد ملایر', 0, 23, 24),
+	(3, 'دانشگاه پیام نور ملایر', 0, 25, 26),
+	(4, 'دانشگاه علمی کاربردی ملایر', 0, 27, 28),
+	(5, 'دانشکده فنی مهندسی', 1, 2, 9),
+	(6, 'دانشکده عمران و معماری', 1, 10, 11),
+	(7, 'دانشکده علوم انسانی', 1, 12, 13),
+	(8, 'دانشکده علوم پایه', 1, 14, 15),
+	(9, 'دانشکده محیط زیست', 1, 16, 17),
+	(10, 'ساختمان IT', 1, 18, 19),
+	(11, 'گلخانه', 1, 20, 21),
+	(12, 'آزمایشگاه معماری', 5, 3, 4),
+	(13, 'آزمایشگاه مدار منطقی', 5, 5, 6),
+	(14, 'آزمایشگاه الکترونیک', 5, 7, 8);
 /*!40000 ALTER TABLE `university_tree` ENABLE KEYS */;
 
 
@@ -10970,7 +10982,7 @@ CREATE TABLE IF NOT EXISTS `user_info` (
 -- Dumping data for table master.user_info: 1 rows
 /*!40000 ALTER TABLE `user_info` DISABLE KEYS */;
 INSERT INTO `user_info` (`user_id`, `fieldd_tree_id`, `university_tree_id`, `name`, `family`, `mobile`, `stnum`, `national_code`, `age`, `gender`, `education_level`, `img`) VALUES
-	(1, '', '', 'مهرداد', 'معصومی', '', '', '', 0, 'male', '', NULL);
+	(1, '', '', 'ظ…ظ‡ط±ط¯ط§ط¯', 'ظ…ط¹طµظˆظ…غŒ', '', '', '', 0, 'male', '', NULL);
 /*!40000 ALTER TABLE `user_info` ENABLE KEYS */;
 
 
