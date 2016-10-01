@@ -53,20 +53,13 @@
             $('.fieldTree').remove();
             var i, j;
             for(i = 0, j = data.selected.length; i < j; i++) {
-                $('form').append('<input type="hidden" name="fieldTree['+i+']" class="fieldTree" value="'+$('.tree-checkbox').jstree(true).get_selected('text')[i].li_attr['data-id'] + '">');
+                $('form').append('<input type="hidden" name="fieldTree[]" class="fieldTree" value="'+$('.tree-checkbox').jstree(true).get_selected('text')[i].li_attr['data-id'] + '">');
             }
         });
-        $(window).load(function() {
+        $(window).load(function(){
             $('.fieldTree').each(function(){
-                $(".tree-checkbox").jstree('open_node', '#node_'+$(this).val(), function(e) {
-                    console.log(e);
-                    if(e.parents.length > 1){
-                        $(".tree-checkbox").jstree('open_node', e.parent).jstree('select_node', e.id);
-                    } else {
-                        $(".tree-checkbox").jstree('select_node', e.id);
-                    }
-                });
-            })
-        });
+                $(".tree-checkbox").jstree()._open_to('node_'+$(this).val()).jstree('select_node','node_'+$(this).val());
+            });
+        })
     </script>
 @endsection
