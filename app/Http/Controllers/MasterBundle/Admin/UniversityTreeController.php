@@ -34,9 +34,9 @@ class UniversityTreeController extends Controller
         $tree .= '</div>';
         if(Request::ajax()) {
             return response()
-                ->view('masterBundle.universityTree.admin.tree-ajax', ['tree' => $tree], 200);
+                ->view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.tree-ajax', ['tree' => $tree], 200);
         }
-        $this->layout->content = view('masterBundle.universityTree.admin.index');
+        $this->layout->content = view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.admin.index');
         $this->layout->content->tree = $tree;
     }
 
@@ -47,7 +47,7 @@ class UniversityTreeController extends Controller
     public function newTree()
     {
         $item_selected = Input::get('item_id');
-        return response()->view('masterBundle.universityTree.admin.new',with(['modal_title' => trans('tree.create new node'),'item_selected' => $item_selected]));
+        return response()->view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.new',with(['modal_title' => trans('tree.create new node'),'item_selected' => $item_selected]));
     }
 
     /**
@@ -61,7 +61,7 @@ class UniversityTreeController extends Controller
             'frm.name' => 'required',
         ]);
         if ($validator->fails()) {
-            return Response()->view('masterBundle.universityTree.admin.new-frm',
+            return Response()->view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.new-frm',
                 [
                     'errors' => $validator->errors(),
                 ]
@@ -98,7 +98,7 @@ class UniversityTreeController extends Controller
             'frm.name' => 'required',
         ]);
         if ($validator->fails()) {
-            return Response()->view('masterBundle.universityTree.admin.edit-frm',
+            return Response()->view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.edit-frm',
                 [
                     'errors' => $validator->errors(),
                     'entity' => UniversityTree::find($id),
@@ -116,7 +116,7 @@ class UniversityTreeController extends Controller
     {
         $id = Input::get('item_id');
         $entity = UniversityTree::find($id);
-        return response()->view('masterBundle.universityTree.admin.edit',with(['entity' => $entity,'modal_title' => trans('tree.edit node')]));
+        return response()->view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.edit',with(['entity' => $entity,'modal_title' => trans('tree.edit node')]));
     }
 
     /**

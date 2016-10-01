@@ -7,7 +7,6 @@
     <script src="{{ asset('assets/tools/jstree/dist/jstree.min.js') }}"></script>
 @endsection
 @section('content')
-    <div class="content">
         <div class="panel">
             <div class="panel-heading">
                 <div class="pull-right">
@@ -23,11 +22,10 @@
             </div>
             <div class="panel-body">
                 <div class="ajax-content">
-                    @include('masterBundle.universityTree.admin.tree-ajax')
+                    @include(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.tree-ajax')
                 </div>
                 <img src="{{ asset('assets/admin/img/ajax-loader.gif') }}" class="ajax display-none"/>
                 <div id="ajax-modal" class="display-none"></div>
             </div>
         </div>
-    </div>
 @endsection

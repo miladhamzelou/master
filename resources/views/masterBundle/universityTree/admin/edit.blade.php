@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="frm-form">@include('masterBundle.universityTree.admin.edit-frm')</div>
+                        <div class="frm-form">@include(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.edit-frm')</div>
                     </div>
                 </div>
             </div>

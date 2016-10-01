@@ -243,8 +243,7 @@ var Admin  = function()
                 'speedOut'		:	200,
                 'overlayShow'	:	false
             });
-        }
-        ,
+        },
         tree : function() {
             $('.tree')
                 .jstree({
