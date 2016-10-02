@@ -28,6 +28,11 @@ class FieldTree extends Model
         return 'rgt';
     }
 
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+
     public static function tree()
     {
         $nodes = FieldTree::get()->toTree();

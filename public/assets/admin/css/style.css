@@ -62,7 +62,8 @@ h1,h2,h3,h4,h5,h6{
 #sidebar .panel .list-group-item{
     border: 0;
     border-top:1px solid #e7e7e7 ;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: bold;
 }
 #sidebar .panel .list-group-item:first-child{
     border-top: 0;

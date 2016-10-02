@@ -28,21 +28,21 @@
                     </div>
                 @endif
             @endforeach
-            <form name="tree-from" method="post" action="{{ url(getCurrentURL('controller').'/Store') }}" novalidate>
+            <form name="tree-from" method="post" action="{{ url(getCurrentURL('controller').'/Store/'.$entity['id']) }}" novalidate>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                @if(old('fieldTree'))
-                    @foreach(old('fieldTree') as $item)
-                        <input type="hidden" name="fieldTree[]" class="fieldTree" value="{{ $item }}">
+                @if(count($entity['fieldCollection']) > 0)
+                    @foreach($entity['fieldCollection'] as $item)
+                        <input type="hidden" name="fieldTree[]" class="fieldTree" value="{{ $item['id'] }}">
                     @endforeach
                 @endif
                 <div class="form-group{{ $errors->has('frm.title') ? ' has-error' : '' }}">
                     <label>{{ trans('public.title') }}:</label>
-                    <input name="frm[title]" type="text" class="form-control text-right" value="{{ old('frm.title') }}">
+                    <input name="frm[title]" type="text" class="form-control text-right" value="{{ $entity['title'] }}">
                 </div>
                 {!! $tree !!}
                 <p class="has-error">@foreach ($errors->get('fieldTree') as $message) {{ $message }} @endforeach</p>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary pull-left">{{ trans('master.create new lesson') }}</button>
+                    <button type="submit" class="btn btn-primary pull-left">{{ trans('master.edit lesson') }}</button>
                 </div>
             </form>
         </div>

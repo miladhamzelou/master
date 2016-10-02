@@ -36,7 +36,7 @@ class UniversityTreeController extends Controller
             return response()
                 ->view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.tree-ajax', ['tree' => $tree], 200);
         }
-        $this->layout->content = view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.admin.index');
+        $this->layout->content = view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) .'.index');
         $this->layout->content->tree = $tree;
     }
 

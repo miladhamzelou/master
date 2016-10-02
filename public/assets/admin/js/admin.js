@@ -25,11 +25,10 @@ var Admin  = function()
         reload : function(event){
             event.preventDefault();
             var url = document.location.href;
-            $('.ajax').fadeIn('slow',function(){
-                $(".ajax-content").css({
-                    'opacity' : 0.5,
-                    'pointer-events': 'none',
-                });
+            $('.ajax').fadeIn('slow');
+            $(".ajax-content").css({
+                'opacity' : 0.5,
+                'pointer-events': 'none',
             });
             $.ajax({
                 headers: {
@@ -38,11 +37,10 @@ var Admin  = function()
                 type: "POST",
                 url: url,
                 success: function(response){
-                    $('.ajax').fadeOut('slow',function(){
-                        $('.ajax-content').removeAttr('style').html(response);
-                        Admin.ajax();
-                    });
-                    toastr.success('صفحه مجدد بارگزاری گردید...');
+                    $('.ajax-content').removeAttr('style').html(response);
+                    $('.ajax').fadeOut('slow');
+                    toastr.success('صفحه مجدد بارگزاری گردید.');
+                    Admin.ajax();
                 }
             });
         },
@@ -81,7 +79,7 @@ var Admin  = function()
             event.preventDefault();
             var obj = $(object);
             var url = obj.attr("href");
-            $('.ajax-loader').show('slow');
+            $('.ajax').fadeIn('slow');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -89,7 +87,7 @@ var Admin  = function()
                 type: "POST",
                 url: url,
                 success: function(response){
-                    $('.ajax-loader').hide('slow');
+                    $('.ajax').fadeOut('slow');
                     $('#ajax-result').html(response).fadeIn('slow');
                     $('#modal').modal({
                         backdrop: 'static',

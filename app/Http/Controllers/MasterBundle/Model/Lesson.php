@@ -11,6 +11,11 @@ class Lesson extends Model
 
     protected  $primaryKey = 'id';
 
+    public function fieldCollection()
+    {
+        return $this->belongsToMany(FieldTree::class);
+    }
+
     /**
      * @param $frm
      * @param null $id
