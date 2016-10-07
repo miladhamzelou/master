@@ -16,6 +16,11 @@ class Lesson extends Model
         return $this->belongsToMany(FieldTree::class);
     }
 
+    public function masterClass()
+    {
+        return $this->hasMany(MasterClass::class);
+    }
+
     /**
      * @param $frm
      * @param null $id

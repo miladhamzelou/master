@@ -6,6 +6,9 @@
     top: 40%;
     right: 50%;
 }
+ul ,li{
+    list-style: none;
+}
 .btn{
     font-size: 12px;
 }
@@ -20,6 +23,11 @@ body{
 }
 a,a:focus,a:hover{
     text-decoration: none;
+}
+.required {
+    color: #ff5a5f;
+    position: relative;
+    bottom: 5px;
 }
 h1,h2,h3,h4,h5,h6{
     font-family: byekan;
@@ -137,16 +145,20 @@ a.DESC-sort{
     padding-left: 20px;
     cursor: pointer;
 }
-ul ,li{
-    list-style: none;
-}
+
+
 .tree ul li,.tree-checkbox ul li {
     font-family: byekan;
-    /*font-size: 13px;*/
-    /*text-decoration: none;*/
 }
 .jstree-proton.jstree-rtl .jstree-node {
     background: none !important;
+}
+.form-control,.select2-container--default .select2-selection--single{
+    border-radius: 0;
+    border: 1px solid #aaa;
+}
+#content .panel .panel-body{
+    padding: 5px 15px;
 }
 .text-success{
     color:#49c668;
@@ -157,6 +169,13 @@ ul ,li{
 .has-error .form-control{
     border: 1px solid #ff5a5f;
 }
-.has-error label,.has-error .form-control,p{
+.has-error .select2-container--default .select2-selection--single{
+    border: 1px solid #ff5a5f;
+}
+.has-error label,p.has-error{
+    color: #ff5a5f;
+}
+.error{
+    font-weight: normal;
     color: #ff5a5f;
 }

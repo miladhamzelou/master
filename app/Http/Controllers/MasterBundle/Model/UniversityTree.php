@@ -28,6 +28,11 @@ class UniversityTree extends Model
         return 'rgt';
     }
 
+    public function masterClass()
+    {
+        return $this->hasMany(MasterClass::class);
+    }
+
     /**
      * @param $frm
      * @param null $id

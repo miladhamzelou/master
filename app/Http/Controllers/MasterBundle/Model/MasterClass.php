@@ -11,6 +11,22 @@ class MasterClass extends Model
 
     protected  $primaryKey = 'id';
 
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+
+    public function universityCollection()
+    {
+        return $this->belongsTo(UniversityTree::class, 'university_tree_id');
+    }
+
+    public function term()
+    {
+        return $this->belongsTo(Term::class);
+    }
+
     /**
      * @param $frm
      * @param null $id

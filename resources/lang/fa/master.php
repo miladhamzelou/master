@@ -5,7 +5,14 @@ return [
     'create new lesson' => 'ساخت درس جدید',
     'master courses' => 'دروس تخصصی استاد',
     'lessons' => 'دروس',
-    'edit lesson' => 'ویرایش درس'
+    'lesson' => 'درس',
+    'university' => 'دانشگاه',
+    'group' => 'گروه آموزشی',
+    'term' => 'ترم',
+    'edit lesson' => 'ویرایش درس',
+    'master class list' => 'لیست کلاس های استاد',
+    'exam date' => 'تاریخ امتحان',
+    'create new class' => 'ساخت کلاس جدید'
 ]
 
 ?>

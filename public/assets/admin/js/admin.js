@@ -9,18 +9,19 @@ var Admin  = function()
             Admin.datePicker();
             Admin.afterPaginate();
             Admin.sendSearchForm();
-            // custom function
             Admin.fancyBox();
             Admin.tree();
             Admin.treeCheckbox();
         },
         ready : function () {
+            Admin.datePicker();
             Admin.select2();
             Admin.afterPaginate();
             Admin.sendSearchForm();
             Admin.fancyBox();
             Admin.tree();
             Admin.treeCheckbox();
+
         },
         reload : function(event){
             event.preventDefault();

@@ -11,6 +11,11 @@ class Term extends Model
 
     protected  $primaryKey = 'id';
 
+    public function masterClass()
+    {
+        return $this->hasMany(MasterClass::class);
+    }
+
     /**
      * @param $frm
      * @param null $id

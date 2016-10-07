@@ -26,6 +26,7 @@
     @show
     @section('javascript')
         <script src="{{ asset('assets/tools/bootstrap/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/tools/jquery.validate/dist/jquery.validate.min.js') }}"></script>
         <script src="{{ asset('assets/tools/bootstrap/js/bootstrap.min.js') }}"></script>
         <!-- plugin -->
         <script src="{{ asset('assets/tools/toastr/toastr.min.js') }}"></script>

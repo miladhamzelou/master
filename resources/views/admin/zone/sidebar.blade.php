@@ -11,7 +11,7 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">تعریف کلاس</a>
+                        <a href="{{ getCurrentURL('prefix').'/MasterBundle/MasterClass/ClassList' }}" class="list-group-item">تعریف کلاس</a>
                         <a href="#" class="list-group-item">تعریف ترم آموزشی</a>
                         <a href="{{ getCurrentURL('prefix').'/MasterBundle/UniversityTree/TreeList' }}" class="list-group-item">دانشگاه ها و زیرمجموعه ها</a>
                         <a href="{{ getCurrentURL('prefix').'/MasterBundle/FieldTree/TreeList' }}" class="list-group-item">رشته ها و گرایشات</a>

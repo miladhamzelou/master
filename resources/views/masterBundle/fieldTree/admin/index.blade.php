@@ -14,8 +14,8 @@
                     <h4 class="panel-title">{{ trans('public.field collection') }}</h4>
                 </div>
                 <div class="pull-left">
-                    <a href="{{ url(getCurrentURL('controller')).'/NewTree' }}"  class="btn-box-tool pull-left" onclick="Admin.newTree(this,event)"><i class="fa fa-plus"></i></a>
-                    <a href="{{ url(getCurrentURL('controller').'/EditTree') }}"  class="btn-box-tool pull-left" onclick="Admin.treeEdit(this,event)"><i class="fa fa-pencil"></i></a>
+                    <a href="{{ url(getCurrentURL('controller')).'/NewTree' }}"  class="btn-box-tool pull-left" onclick="Admin.newTree(this,event)"><i class="fa fa-plus-square"></i></a>
+                    <a href="{{ url(getCurrentURL('controller').'/EditTree') }}"  class="btn-box-tool pull-left" onclick="Admin.treeEdit(this,event)"><i class="fa fa-pencil-square"></i></a>
                     <a href="{{ url(getCurrentURL('controller').'/DeleteTree') }}" class="btn-box-tool pull-left" onclick="Admin.treeRemove(this,event)"><i class="fa fa-trash"></i></a>
                     <a href="{{ url(getCurrentURL('controller').'/ListTree') }}" class="btn-box-tool pull-left" onclick="Admin.reload(event)"><i class="fa fa-refresh"></i></a>
                 </div>
