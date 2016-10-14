@@ -20,7 +20,7 @@ class MasterClassController extends Controller
     {
         $field = Input::get('field');
         $type= Input::get('type');
-        $entity = MasterClass::orderBy($field ? $field : 'id' , $type ? $type : 'DESC')->paginate();
+        $entity = MasterClass::with(['lesson', 'universityCollection', 'term'])->orderBy($field ? $field : 'id' , $type ? $type : 'DESC')->paginate();
         if(Request::ajax()) {
             $this->layout =  view('masterBundle.masterClass.admin.ajax', ['entity' => $entity]);
             die($this->layout);

@@ -223,8 +223,12 @@ var Admin  = function()
             });
         },
         select2 : function () {
-            $("select[data-select]").select2();
-            $(".multiple").select2();
+            $("select[data-select]").select2({
+                theme: "bootstrap"
+            });
+            $(".multiple").select2({
+                theme: "bootstrap"
+            });
         },
         datePicker : function () {
             $("input[data-datepicker]").persianDatepicker({

@@ -76,6 +76,9 @@ h1,h2,h3,h4,h5,h6{
 #sidebar .panel .list-group-item:first-child{
     border-top: 0;
 }
+#sidebar .panel .list-group-item:hover{
+    border-right: 5px solid #888888;
+}
 #content .panel{
     border: 1px solid #e7e7e7;
 }
@@ -153,12 +156,13 @@ a.DESC-sort{
 .jstree-proton.jstree-rtl .jstree-node {
     background: none !important;
 }
-.form-control,.select2-container--default .select2-selection--single{
+.form-control,.select2-container--default .select2-selection--single,.select2-container--bootstrap .select2-selection--single{
     border-radius: 0;
     border: 1px solid #aaa;
+    font-family: byekan;
 }
 #content .panel .panel-body{
-    padding: 5px 15px;
+    padding: 15px 15px;
 }
 .text-success{
     color:#49c668;
@@ -178,4 +182,13 @@ a.DESC-sort{
 .error{
     font-weight: normal;
     color: #ff5a5f;
+}
+.alert-message {
+    background-color: #F0F0F0;
+    color: #000;
+    font-weight: bold;
+}
+.close {
+    position: relative;
+    bottom: 3px;
 }

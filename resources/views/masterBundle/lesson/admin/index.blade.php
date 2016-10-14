@@ -11,8 +11,12 @@
             <div class="row"></div>
         </div>
         <div class="panel-body">
-            <div class="ajax-content">
-                @include('masterBundle.lesson.admin.ajax')
+            <div class="row">
+                <div class="col-md-8 col-md-push-2">
+                    <div class="ajax-content">
+                        @include('masterBundle.lesson.admin.ajax')
+                    </div>
+                </div>
             </div>
             <img src="{{ asset('assets/admin/img/ajax-loader.gif') }}" class="ajax display-none"/>
         </div>

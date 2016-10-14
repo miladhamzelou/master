@@ -14,37 +14,41 @@
             </div>
             <div class="pull-left">
                 <a href="{{ url(getCurrentURL('controller').'/NewLesson') }}"><span class="fa fa-plus-square"></span></a>
-                <a href="{{ url(getCurrentURL('controller').'/LessonList') }}"><span class="fa fa-arrow-left"></span></a>
+                <a href="{{ url(getCurrentURL('controller').'/LessonList') }}"><span class="fa fa-arrow-circle-left"></span></a>
             </div>
             <div class="row"></div>
         </div>
         <div class="panel-body">
-            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                        </div>
-                    </div>
-                @endif
-            @endforeach
-            <form name="tree-from" method="post" action="{{ url(getCurrentURL('controller').'/Store/'.$entity['id']) }}" novalidate>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                @if(count($entity['fieldCollection']) > 0)
-                    @foreach($entity['fieldCollection'] as $item)
-                        <input type="hidden" name="fieldTree[]" class="fieldTree" value="{{ $item['id'] }}">
+            <div class="row">
+                <div class="col-md-8 col-md-push-2">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
-                @endif
-                <div class="form-group{{ $errors->has('frm.title') ? ' has-error' : '' }}">
-                    <label>{{ trans('public.title') }}:</label>
-                    <input name="frm[title]" type="text" class="form-control text-right" value="{{ $entity['title'] }}">
+                    <form name="tree-from" method="post" action="{{ url(getCurrentURL('controller').'/Store/'.$entity['id']) }}" novalidate>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        @if(count($entity['fieldCollection']) > 0)
+                            @foreach($entity['fieldCollection'] as $item)
+                                <input type="hidden" name="fieldTree[]" class="fieldTree" value="{{ $item['id'] }}">
+                            @endforeach
+                        @endif
+                        <div class="form-group{{ $errors->has('frm.title') ? ' has-error' : '' }}">
+                            <label>{{ trans('public.title') }}:</label>
+                            <input name="frm[title]" type="text" class="form-control text-right" value="{{ $entity['title'] }}">
+                        </div>
+                        {!! $tree !!}
+                        <p class="has-error">@foreach ($errors->get('fieldTree') as $message) {{ $message }} @endforeach</p>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">{{ trans('master.edit lesson') }}</button>
+                        </div>
+                    </form>
                 </div>
-                {!! $tree !!}
-                <p class="has-error">@foreach ($errors->get('fieldTree') as $message) {{ $message }} @endforeach</p>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary pull-left">{{ trans('master.edit lesson') }}</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
     <script>
