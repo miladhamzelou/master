@@ -20,5 +20,7 @@ return [
     'email' => 'پست الکترونیک',
     'mobile' => 'موبایل',
     'password' => 'پسورد',
-    'users list' => 'لیست کابران'
+    'users list' => 'لیست کابران',
+    'roles' => 'نقش ها',
+    'name and family' =>  'نام و نام خانوادگی'
 ];

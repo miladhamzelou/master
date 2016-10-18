@@ -1,19 +1,21 @@
 @section('content')
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans(lcfirst(config('app.controller')) . '.' . ucwords(str_replace('_',' ',snake_case(config('app.controller'))))) }}</h3>
-            <div class="box-tools pull-right">
-                <a href="{{ url(getCurrentURL('controller')).'/create' }}" title="{{ trans('public.Create New Entity') }}" class="btn-box-tool pull-left"><i class="fa fa-plus"></i></a>
-                <a href="{{ url(getCurrentURL('controller').'/index') }}" title="{{ trans('public.Reload List') }}" class="btn-box-tool pull-left" onclick="Admin.reload(event)"><i class="fa fa-refresh"></i></a>
-{{--                <a href="{{ url(getCurrentURL('controller').'/searchForm') }}" class="btn btn-box-tool pull-left" data-status="close" onclick="Admin.search(this, event)" title="{{ trans('public.Search Entity') }}"><i class="fa fa-search"></i></a>--}}
-                <img src="{{ asset('assets/admin/img/loader.gif') }}" class="ajax-loader display-none"/>
+    <div class="panel">
+        <div class="panel-heading">
+            <div class="pull-right">
+                <h4 class="panel-title">{{ trans('auth.users') }}</h4>
             </div>
+            <div class="pull-left">
+                <a onclick="Admin.reload(event)" href="{{ url(getCurrentURL('controller').'/UsersList') }}"><span class="fa fa-refresh"></span></a>
+                <a href="{{ url(getCurrentURL('controller').'/NewUser') }}"><span class="fa fa-plus-square"></span></a>
+            </div>
+            <div class="row"></div>
         </div>
-        <div class="box-body">
-            <div class="search-box" style="display: none"></div>
+        <div class="panel-body">
             <div class="ajax-content">
-            @include(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) . '.ajax')
+                @include('auth.user.admin.ajax')
             </div>
+            <img src="{{ asset('assets/admin/img/ajax-loader.gif') }}" class="ajax display-none"/>
         </div>
     </div>
+    <div id="ajax-result" style="display: none"></div>
 @endsection

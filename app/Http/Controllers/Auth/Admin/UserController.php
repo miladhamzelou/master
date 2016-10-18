@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $field = Input::get('field');
         $type= Input::get('type');
-        $entity = User::orderBy($field ? $field : 'id' , $type ? $type : 'DESC')->paginate();
+        $entity = User::with(['role', 'userInfo'])->orderBy($field ? $field : 'id' , $type ? $type : 'DESC')->paginate();
         if(Request::ajax()) {
             $this->layout = view('auth.user.admin.ajax',['entity' => $entity]);
             die($this->layout);

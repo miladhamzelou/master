@@ -14,6 +14,7 @@ return [
     'send request' => 'ارسال درخواست',
     'id' => 'ردیف',
     'return' => 'بازگشت',
+    'action' => 'اکشن'
 
 ]
 

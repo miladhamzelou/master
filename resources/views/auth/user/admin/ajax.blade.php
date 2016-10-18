@@ -1,56 +1,33 @@
-@if(count($entity) > 0)
-    <div class="table-responsive">
-        <div class="text-left">
-            {{ $entity->links() }}
-        </div>
-        <table class="table table-striped table-hover">
-            <thead>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th><a data-field="id" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/UsersList') }}" class="has-sort" data-sort="DESC">{{ trans('public.id') }}</a></th>
+            <th><a data-field="username" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/UsersList') }}"  class="has-sort" data-sort="DESC">{{ trans('auth.username') }}</a></th>
+            <th><a data-field="userInfo.name" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/UsersList') }}"  class="has-sort" data-sort="DESC">{{ trans('auth.name and family') }}</a></th>
+            <th><a data-field="title" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/UsersList') }}"  class="has-sort" data-sort="DESC">{{ trans('auth.roles') }}</a></th>
+            <th>{{ trans('auth.mobile') }}</th>
+            <th class="last-left">{{ trans('public.action') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($entity as $key=>$ent)
             <tr>
-                @foreach(ftArray(config('app.bundle'), lcfirst(config('app.controller')) , 'list') as $cnf)
-                    @if(!@$cnf['show_page'])
-                        <th><a @if(@$cnf['sort']) data-sort="DESC" class="has-sort" href="{{ url(getCurrentURL('controller').'/'.config('app.action')) }}" onclick="Admin.sort(event, this)" @endif data-field="{{ @$cnf['data-field']  }}">@if(@$cnf['trans'] == 'default' || !@$cnf['trans']) {{ trans(lcfirst(config('app.controller')).'.'.@$cnf['text']) }} @elseif(@$cnf['trans']) {{ trans(@$cnf['trans'] . '.' . @$cnf['text']) }} @else {{ trans('public' . '.' . @$cnf['text']) }} @endif</a></th>
-                    @endif
-                @endforeach
-                <th class="last-left">{{ trans('public.Action') }}</th>
+                <td>{{ $ent['id'] }}</td>
+                <td>{{ $ent['username'] }}</td>
+                <td>@if($ent['userInfo']['name'] || $ent['userInfo']['family']){{ $ent['userInfo']['name'] . ' ' . $ent['userInfo']['family'] }}@else - @endif</td>
+                <td>@if(count($ent['role']) > 0)@foreach($ent['role'] as $role) <label class="label label-info">{{ trans('auth.'.$role['title']) }}</label> @endforeach @else - @endif</td>
+                <td>@if($ent['userInfo']['mobile']){{ $ent['userInfo']['mobile'] }}@else - @endif</td>
+                <td class="table-action">
+                    <a onclick="Admin.delete(this,event)" href="{{ url(getCurrentURL('controller').'/delete/'.$ent['id']) }}"><span class="fa fa fa-trash-o"></span></a>
+                    <a href="{{ url(getCurrentURL('controller').'/edit/'.$ent['id']) }}"><span class="fa fa fa-pencil"></span></a>
+                    <a onclick="Admin.show(this, event)" href="{{ url(getCurrentURL('controller').'/Show/'.$ent['id']) }}"><span class="fa fa-tv"></span></a>
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            @foreach($entity as $key => $value)
-                <tr>
-                    @foreach(ftArray(config('app.bundle'), lcfirst(config('app.controller')) , 'list') as $cnf)
-                        @if(!@$cnf['show_page'])
-                            @if(@$cnf['custom_value'] && !@$cnf['join'])
-                                <td>{{ $cnf['custom_value'] }}</td>
-                            @elseif(@$cnf['join'])
-                                <td>{{ eval($cnf['custom_value']) }}</td>
-                            @elseif(@$cnf['db_field'])
-                                @if(@$cnf['type'] == 'date' && config('app.dir') == 'rtl')
-                                    <td>{{ FarsiLib::g2jdate(@$value[$cnf['db_field']]) }}</td>
-                                @elseif(@$cnf['type'] == 'text')
-                                    <td>{{ str_limit(@$value[$cnf['db_field']], @$cnf['count'] ? @$cnf['count'] : 15 ) }}</td>
-                                @else
-                                    <td>{{ @$value[$cnf['db_field']] }}</td>
-                                @endif
-                            @else
-                                <td><a onclick="Admin.changeEnum(this, event)" data-field="approve" data-status="{{ $value['approve'] }}" href="{{ url(getCurrentURL('controller').'/changeEnum/' . $value['id']) }}"><span class="fa @if($value['approve']) fa-check-circle text-success @else fa-minus-circle text-danger @endif"></span></a></td>
-                            @endif
-                        @endif
-                    @endforeach
-                    <td class="table-action">
-{{--                        <a href="{{ url(getCurrentURL('controller').'/destroy/' . $value['id'] ) }}"  onclick="Admin.delete(this,event)"><span class="fa fa fa-trash-o"></span></a>--}}
-                        <a href="{{ url(getCurrentURL('controller').'/show/' . $value['id'] ) }}"  onclick="Admin.show(this, event)"><span class="fa fa-tv"></span></a>
-{{--                        <a href="{{ url(getCurrentURL('controller').'/edit/' . $value['id'] ) }}"><span class="fa fa-pencil"></span></a>--}}
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        <div class="text-center">
-            {{ $entity->links() }}
-        </div>
+        @endforeach
+        </tbody>
+    </table>
+    <div class="text-center">
+        {{ $entity->links() }}
     </div>
-@else
-    <div class="alert alert-info">
-        <p>{{ trans('public.Record Not Found') }}</p>
-    </div>
-@endif
+</div>

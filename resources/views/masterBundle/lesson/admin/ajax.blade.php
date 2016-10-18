@@ -4,7 +4,7 @@
         <tr>
             <th><a data-field="id" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/LessonList') }}" class="has-sort" data-sort="DESC">{{ trans('public.id') }}</a></th>
             <th><a data-field="title" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/LessonList') }}"  class="has-sort" data-sort="DESC">{{ trans('public.title') }}</a></th>
-            <th class="last-left">اکشن</th>
+            <th class="last-left">{{ trans('public.action') }}</th>
         </tr>
         </thead>
         <tbody>
