@@ -10719,6 +10719,34 @@ INSERT INTO `calendar` (`id`, `calendar`, `day`, `holiday`, `holiday_type`) VALU
 /*!40000 ALTER TABLE `calendar` ENABLE KEYS */;
 
 
+-- Dumping structure for table master.class
+CREATE TABLE IF NOT EXISTS `class` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `term_id` int(11) DEFAULT NULL,
+  `university_tree_id` int(11) DEFAULT NULL,
+  `lesson_id` int(11) DEFAULT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `group` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `exam_date` date DEFAULT NULL,
+  `exam_time` time DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `term_id` (`term_id`),
+  KEY `university_tree_id` (`university_tree_id`),
+  KEY `lesson_id` (`lesson_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.class: 6 rows
+/*!40000 ALTER TABLE `class` DISABLE KEYS */;
+INSERT INTO `class` (`id`, `term_id`, `university_tree_id`, `lesson_id`, `title`, `group`, `exam_date`, `exam_time`) VALUES
+	(32, 1, 1, 2, NULL, '53', '2016-10-07', '09:15:00'),
+	(31, 1, 1, 2, NULL, '52', '2016-10-07', '09:15:00'),
+	(30, 1, 1, 2, NULL, '51', '2016-10-07', '09:15:00'),
+	(29, 1, 1, 1, NULL, '53', '2016-10-07', '09:15:00'),
+	(28, 1, 1, 2, NULL, '52', '2016-10-07', '09:15:00'),
+	(27, 1, 1, 2, NULL, '51', '2016-10-07', '09:15:00');
+/*!40000 ALTER TABLE `class` ENABLE KEYS */;
+
+
 -- Dumping structure for table master.class_datetime
 CREATE TABLE IF NOT EXISTS `class_datetime` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -10765,15 +10793,16 @@ CREATE TABLE IF NOT EXISTS `field_tree` (
   KEY `parent_id` (`parent_id`),
   KEY `lft` (`lft`),
   KEY `rgt` (`rgt`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.field_tree: 2 rows
+-- Dumping data for table master.field_tree: 5 rows
 /*!40000 ALTER TABLE `field_tree` DISABLE KEYS */;
 INSERT INTO `field_tree` (`id`, `name`, `parent_id`, `lft`, `rgt`) VALUES
-	(1, 'کامپیوتر', 0, 1, 6),
-	(2, 'عمران', 0, 7, 8),
-	(3, 'نرم افزار', 1, 2, 3),
-	(4, 'سخت افزار', 1, 4, 5);
+	(1, 'کامپیوتر', 0, 1, 8),
+	(2, 'عمران', 0, 9, 10),
+	(3, 'نرم افزار', 1, 2, 5),
+	(4, 'سخت افزار', 1, 6, 7),
+	(5, 'zzzz', 3, 3, 4);
 /*!40000 ALTER TABLE `field_tree` ENABLE KEYS */;
 
 
@@ -10785,15 +10814,25 @@ CREATE TABLE IF NOT EXISTS `field_tree_lesson` (
   PRIMARY KEY (`id`),
   KEY `field_tree_id` (`field_tree_id`),
   KEY `lesson_id` (`lesson_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.field_tree_lesson: 0 rows
+-- Dumping data for table master.field_tree_lesson: 14 rows
 /*!40000 ALTER TABLE `field_tree_lesson` DISABLE KEYS */;
 INSERT INTO `field_tree_lesson` (`id`, `lesson_id`, `field_tree_id`) VALUES
 	(1, 1, 1),
-	(2, 1, 3),
 	(3, 1, 4),
-	(4, 1, 2);
+	(4, 1, 2),
+	(26, 5, 3),
+	(25, 5, 5),
+	(24, 5, 1),
+	(21, 2, 5),
+	(20, 2, 3),
+	(10, 4, 1),
+	(11, 4, 5),
+	(12, 4, 3),
+	(13, 4, 4),
+	(23, 5, 2),
+	(22, 5, 4);
 /*!40000 ALTER TABLE `field_tree_lesson` ENABLE KEYS */;
 
 
@@ -10802,36 +10841,14 @@ CREATE TABLE IF NOT EXISTS `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.lesson: 0 rows
+-- Dumping data for table master.lesson: 2 rows
 /*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
 INSERT INTO `lesson` (`id`, `title`) VALUES
-	(1, 'ssssss');
+	(2, 'ریاضی مهندسی n,'),
+	(5, 'ریاضی مهندسی');
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
-
-
--- Dumping structure for table master.master_class
-CREATE TABLE IF NOT EXISTS `master_class` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `term_id` int(11) DEFAULT NULL,
-  `university_tree_id` int(11) DEFAULT NULL,
-  `lesson_id` int(11) DEFAULT NULL,
-  `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `exam_date` date DEFAULT NULL,
-  `exam_time` time DEFAULT NULL,
-  `group` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `term_id` (`term_id`),
-  KEY `university_tree_id` (`university_tree_id`),
-  KEY `lesson_id` (`lesson_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table master.master_class: 0 rows
-/*!40000 ALTER TABLE `master_class` DISABLE KEYS */;
-/*!40000 ALTER TABLE `master_class` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.role
@@ -10891,15 +10908,16 @@ CREATE TABLE IF NOT EXISTS `student_class` (
 CREATE TABLE IF NOT EXISTS `term` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `form_date` date NOT NULL,
+  `code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `from_date` date NOT NULL,
   `to_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.term: 1 rows
 /*!40000 ALTER TABLE `term` DISABLE KEYS */;
-INSERT INTO `term` (`id`, `title`, `form_date`, `to_date`) VALUES
-	(1, 'طھط±ظ… ظ¾ط§غŒغŒط² 95', '2016-09-15', '2016-09-15');
+INSERT INTO `term` (`id`, `title`, `code`, `from_date`, `to_date`) VALUES
+	(8, 'ترم پاییز 95', '951', '2016-09-22', '2016-12-30');
 /*!40000 ALTER TABLE `term` ENABLE KEYS */;
 
 
@@ -10982,7 +11000,7 @@ CREATE TABLE IF NOT EXISTS `user_info` (
 -- Dumping data for table master.user_info: 1 rows
 /*!40000 ALTER TABLE `user_info` DISABLE KEYS */;
 INSERT INTO `user_info` (`user_id`, `fieldd_tree_id`, `university_tree_id`, `name`, `family`, `mobile`, `stnum`, `national_code`, `age`, `gender`, `education_level`, `img`) VALUES
-	(1, '', '', 'ظ…ظ‡ط±ط¯ط§ط¯', 'ظ…ط¹طµظˆظ…غŒ', '', '', '', 0, 'male', '', NULL);
+	(1, '', '', 'مهرداد', 'معصومی', '09120246217', '', '', 0, 'male', '', NULL);
 /*!40000 ALTER TABLE `user_info` ENABLE KEYS */;
 
 
