@@ -22,5 +22,6 @@ return [
     'password' => 'پسورد',
     'users list' => 'لیست کابران',
     'roles' => 'نقش ها',
-    'name and family' =>  'نام و نام خانوادگی'
+    'name and family' =>  'نام و نام خانوادگی',
+    'active' => 'فعال'
 ];

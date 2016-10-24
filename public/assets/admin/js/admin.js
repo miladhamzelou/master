@@ -69,9 +69,9 @@ var Admin  = function()
                     $('.ajax-content')
                         .removeAttr('style')
                         .html(response)
-                        .find("a[data-field='"+ field +"']")
+                        .find("*[data-field='"+ field +"']")
                         .attr('data-sort', replace_sort)
-                        .addClass(replace_sort+'-sort');
+                        .addClass(replace_sort+'-sort').css({ 'background-color' : '#f9f9f9', 'border-right' : '1px solid #f0f0f0', 'border-left' : '1px solid #f0f0f0'});
                     Admin.ajax();
                 }
             });
@@ -155,7 +155,7 @@ var Admin  = function()
         },
         search : function (obj, event) {
             event.preventDefault();
-            $('.ajax-loader').show('slow');
+            $('.ajax').fadeIn('slow');
             var url = $(obj).attr('href');
             var status = $(obj).attr('data-status');
             if (status == 'close') {
@@ -167,13 +167,13 @@ var Admin  = function()
                     url: url,
                     success: function(response){
                         $(obj).attr('data-status', 'open');
-                        $('.ajax-loader').hide('slow');
+                        $('.ajax').fadeOut('slow');
                         $('.search-box').html(response).slideDown();
                         Admin.ajax();
                     }
                 });
             } else {
-                $('.ajax-loader').hide('slow');
+                $('.ajax').fadeOut('slow');
                 $(obj).attr('data-status', 'close');
                 $('.search-box').slideUp();
             }

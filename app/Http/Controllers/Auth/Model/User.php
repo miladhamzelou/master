@@ -39,6 +39,18 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
     }
 
+    /**
+     * @return mixed
+     */
+    public static function getResult()
+    {
+        $instance = new static();
+        return DB::table($instance->table)
+            ->select(['*', $instance->table . '.' . $instance->primaryKey . ' AS xid'])
+            ->leftJoin('user_info', 'user.id', '=', 'user_info.user_id')
+            ->leftJoin('user_role', 'user.id', '=', 'user_role.user_id');
+    }
+
 
     /**
      * @param $frm
