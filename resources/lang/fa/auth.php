@@ -23,5 +23,14 @@ return [
     'users list' => 'لیست کابران',
     'roles' => 'نقش ها',
     'name and family' =>  'نام و نام خانوادگی',
-    'active' => 'فعال'
+    'active' => 'فعال',
+    'name' => 'نام',
+    'family' => 'فامیلی',
+    'agent' => 'نماینده',
+    'role' => 'نقش',
+    'male' => 'مرد',
+    'famale' => 'زن',
+    'deactive' => 'غیر فعال',
+    'gender' => 'جنسیت',
+
 ];

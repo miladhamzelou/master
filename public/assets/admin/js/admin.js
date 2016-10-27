@@ -71,7 +71,10 @@ var Admin  = function()
                         .html(response)
                         .find("*[data-field='"+ field +"']")
                         .attr('data-sort', replace_sort)
+                        .parent('th')
                         .addClass(replace_sort+'-sort').css({ 'background-color' : '#f9f9f9', 'border-right' : '1px solid #f0f0f0', 'border-left' : '1px solid #f0f0f0'});
+                    var index = parseInt($("*[data-field='"+ field +"']").parent().index()) + 1;
+                    $("td:nth-child("+ index +")").css({ 'background-color' : '#f9f9f9', 'border-right' : '1px solid #f0f0f0', 'border-left' : '1px solid #f0f0f0'});
                     Admin.ajax();
                 }
             });
@@ -111,7 +114,7 @@ var Admin  = function()
                 success: function(){
                     $('.ajax-loader').hide('slow');
                     obj.fadeOut('5000', function () {
-                        Admin.reload(event);
+                        //Admin.reload(event);
                     })
                 }
             });
@@ -183,6 +186,7 @@ var Admin  = function()
                 event.preventDefault();
                 var data = $('.searchBtn').closest('form').serialize();
                 var url  = $('.searchBtn').closest('form').attr('action');
+                $('.ajax').fadeIn('slow');
                 $(".ajax-content").css({
                     'opacity' : 0.5,
                     'pointer-events': 'none',
@@ -195,6 +199,7 @@ var Admin  = function()
                     url: url,
                     data: data,
                     success: function(response){
+                        $('.ajax').fadeOut('slow');
                         $('.ajax-content').removeAttr('style').html(response);
                         Admin.ajax();
                     }
@@ -217,8 +222,8 @@ var Admin  = function()
                 success: function(response){
                     $('.ajax-loader').hide('slow');
                     $(obj).attr('data-status', status == 1 ? 0 : 1);
-                    $(obj).children('span').removeClass(status == 1 ? 'fa-check-circle text-success' : 'fa-minus-circle text-danger').addClass(status == 0 ? 'fa-check-circle text-success' : 'fa-minus-circle text-danger');
-                    Admin.reload(event);
+                    $(obj).children('span').removeClass(status == 1 ? 'fa-check text-success' : 'fa-minus text-danger').addClass(status == 0 ? 'fa-check text-success' : 'fa-minus text-danger');
+                    //Admin.reload(event);
                 }
             });
         },
