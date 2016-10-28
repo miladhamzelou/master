@@ -25,12 +25,17 @@ return [
     'name and family' =>  'نام و نام خانوادگی',
     'active' => 'فعال',
     'name' => 'نام',
-    'family' => 'فامیلی',
+    'family' => 'نام خانوادگی',
     'agent' => 'نماینده',
     'role' => 'نقش',
     'male' => 'مرد',
     'famale' => 'زن',
     'deactive' => 'غیر فعال',
     'gender' => 'جنسیت',
+    'create new user' => 'کاربر جدید',
+    'edit user' => 'ویرایش اطلاعات کاربری',
+    'change password' => 'تغییر رمز عبور',
+    'edit profile' => 'ویرایش پروفایل'
+
 
 ];

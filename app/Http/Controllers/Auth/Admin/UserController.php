@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth\Admin;
 use App\Http\Controllers\AdminController as Controller;
 use App\Http\Controllers\Auth\Model\Role;
 use App\Http\Controllers\Auth\Model\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Validator;
@@ -60,6 +61,7 @@ class UserController extends Controller
      * @param $id
      * @param $field
      */
+
     public function changeEnum($id)
     {
         $user = User::find($id);
@@ -68,5 +70,37 @@ class UserController extends Controller
         $frm = [$field => $enum];
         $id = User::store($frm, $id);
         die($id);
+    }
+
+    public function newUser()
+    {
+        $this->layout->content = view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) . '.new');
+        $this->layout->content->roles = Role::whereNotIn('id', [1,4])->get();
+    }
+
+
+    /**
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function store()
+    {
+        $request = App::make(\Illuminate\Http\Request::class);
+        dd($request->all());
+        $frm = Input::get('frm');
+        $validator = Validator::make($frm, [
+            'user.username' => 'unique:user|min:3|required',
+            'user.email' => 'unique:user|required',
+            'user_role.role_id' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $frm['user']['password']  = Hash::make($frm['user']['password']);
+        $id = User::store($frm['user']);
+        $frm['userInfo']['user_id'] = $id;
+        UserInfo::store($frm['userInfo']);
+        return redirect()->back()->with('alert-success', trans('public.successfully'));
     }
 }
