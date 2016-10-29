@@ -7,6 +7,7 @@ return [
     'this field is required' => 'پر کردن این فیلد الزامی است.',
     'successfully' => 'عملیات با موفقیت انجام شد.',
     'done successfully' => 'با موفقیت انجام شد.',
+    'Please enter the same value again' => 'مطابقت با مقدار قبلی ندارد.'
 ];
 
 ?>

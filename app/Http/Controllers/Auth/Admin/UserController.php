@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth\Admin;
 use App\Http\Controllers\AdminController as Controller;
 use App\Http\Controllers\Auth\Model\Role;
 use App\Http\Controllers\Auth\Model\User;
+use App\Http\Controllers\Auth\Model\UserInfo;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Request;
@@ -85,22 +87,31 @@ class UserController extends Controller
     public function store()
     {
         $request = App::make(\Illuminate\Http\Request::class);
-        dd($request->all());
         $frm = Input::get('frm');
         $validator = Validator::make($frm, [
             'user.username' => 'unique:user|min:3|required',
-            'user.email' => 'unique:user|required',
-            'user_role.role_id' => 'required'
+            'user.email' => 'unique:user|required|email',
         ]);
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        $frm['user']['password']  = Hash::make($frm['user']['password']);
+        $frm['user']['password']  = Hash::make($request->get('password'));
         $id = User::store($frm['user']);
         $frm['userInfo']['user_id'] = $id;
         UserInfo::store($frm['userInfo']);
         return redirect()->back()->with('alert-success', trans('public.successfully'));
+    }
+
+    public function checkUnique()
+    {
+        $table = Input::get('table');
+        $field = Input::get('field');
+        $value = Input::get('value');
+        $check = DB::table($table)->where($field, $value)->value($field);
+        if($check)
+            die('1');
+        die('0');
     }
 }
