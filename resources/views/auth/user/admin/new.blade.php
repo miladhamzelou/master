@@ -1,4 +1,5 @@
 @section('content')
+{{--    {{ dd(old()) }}--}}
     <div class="panel">
         <div class="panel-heading">
             <div class="pull-right">
@@ -35,12 +36,12 @@
                             <label class="control-label">{{ trans('auth.mobile') }}:</label>
                             <input value="{{ old('frm.userInfo.mobile') }}" class="text-left en-font form-control" name="frm[userInfo][mobile]" type="text" id="userInfo[mobile]">
                         </div>
-                        <div class="form-group{{ $errors->has('frm.user_role') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('user_role') ? ' has-error' : '' }}">
                             <label for="role_id" class="control-label">{{ trans('auth.roles') }}:</label>
                             <select required title="{{ trans('validate.please fill in this field') }}" class="form-control multiple" name="frm[user_role][]" id="role_id" data-select="data-select" multiple>
                                 <option value="">{{ trans('public.select') }}...</option>
                                 @foreach($roles as $role)
-                                    <option @if(in_array($role['id'], [old('frm.user_role')])) selected @endif value="{{ $role['id'] }}">{{ trans('auth.'.$role['title']) }}</option>
+                                    <option @if(is_array(old('frm.user_role')) && in_array($role['id'], old('frm.user_role'))) selected @endif value="{{ $role['id'] }}">{{ trans('auth.'.$role['title']) }}</option>
                                 @endforeach
                             </select>
                         </div>
