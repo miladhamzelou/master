@@ -25,7 +25,8 @@ return [
     'field and trend' => 'رشته و گرایش',
     'specialized master' => 'دروس تخصصی استاد',
     'master bundle' => 'باندل استاد',
-    'class' => 'کلاس'
+    'class' => 'کلاس',
+    'student list' => 'لیست دانشجویان'
 ]
 
 ?>

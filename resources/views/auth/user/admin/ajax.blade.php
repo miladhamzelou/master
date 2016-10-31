@@ -22,8 +22,7 @@
                     <td>@if($ent['mobile']){{ $ent['mobile'] }}@else - @endif</td>
                     <td data-field="is_active"><a href="{{ url(getCurrentURL('controller').'/ChangeEnum/'.$ent['xid']) }}" data-field="is_active" data-status="{{ $ent['is_active'] }}" onclick="Admin.changeEnum(this, event)">@if($ent['is_active'] == 1)<span class="fa fa-check text-success"></span>@else<span class="fa fa-minus text-danger"></span>@endif</a></td>
                     <td class="table-action">
-                        <a onclick="Admin.delete(this,event)" href="{{ url(getCurrentURL('controller').'/delete/'.$ent['xid']) }}"><span class="fa fa fa-trash-o"></span></a>
-                        <a href="{{ url(getCurrentURL('controller').'/edit/'.$ent['xid']) }}"><span class="fa fa fa-pencil"></span></a>
+                        <a onclick="Admin.delete(this,event)" href="{{ url(getCurrentURL('controller').'/Delete/'.$ent['xid']) }}"><span class="fa fa fa-trash-o"></span></a>
                         <a onclick="Admin.show(this, event)" href="{{ url(getCurrentURL('controller').'/Show/'.$ent['xid']) }}"><span class="fa fa-tv"></span></a>
                     </td>
                 </tr>

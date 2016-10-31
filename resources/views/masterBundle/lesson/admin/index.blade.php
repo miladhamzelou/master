@@ -12,7 +12,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-8 col-md-push-2">
+                <div class="col-md-12">
                     <div class="ajax-content">
                         @include('masterBundle.lesson.admin.ajax')
                     </div>

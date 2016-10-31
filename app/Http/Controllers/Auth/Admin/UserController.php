@@ -122,4 +122,14 @@ class UserController extends Controller
             die('1');
         die('0');
     }
+
+    public function delete($id)
+    {
+        DB::beginTransaction();
+        User::where('id', $id)->delete();
+        UserInfo::where('user_id', $id)->delete();
+        UserRole::where('user_id', $id)->delete();
+        DB::commit();
+        die;
+    }
 }

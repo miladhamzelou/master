@@ -71,8 +71,9 @@ var Admin  = function()
                         .html(response)
                         .find("*[data-field='"+ field +"']")
                         .attr('data-sort', replace_sort)
+                        .addClass(replace_sort+'-sort')
                         .parent('th')
-                        .addClass(replace_sort+'-sort').css({ 'background-color' : '#f9f9f9', 'border-right' : '1px solid #f0f0f0', 'border-left' : '1px solid #f0f0f0'});
+                        .css({ 'background-color' : '#f9f9f9', 'border-right' : '1px solid #f0f0f0', 'border-left' : '1px solid #f0f0f0'});
                     var index = parseInt($("*[data-field='"+ field +"']").parent().index()) + 1;
                     $("td:nth-child("+ index +")").css({ 'background-color' : '#f9f9f9', 'border-right' : '1px solid #f0f0f0', 'border-left' : '1px solid #f0f0f0'});
                     Admin.ajax();
@@ -104,7 +105,7 @@ var Admin  = function()
             event.preventDefault();
             var obj = $(object);
             var url = obj.attr("href");
-            $('.ajax-loader').show('slow');
+            $('.ajax').fadeIn('slow');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -112,10 +113,8 @@ var Admin  = function()
                 type: "POST",
                 url: url,
                 success: function(){
-                    $('.ajax-loader').hide('slow');
-                    obj.fadeOut('5000', function () {
-                        //Admin.reload(event);
-                    })
+                    $('.ajax').fadeOut('slow');
+                    obj.closest('tr').fadeOut('5000');
                 }
             });
         },

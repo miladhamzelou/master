@@ -1,5 +1,4 @@
 @section('content')
-{{--    {{ dd(old()) }}--}}
     <div class="panel">
         <div class="panel-heading">
             <div class="pull-right">
@@ -47,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="role_id" class="control-label">{{ trans('auth.password') }}:</label>
-                            <input class="text-left en-font form-control" name="password" title="{{ trans('validate.please fill in this field') }}" type="password" id="password">
+                            <input class="text-left en-font form-control" name="password" value="{{ old('password') }}" title="{{ trans('validate.please fill in this field') }}" type="password" id="password" minlength="6" data-msg-minlength="{{ trans('validate.min length is 6 character') }}">
                         </div>
                         <div class="form-group">
                             <label for="role_id" class="control-label">{{ trans('auth.password') }}:</label>
@@ -73,7 +72,10 @@
             });
             $("input[name='frm[user][username]'], input[name='frm[user][email]']").blur(function(e){
                 _this = $(this);
-                if (_this.val() == '') return;
+                if (_this.val() == ''){
+                    _this.closest('div.form-group').removeClass('has-error').children('label.error,br').remove();
+                    return;
+                }
                 var field = _this.attr('data-field');
                 var val = _this.val();
                 var table = _this.attr('data-table');
@@ -88,7 +90,7 @@
                     success: function(response){
                         if (response == 1) {
                             if($('html').attr('lang') == 'fa')
-                                _this.closest('div.form-group').addClass('has-error').append("<br><label class='error'>این فیلد قبلا وارد شده است.</label>");
+                                _this.closest('div.form-group').addClass('has-error').append("<br><label class='error'>قبلا در سیستم ثبت شده است.</label>");
                             else if ($('html').attr('lang') == 'en')
                                 _this.closest('div.form-group').addClass('has-error').append("<br><label class='error'>this field is unique</label>");
                         } else {
