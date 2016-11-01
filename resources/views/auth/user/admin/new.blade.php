@@ -13,6 +13,15 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                     <form method="POST" action="{{ url(getCurrentURL('controller').'/Store') }}" accept-charset="UTF-8" novalidate="novalidate">
                         <input name="_token" type="hidden" value="{{ csrf_token() }}">
                         <div class="form-group">
