@@ -11,7 +11,6 @@ return [
     'programmer' => 'برنامه نویس',
     'author' => 'نویسنده',
     'add new user' => 'ایجاد کاربر جدید',
-    'edit user' => 'ویرایش اطلاعات کاربر',
     'auth bundle' => 'باندل احراز هویت',
     'login' => 'ورود به سایت',
     'register' => 'عضویت در سایت',
@@ -35,7 +34,8 @@ return [
     'create new user' => 'کاربر جدید',
     'edit user' => 'ویرایش اطلاعات کاربری',
     'change password' => 'تغییر رمز عبور',
-    'edit profile' => 'ویرایش پروفایل'
-
-
+    'edit profile' => 'ویرایش پروفایل',
+    'change profile' => 'ویرایش پروفایل',
+    'user setting' => 'تنظیمات کاربری',
+    'logout' => 'برون رفت'
 ];

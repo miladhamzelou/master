@@ -201,3 +201,6 @@ a.DESC-sort{
     height: auto;
     padding: 15px;
 }
+header{
+    min-height: 100px;
+}

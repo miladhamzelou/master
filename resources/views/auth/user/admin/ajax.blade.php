@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
             <thead>
             <tr>
                 <th><a data-field="xid" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/UsersList') }}" class="has-sort" data-sort="DESC">{{ trans('public.id') }}</a></th>
