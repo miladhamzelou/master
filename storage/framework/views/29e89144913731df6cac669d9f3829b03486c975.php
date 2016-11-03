@@ -86,7 +86,7 @@
                 <div class="list-group">
                     <a href="<?php echo e(url(getCurrentURL('prefix').'/Auth/ChangeProfile')); ?>" class="list-group-item"><?php echo e(trans('auth.change profile')); ?></a>
                     <a href="<?php echo e(url(getCurrentURL('prefix').'/Auth/ChangePassword')); ?>" class="list-group-item"><?php echo e(trans('auth.change password')); ?></a>
-                    <a href="<?php echo e(url(getCurrentURL('prefix').'/Auth/logout')); ?>" class="list-group-item"><?php echo e(trans('auth.logout')); ?></a>
+                    <a href="<?php echo e(url(getCurrentURL('localization').'/Auth/logout')); ?>" class="list-group-item"><?php echo e(trans('auth.logout')); ?></a>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\GeneralBundle\Model\Calendar;
 use App\Http\Controllers\GeneralBundle\Model\FieldTrendCategory;
 use App\Services\Farsi;
@@ -14,31 +15,16 @@ class AdminController extends \App\Http\Controllers\AdminController
 {
    public function index()
    {
-//       $parent = new FieldTrendCategory([
-//           'name' => 'دانشگاه ملی ملایر'
-//       ]);
-//       $parent->makeRoot()->save();
-//       $college = [
-//           ['name' => 'دانشکده فنی مهندسی'],
-//           ['name' => 'دانشکده عمران معماری'],
-//           ['name' => 'دانشکده منابع طبیعی'],
-//           ['name' => 'دانشکده علوم انسانی'],
-//           ['name' => 'دانشکده علوم پایه'],
-//           ['name' => 'ساختمان IT'],
-//           ['name' => 'گلخانه'],
-//           ['name' => 'سالن ورزشی'],
-//       ];
-//       foreach($college as $c) {
-//           $node = new FieldTrendCategory([
-//               'name' => $c['name']
-//           ]);
-//           $parent->appendNode($node);
-//       }
-//       $node = new FieldTrendCategory([
-//               'name' => 'کارگاه کامپیوتر'
-//           ]);
-//           $node->appendToNode(FieldTrendCategory::find(3))->save();
-
        $this->layout->content = view('admin.index');
    }
+
+
+    /**
+     * change password
+     */
+    public function changePassword()
+    {
+        AuthController::changePassword();
+        $this->layout->content = view('auth.changePassword');
+    }
 }

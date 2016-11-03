@@ -94,52 +94,24 @@ class AuthController extends Controller
         }
     }
 
-    public function userfollow()
+    public static function changePassword()
     {
-        header("Content-Type: application/json;charset=utf-8");
-        $frm['user_id'] = Input::get('user_id');
-        $frm['following_id'] = Input::get('following_id');
-        $id = UserFollow::store($frm);
-        $user_data = UserExtra::find($frm['user_id']);
-        if(empty($user_data)) {
-            DB::table('user_extra')->insert(
-                ['user_id' => $frm['user_id'],'following' => 1]
-            );
-        } else {
-            UserExtra::store(['following' => $user_data['following'] + 1],$frm['user_id']);
+        $currentPassword = Input::get('password');
+        $newPassword = Input::get('new-password');
+        $retypePassword = Input::get('retype-password');
+        if ($currentPassword && $newPassword && $retypePassword) {
+            $usr = User::find(Auth::id());
+            if (!Hash::check($currentPassword, $usr->password)) {
+                return redirect()->back()->withInput()->with(['alert-danger' => trans('validate.your current password is not correct')]);
+            } else if ($newPassword != $retypePassword) {
+                return redirect()->back()->withInput()->with(['alert-danger' => trans('validate.failure to comply with previous password')]);
+            } else {
+                $usr->password = Hash::make($newPassword);
+                $usr->save();
+                Auth::logout();
+                return redirect(getCurrentURL('localization').'/Auth/logout');
+            }
         }
-
-        $user_data = UserExtra::find($frm['following_id']);
-        if(empty($user_data)) {
-            DB::table('user_extra')->insert(
-                ['user_id' => $frm['following_id'], 'follower' => 1]
-            );
-        } else {
-            UserExtra::store(['follower' => $user_data['follower'] + 1],$frm['following_id']);
-        }
-        $follow =UserExtra::find($frm['user_id']);
-
-        $following =UserExtra::find($frm['following_id']);
-
-        die(json_encode(['following_id_follower' => $following['follower'],'following_id_following' => $following['following'],'follow_id_following' => $follow['following'],'follow_id_follower' => $follow['follower']]));
-    }
-
-    public function userUnfollow()
-    {
-        header("Content-Type: application/json;charset=utf-8");
-        $frm['user_id'] = Input::get('user_id');
-        $frm['following_id'] = Input::get('following_id');
-        DB::table('user_follow')->where('user_id', $frm['user_id'])->where('following_id',$frm['following_id'])->delete();
-
-        $user_data = UserExtra::find($frm['user_id']);
-        UserExtra::store(['following' => $user_data['following'] - 1],$frm['user_id']);
-
-        $user_data = UserExtra::find($frm['following_id']);
-        UserExtra::store(['follower' => $user_data['follower'] - 1],$frm['following_id']);
-
-        $follow =UserExtra::find($frm['user_id']);
-        $following =UserExtra::find($frm['following_id']);
-        die(json_encode(['following_id_follower' => $following['follower'],'following_id_following' => $following['following'],'follow_id_following' => $follow['following'],'follow_id_follower' => $follow['follower']]));
     }
 
 }

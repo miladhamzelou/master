@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\Admin;
 
 use App\Http\Controllers\AdminController as Controller;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\Model\Role;
 use App\Http\Controllers\Auth\Model\User;
 use App\Http\Controllers\Auth\Model\UserInfo;
@@ -16,6 +17,9 @@ use Request;
 
 class UserController extends Controller
 {
+    /**
+     * user list
+     */
     public function usersList()
     {
         $field = Input::get('field');
@@ -54,6 +58,10 @@ class UserController extends Controller
         die($this->layout);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $entity = User::find($id);
@@ -75,6 +83,9 @@ class UserController extends Controller
         die($id);
     }
 
+    /**
+     * new user form
+     */
     public function newUser()
     {
         $this->layout->content = view(lcfirst(config('app.bundle')) . '.' . lcfirst(config('app.controller')) . '.' . lcfirst(config('app.prefix')) . '.new');
@@ -112,6 +123,9 @@ class UserController extends Controller
         return redirect()->back()->withInput()->with('alert-success', trans('public.successfully'));
     }
 
+    /**
+     * check filed is already exist
+     */
     public function checkUnique()
     {
         $table = Input::get('table');
@@ -123,6 +137,9 @@ class UserController extends Controller
         die('0');
     }
 
+    /**
+     * @param $id
+     */
     public function delete($id)
     {
         DB::beginTransaction();

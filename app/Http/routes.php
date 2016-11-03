@@ -25,6 +25,12 @@ Route::group(['prefix' => $locale], function () use ($prefix) {
             Route::any('/', function() use ($prefix) {
                 return Lib::callAction($prefix);
             });
+            Route::any('{action?}/{args?}', function ($action = 'index', $args = '') use($prefix) {
+                return Lib::callAction($prefix, '', '', $action, $args);
+            })->where([
+                'action'     => '[^/]+',
+                'args'       => '[^?$]+'
+            ]);
             Route::any('{bundle?}/{controller?}/{action?}/{args?}', function ($bundle, $controller, $action = 'index', $args = '') use($prefix) {
                 return Lib::callAction($prefix, $bundle ,$controller, $action, $args);
             })->where([

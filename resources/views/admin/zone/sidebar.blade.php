@@ -83,7 +83,7 @@
                 <div class="list-group">
                     <a href="{{ url(getCurrentURL('prefix').'/Auth/ChangeProfile') }}" class="list-group-item">{{ trans('auth.change profile') }}</a>
                     <a href="{{ url(getCurrentURL('prefix').'/Auth/ChangePassword') }}" class="list-group-item">{{ trans('auth.change password') }}</a>
-                    <a href="{{ url(getCurrentURL('prefix').'/Auth/logout') }}" class="list-group-item">{{ trans('auth.logout') }}</a>
+                    <a href="{{ url(getCurrentURL('localization').'/Auth/logout') }}" class="list-group-item">{{ trans('auth.logout') }}</a>
                 </div>
             </div>
         </div>
