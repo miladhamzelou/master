@@ -18,8 +18,8 @@ return [
     'username' => 'نام کاربری',
     'email' => 'پست الکترونیک',
     'mobile' => 'موبایل',
-    'password' => 'پسورد',
-    'users list' => 'لیست کابران',
+    'password' => 'رمز عبور',
+    'users list' => 'لیست کاربران',
     'roles' => 'نقش ها',
     'name and family' =>  'نام و نام خانوادگی',
     'active' => 'فعال',
@@ -37,5 +37,10 @@ return [
     'edit profile' => 'ویرایش پروفایل',
     'change profile' => 'ویرایش پروفایل',
     'user setting' => 'تنظیمات کاربری',
-    'logout' => 'برون رفت'
+    'logout' => 'برون رفت',
+    'old password' => 'پسورد فعلی',
+    'new password' => 'پسورد جدید',
+    'retype new password' => 'تایید پسورد جدید',
+    'repeat password'  => 'تکرار رمز عبور',
+
 ];

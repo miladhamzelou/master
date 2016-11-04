@@ -26,7 +26,12 @@ return [
     'specialized master' => 'دروس تخصصی استاد',
     'master bundle' => 'باندل استاد',
     'class' => 'کلاس',
-    'student list' => 'لیست دانشجویان'
+    'student list' => 'لیست دانشجویان',
+    'master resume' => 'رزومه استاد',
+    'basic definitions' => 'تعاریف اولیه',
+    'teaching courses' => 'دروس تدریسی استاد',
+    'change resume' => 'ویرایش رزومه',
+    'science ranking' => 'رتبه علمی',
 ]
 
 ?>

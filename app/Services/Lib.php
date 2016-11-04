@@ -36,6 +36,7 @@ Class Lib{
 				. (studly_case($controller) ? studly_case($controller) : $prefix)
 				. "Controller";
 
+//			dd($controller_file);
 		// not exist controller
 		if (!class_exists($controller_file)) {
 			alert('please check controller file exist or namespace set in controller file !!!');
@@ -87,7 +88,7 @@ Class Lib{
 	 * @param bool|false $siteurl_perfix
 	 * @return string
 	 */
-	public function getCurrentURL($partname = '', $siteurl_perfix = false)
+	public function getCurrentURL($partname = '')
 	{
 		$url = config('app.url') ;
 		$locale = Request::segment(1);

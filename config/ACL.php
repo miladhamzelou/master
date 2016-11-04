@@ -16,7 +16,7 @@ return [
 
 
     // prefix access
-    'admin_access' => ['programmer', 'super_admin', 'Admin', 'author'],
+    'admin_access' => ['programmer', 'master'],
 
 
     // controller or action access

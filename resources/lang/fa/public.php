@@ -15,7 +15,8 @@ return [
     'id' => 'ردیف',
     'return' => 'بازگشت',
     'action' => 'اکشن',
-    'status' => 'وضعیت'
+    'status' => 'وضعیت',
+    'site setting' => 'تنظیمات سایت'
 
 ]
 

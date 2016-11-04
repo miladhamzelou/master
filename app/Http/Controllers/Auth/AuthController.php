@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Auth\Model\User;
 use App\Http\Controllers\Auth\Model\UserExtra;
 use App\Http\Controllers\Auth\Model\UserFollow;
+use App\Http\Controllers\Auth\Model\UserInfo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController as Controller;
@@ -97,8 +98,8 @@ class AuthController extends Controller
     public static function changePassword()
     {
         $currentPassword = Input::get('password');
-        $newPassword = Input::get('new-password');
-        $retypePassword = Input::get('retype-password');
+        $newPassword = Input::get('newpassword');
+        $retypePassword = Input::get('passwordagain');
         if ($currentPassword && $newPassword && $retypePassword) {
             $usr = User::find(Auth::id());
             if (!Hash::check($currentPassword, $usr->password)) {
@@ -111,6 +112,30 @@ class AuthController extends Controller
                 Auth::logout();
                 return redirect(getCurrentURL('localization').'/Auth/logout');
             }
+        }
+    }
+
+    public static function editProfile()
+    {
+        $frm = Input::get('frm');
+        if($frm) {
+            $validator = Validator::make($frm, [
+                'userInfo.name' => 'required',
+                'userInfo.family' => 'required',
+                'userInfo.mobile' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+            if(UserInfo::find(Auth::id()))
+                UserInfo::store($frm['userInfo'], Auth::id());
+            else {
+                $frm['userInfo']['user_id'] = Auth::id();
+                UserInfo::store($frm['userInfo']);
+            }
+            return redirect()->back()->with(['alert-success' => trans('validate.done successfully')]);
         }
     }
 
