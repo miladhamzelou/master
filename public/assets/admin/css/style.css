@@ -10,7 +10,9 @@ ul ,li{
     list-style: none;
 }
 .btn{
-    font-size: 12px;
+    /*font-size: 12px;*/
+    border-radius: 0;
+
 }
 label{
     /*font-weight: normal;*/

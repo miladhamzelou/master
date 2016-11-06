@@ -8,7 +8,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-7 col-md-push-2">
+                <div class="col-md-12">
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                         @if(Session::has('alert-' . $msg))
                             <div class="row">
@@ -33,6 +33,19 @@
                                 <div class="form-group{{ $errors->has('frm.resume.family') ? ' has-error' : '' }}">
                                     <label>{{ trans('auth.family') }}:</label>
                                     <input  type="text" class="form-control" name="frm[resume][family]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group{{ $errors->has('frm.resume.science_ranking_id') ? ' has-error' : '' }}">
+                                    <label>{{ trans('master.science ranking') }}:</label>
+                                    <select class="form-control" name="frm[resume][science_ranking_id]">
+                                        <option value="">{{ trans('public.select') }}...</option>
+                                        @foreach($science_ranking as $item)
+                                            <option value="{{ $item['id'] }}">{{ $item['title'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

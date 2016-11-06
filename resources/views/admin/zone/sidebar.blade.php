@@ -46,6 +46,7 @@
             <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                 <div class="list-group">
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/ChangeResume' }}" class="list-group-item">{{ trans('master.master resume') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Education' }}" class="list-group-item">{{ trans('master.education') }}</a>
                 </div>
             </div>
         </div>

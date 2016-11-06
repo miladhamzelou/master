@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\MasterBundle\Model;
+namespace App\Http\Controllers\MaserBundle\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Resume extends Model
+class ResumeEducaion extends Model
 {
-    protected $table = 'resume_info';
+    protected $table = 'resume_education';
 
     protected  $primaryKey = 'id';
 

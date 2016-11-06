@@ -32,6 +32,8 @@ return [
     'teaching courses' => 'دروس تدریسی استاد',
     'change resume' => 'ویرایش رزومه',
     'science ranking' => 'رتبه علمی',
+    'education' => 'تحصیلات',
+    'grade' => 'مرتبه علمی'
 ]
 
 ?>
