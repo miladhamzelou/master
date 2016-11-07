@@ -377,6 +377,13 @@ var Admin  = function()
                     }
                 }
             });
+        },
+        duplicateRow : function(obj, event)
+        {
+            event.preventDefault();
+            _this = $(obj);
+            _this.closest('tr').clone().find('input,select,textarea').val('').end().insertAfter('.table tr:last');
+            _this.hide();
         }
     }
 

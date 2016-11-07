@@ -33,7 +33,9 @@ return [
     'change resume' => 'ویرایش رزومه',
     'science ranking' => 'رتبه علمی',
     'education' => 'تحصیلات',
-    'grade' => 'مرتبه علمی'
+    'master education' => 'تحصیلات استاد',
+    'grade' => 'مرتبه علمی',
+    'year of graduation'  => 'سال اخد مدرک'
 ]
 
 ?>

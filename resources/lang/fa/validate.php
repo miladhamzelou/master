@@ -9,7 +9,8 @@ return [
     'done successfully' => 'با موفقیت انجام شد.',
     'Please enter the same value again' => 'مطابقت با مقدار قبلی ندارد.',
     'min length is 6 character' => 'حداقل شش حرف میبایست تایپ کنید.',
-    'your current password is not correct' => 'پسورد وارد شده با مقدار فعلی یکسان نیست.'
+    'your current password is not correct' => 'پسورد وارد شده با مقدار فعلی یکسان نیست.',
+    'enter as models' => 'مانند الگو وارد کنید.'
 ];
 
 ?>
