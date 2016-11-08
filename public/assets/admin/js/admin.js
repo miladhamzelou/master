@@ -382,8 +382,32 @@ var Admin  = function()
         {
             event.preventDefault();
             _this = $(obj);
-            _this.closest('tr').clone().find('input,select,textarea').val('').end().insertAfter('.table tr:last');
+            _this.closest('td').children('a:hidden').show();
+            var new_row = _this.closest('tr').clone();
+            new_row.find('input,select,textarea').each(function(){
+                var input =  $(this).attr('name').toString();
+                var num = input.match(/.*\[\w+\_(\d+)\].*/)[1];
+                $(this).attr('name', input.replace(num, parseInt(num) + 1));
+            });
+            new_row.find('input,select,textarea').val('').end().insertAfter('.table tr:last');
             _this.hide();
+        },
+        deleteRow: function(obj, event) {
+            event.preventDefault();
+            _this = $(obj);
+            var item = _this.closest('tr');
+            if (item.parent('tbody').children('tr').length < 3) {
+                item.prev().children('td').children('a:hidden').show();
+                if (item.parent('tbody').children('tr').length < 2)
+                    item.prev().children('td').children('a:last').hide();
+                else if (item.parent('tbody').children('tr').length == 2) {
+                        item.prev().children('td').children('a:last').hide();
+                        item.next().children('td').children('a:last').hide();
+                    }
+            } else {
+                item.prev().children('td').children('a:hidden').show();
+            }
+            item.remove();
         }
     }
 

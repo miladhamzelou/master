@@ -48,6 +48,7 @@ class ResumeController extends Controller
         $this->layout->content = view('masterBundle.resume.admin.resume_education');
         $frm = Input::get('frm');
         if($frm) {
+            dd($request->all());
             DB::table('resume_education')->delete();
             foreach($frm as $item) {
                 ResumeEducaion::store($item);

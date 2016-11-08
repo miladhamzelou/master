@@ -34,33 +34,30 @@
                                 <tbody>
                                 @php $var=1; @endphp
                                 @foreach($education as $key=>$edu)
-                                <tr>
-                                    <td>
-                                        <select required title="{{ trans('validate.please fill in this field') }}" class="form-control" name="frm[education_{!! $var !!}][grade_id]">
-                                            <option value="">{{ trans('public.select') }}...</option>
-                                            @foreach($grade as $gd)
-                                                <option @if($edu['grade_id'] == $gd['id']) selected @endif value="{{ $gd['id'] }}">{{ $gd['title'] }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input required title="{{ trans('validate.please fill in this field') }}"  value="{{ $edu['field_trend'] }}" type="text" class="form-control" name="frm[education_{!! $var !!}][field_trend]">
-                                    </td>
-                                    <td>
-                                        <input required title="{{ trans('validate.please fill in this field') }}" value="{{ $edu['university'] }}" type="text" class="form-control" name="frm[education_{!! $var !!}][university]">
-                                    </td>
-                                    <td>
-                                        <input required title="{{ trans('validate.please fill in this field') }}" maxlength="4" minlength="4" data-msg-minlength="{{ trans('validate.enter as models') }}"  data-msg-maxlength="{{ trans('validate.enter as models') }}"  value="{{ $edu['year'] }}" type="text" class="form-control text-center" name="frm[education_{!! $var !!}][year]" placeholder="1395">
-                                    </td>
-                                    <td>
-                                        @if(count($education) == $var || $var == 1)
-                                        <a href="#"onclick="Admin.duplicateRow(this, event)"><span class="fa fa-plus-square"></span></a> |
-                                        @else
-                                        <a href="#"onclick="Admin.duplicateRow(this, event)"><span class="fa fa-trash"></span></a>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @php $var++; @endphp
+                                    <tr>
+                                        <td>
+                                            <select required title="{{ trans('validate.please fill in this field') }}" class="form-control" name="frm[education_{!! $var !!}][grade_id]">
+                                                <option value="">{{ trans('public.select') }}...</option>
+                                                @foreach($grade as $gd)
+                                                    <option @if($edu['grade_id'] == $gd['id']) selected @endif value="{{ $gd['id'] }}">{{ $gd['title'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input required title="{{ trans('validate.please fill in this field') }}"  value="{{ $edu['field_trend'] }}" type="text" class="form-control" name="frm[education_{!! $var !!}][field_trend]">
+                                        </td>
+                                        <td>
+                                            <input required title="{{ trans('validate.please fill in this field') }}" value="{{ $edu['university'] }}" type="text" class="form-control" name="frm[education_{!! $var !!}][university]">
+                                        </td>
+                                        <td>
+                                            <input required title="{{ trans('validate.please fill in this field') }}" maxlength="4" minlength="4" data-msg-minlength="{{ trans('validate.enter as models') }}"  data-msg-maxlength="{{ trans('validate.enter as models') }}"  value="{{ $edu['year'] }}" type="text" class="form-control text-center" name="frm[education_{!! $var !!}][year]" placeholder="1395">
+                                        </td>
+                                        <td>
+                                            <a href="#"onclick="Admin.duplicateRow(this, event)" @if(count($education) != $var) style="display: none" @endif><span class="fa fa-plus-square"></span></a>
+                                            <a href="#"onclick="Admin.deleteRow(this, event)"><span class="fa fa-trash"></span></a>
+                                        </td>
+                                    </tr>
+                                    @php $var++; @endphp
                                 @endforeach
                                 </tbody>
                             </table>
