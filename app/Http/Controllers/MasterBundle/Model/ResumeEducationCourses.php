@@ -5,9 +5,9 @@ namespace App\Http\Controllers\MasterBundle\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Resume extends Model
+class ResumeEducationCourses extends Model
 {
-    protected $table = 'resume_info';
+    protected $table = 'resume_education_courses';
 
     protected  $primaryKey = 'id';
 

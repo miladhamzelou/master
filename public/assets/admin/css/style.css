@@ -33,6 +33,7 @@ a,a:focus,a:hover{
 }
 h1,h2,h3,h4,h5,h6{
     font-family: byekan;
+    color: #1A969C;
 }
 #main-content{
     margin: 20px 0;
@@ -47,6 +48,9 @@ h1,h2,h3,h4,h5,h6{
     min-height: 400px;
     height: auto;
     color: #000;
+}
+#content .panel .panel-body .panel-title{
+    color: #1A969C;
 }
 #content h4{
     font-size: 15px;
@@ -205,4 +209,46 @@ a.DESC-sort{
 }
 header{
     min-height: 50px;
+}
+.display-flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+fieldset{
+    display: block;
+    -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+    min-width: -webkit-min-content;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #b7b7b7;
+    border-image: initial;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+legend {
+    text-align: center;
+    color: #1A969C;
+    font-size: 15px;
+    border: 0;
+    width:15%;
+    font-weight: bolder;
+    margin-bottom: 0;
 }

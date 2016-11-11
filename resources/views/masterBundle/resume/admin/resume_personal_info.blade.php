@@ -2,10 +2,7 @@
     <div class="panel">
         <div class="panel-heading">
             <div class="pull-right">
-                <h4 class="panel-title">{{ trans('master.master education') }}</h4>
-            </div>
-            <div class="pull-left">
-                <a href="{{ url(getCurrentURL('controller').'/Education') }}" class="btn-box-tool pull-left" onclick="Admin.reload(event)"><i class="fa fa-refresh"></i></a>
+                <h4 class="panel-title">{{ trans('master.personal info') }}</h4>
             </div>
             <div class="row"></div>
         </div>
@@ -21,17 +18,21 @@
                             </div>
                         @endif
                     @endforeach
-                    <div class="ajax-content">
-                        @include('masterBundle.resume.admin.resume_education_ajax')
-                    </div>
+                    <form action="{{ url(getCurrentURL('controller').'/PersonalInfo') }}" novalidate="novalidate" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        @include('masterBundle.resume.admin.resume_personal_info_form')
+                        <button type="submit" class="btn btn-primary pull-left">{{ trans('public.send request') }}</button>
+                        @if(count($personal_info) > 0)
+                            <a class="btn btn-danger pull-left fa-margin" href="{{ url(getCurrentURL('controller').'/DeleteAll/personal_info') }}">{{ trans('public.delete all') }}</a>
+                        @endif
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <script>
         $(window).load(function() {
-            $('form').validate({
-            });
+            $('form').validate();
         });
     </script>
 @endsection

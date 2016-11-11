@@ -16,7 +16,15 @@ return [
     'return' => 'بازگشت',
     'action' => 'اکشن',
     'status' => 'وضعیت',
-    'site setting' => 'تنظیمات سایت'
+    'site setting' => 'تنظیمات سایت',
+    'delete all' => 'حذف همه',
+    'period' => 'دوره',
+    'year' => 'سال',
+    'day' => 'روز',
+    'month' => 'ماه',
+    'student' => 'دانشجو',
+    'from date' => 'از تاریخ',
+    'to date' => 'تا تاریخ'
 
 ]
 

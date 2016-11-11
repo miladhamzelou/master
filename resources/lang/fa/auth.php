@@ -42,5 +42,7 @@ return [
     'new password' => 'پسورد جدید',
     'retype new password' => 'تایید پسورد جدید',
     'repeat password'  => 'تکرار رمز عبور',
+    'bio' => 'بیوگرافی',
+
 
 ];

@@ -389,25 +389,27 @@ var Admin  = function()
                 var num = input.match(/.*\[\w+\_(\d+)\].*/)[1];
                 $(this).attr('name', input.replace(num, parseInt(num) + 1));
             });
-            new_row.find('input,select,textarea').val('').end().insertAfter('.table tr:last');
+            new_row.find('input,select,textarea').val('').end().appendTo(_this.closest('table'));
             _this.hide();
         },
         deleteRow: function(obj, event) {
             event.preventDefault();
             _this = $(obj);
             var item = _this.closest('tr');
-            if (item.parent('tbody').children('tr').length < 3) {
+            if (item.is(':last-child')) {
                 item.prev().children('td').children('a:hidden').show();
-                if (item.parent('tbody').children('tr').length < 2)
-                    item.prev().children('td').children('a:last').hide();
-                else if (item.parent('tbody').children('tr').length == 2) {
-                        item.prev().children('td').children('a:last').hide();
-                        item.next().children('td').children('a:last').hide();
-                    }
+                if (item.parent('tbody').children('tr').length == 2) {
+                    item.prev().children('td').children('a:last-child').hide();
+                }
+                item.remove();
+            } else if (item.is(':first-child')) {
+                if (item.parent('tbody').children('tr').length == 2) {
+                    item.next().children('td').children('a:last-child').hide();
+                }
+                item.remove();
             } else {
-                item.prev().children('td').children('a:hidden').show();
+                item.remove();
             }
-            item.remove();
         }
     }
 

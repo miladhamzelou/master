@@ -45,8 +45,16 @@
             </div>
             <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                 <div class="list-group">
-                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/ChangeResume' }}" class="list-group-item">{{ trans('master.master resume') }}</a>
-                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Education' }}" class="list-group-item">{{ trans('master.education') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Resume' }}" class="list-group-item">{{ trans('master.full resume') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/PersonalInfo' }}" class="list-group-item">{{ trans('master.personal info') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Education' }}" class="list-group-item">{{ trans('master.master education') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Awards' }}" class="list-group-item">{{ trans('master.awards and honors') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Conferences' }}" class="list-group-item">{{ trans('master.conferences') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Articles' }}" class="list-group-item">{{ trans('master.articles') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/BookCompilation' }}" class="list-group-item">{{ trans('master.books compilation') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/TranslatedBook' }}" class="list-group-item">{{ trans('master.translated books') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/DissertationGuide' }}" class="list-group-item">{{ trans('master.dissertation guide') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/OperatingActivity' }}" class="list-group-item">{{ trans('master.operating activity') }}</a>
                 </div>
             </div>
         </div>

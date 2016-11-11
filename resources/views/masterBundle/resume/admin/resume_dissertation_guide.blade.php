@@ -2,10 +2,10 @@
     <div class="panel">
         <div class="panel-heading">
             <div class="pull-right">
-                <h4 class="panel-title">{{ trans('master.master education') }}</h4>
+                <h4 class="panel-title">{{ trans('master.dissertation guide') }}</h4>
             </div>
             <div class="pull-left">
-                <a href="{{ url(getCurrentURL('controller').'/Education') }}" class="btn-box-tool pull-left" onclick="Admin.reload(event)"><i class="fa fa-refresh"></i></a>
+                <a href="{{ url(getCurrentURL('controller').'/DissertationGuide') }}" class="btn-box-tool pull-left" onclick="Admin.reload(event)"><i class="fa fa-refresh"></i></a>
             </div>
             <div class="row"></div>
         </div>
@@ -22,7 +22,7 @@
                         @endif
                     @endforeach
                     <div class="ajax-content">
-                        @include('masterBundle.resume.admin.resume_education_ajax')
+                        @include('masterBundle.resume.admin.resume_dissertation_guide_ajax')
                     </div>
                 </div>
             </div>

@@ -35,7 +35,24 @@ return [
     'education' => 'تحصیلات',
     'master education' => 'تحصیلات استاد',
     'grade' => 'مرتبه علمی',
-    'year of graduation'  => 'سال اخد مدرک'
+    'year of graduation'  => 'سال اخد مدرک',
+    'personal info' => 'اطلاعات فردی',
+    'awards and honors' => 'جوایز و افتخارات',
+    'conferences' => 'همایش ها',
+    'articles' => 'مقاله ها',
+    'books compilation' => 'کتاب های تالیفی',
+    'translated books' => 'کتاب های ترجمه شده',
+    'dissertation guide'=> 'راهنمای پایان نامه',
+    'research projects' => 'پروژه های تخقیقاتی',
+    'operating activity' => 'فعالیت های اجرایی',
+    'education courses' =>  'دوره های آموزشی',
+    'year of award' => 'سال اخذ جایزه',
+    'university or place' => 'دانشگاه یا محل',
+    'published in' => 'منتشر شده در',
+    'year of publication' => 'سال انتشار',
+    'publisher' => 'انتشارات',
+    'personal interest' => 'علایق شخصی',
+    'full resume' => 'رزومه کامل'
 ]
 
 ?>
