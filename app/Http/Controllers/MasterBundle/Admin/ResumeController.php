@@ -39,6 +39,79 @@ class ResumeController extends Controller
         $this->layout->content->translated_book = ResumeTranslatedBook::get();
         $this->layout->content->dissertation_guide = ResumeDissertationGuide::get();
         $this->layout->content->operating_activity = ResumeOperatingActivity::get();
+        if(Request::ajax()) {
+            $this->layout = view('masterBundle.resume.admin.resume_ajax');
+            $this->layout->science_ranking = ScienceRanking::all();
+            $this->layout->personal_info = ResumePersonalInfo::first();
+            $this->layout->articles = ResumeArticles::get();
+            $this->layout->education = ResumeEducaion::get();
+            $this->layout->grade = Grade::all();
+            $this->layout->awards = ResumeAwards::get();
+            $this->layout->conferences = ResumeConferences::get();
+            $this->layout->book_compilation = ResumeBookCompilation::get();
+            $this->layout->translated_book = ResumeTranslatedBook::get();
+            $this->layout->dissertation_guide = ResumeDissertationGuide::get();
+            $this->layout->operating_activity = ResumeOperatingActivity::get();
+            die($this->layout);
+        }
+        $frm = Input::get('frm');
+        if($frm) {
+            if($frm['personal_info']) {
+                DB::table('resume_personal_info')->delete();
+                ResumePersonalInfo::store($frm['personal_info']);
+            }
+            if($frm['education']) {
+                DB::table('resume_education')->delete();
+                foreach($frm['education'] as $item) {
+                    ResumeEducaion::store($item);
+                }
+            }
+            if($frm['articles']) {
+                DB::table('resume_articles')->delete();
+                foreach($frm['articles'] as $item) {
+                    ResumeArticles::store($item);
+                }
+            }
+            if($frm['conferences']) {
+                DB::table('resume_conferences')->delete();
+                foreach($frm['conferences'] as $item) {
+                    ResumeConferences::store($item);
+                }
+            }
+            if($frm['book_compilation']) {
+                DB::table('resume_book_compilation')->delete();
+                foreach($frm['book_compilation'] as $item) {
+                    ResumeBookCompilation::store($item);
+                }
+            }
+            if($frm['translated_book']) {
+                DB::table('resume_translated_book')->delete();
+                foreach($frm['translated_book'] as $item) {
+                    ResumeTranslatedBook::store($item);
+                }
+            }
+            if($frm['operating_activity']) {
+                DB::table('resume_operating_activity')->delete();
+                foreach($frm['operating_activity'] as $item) {
+                    $item['from_date'] = FarsiFacade::j2gDate($item['from_date']);
+                    $item['to_date'] = FarsiFacade::j2gDate($item['to_date']);
+                    ResumeOperatingActivity::store($item);
+                }
+            }
+            if($frm['dg']) {
+                DB::table('resume_dissertation_guide')->delete();
+                foreach($frm['dg'] as $item) {
+                    ResumeDissertationGuide::store($item);
+                }
+            }
+            if($frm['awards']) {
+                DB::table('resume_awards')->delete();
+                foreach($frm['awards'] as $item) {
+                    ResumeAwards::store($item);
+                }
+            }
+            return redirect()->back()->with(['alert-success' => trans('validate.done successfully')]);
+        }
     }
 
     public function personalInfo()
@@ -49,16 +122,6 @@ class ResumeController extends Controller
         $this->layout->content->science_ranking = ScienceRanking::all();
         $frm = Input::get('frm');
         if($frm) {
-            $validator = Validator::make($frm['personal_info'], [
-                'name' => 'required',
-                'family' => 'required',
-                'science_ranking_id' => 'required',
-            ]);
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
             DB::table('resume_personal_info')->delete();
             ResumePersonalInfo::store($frm['personal_info']);
             return redirect()->back()->with(['alert-success' => trans('validate.done successfully')]);
@@ -202,7 +265,7 @@ class ResumeController extends Controller
 
     public function operatingActivity()
     {
-        $frm = Input::get('frm')['operation_activity'];
+        $frm = Input::get('frm')['operating_activity'];
         if($frm) {
             DB::table('resume_operating_activity')->delete();
             foreach($frm as $item) {

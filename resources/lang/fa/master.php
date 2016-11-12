@@ -52,7 +52,7 @@ return [
     'year of publication' => 'سال انتشار',
     'publisher' => 'انتشارات',
     'personal interest' => 'علایق شخصی',
-    'full resume' => 'رزومه کامل'
+    'master resume full option' => 'فرم رزومه کلی'
 ]
 
 ?>

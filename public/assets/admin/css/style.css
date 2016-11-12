@@ -55,6 +55,7 @@ h1,h2,h3,h4,h5,h6{
 #content h4{
     font-size: 15px;
     font-weight: bold;
+    color: #1A969C;
 }
 #sidebar .panel .panel-heading{
     background-color: #4f4f4f;
@@ -240,7 +241,7 @@ fieldset{
     border-style: solid;
     border-color: #b7b7b7;
     border-image: initial;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-bottom: 25px;
 }
 legend {

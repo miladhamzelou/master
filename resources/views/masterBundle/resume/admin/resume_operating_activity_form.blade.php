@@ -4,7 +4,7 @@
             <tr>
                 <th>{{ trans('public.title') }}</th>
                 <th width="20%">{{ trans('public.from date') }}</th>
-                <th width="11%">{{ trans('public.to date') }}</th>
+                <th width="20%">{{ trans('public.to date') }}</th>
                 <th width="10%">{{ trans('public.action') }}</th>
             </tr>
             </thead>

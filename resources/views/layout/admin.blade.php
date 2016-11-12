@@ -14,8 +14,10 @@
         <link rel="stylesheet" href="{{ asset('assets/tools/toastr/toastr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/tools/select2/select2.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/tools/select2/select2-bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/tools/datepicker/css/persianDatepicker-default.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/tools/fancybox/source/jquery.fancybox.css') }}" type="text/css" media="screen" />
+        <link type="text/css" href="{{ asset('assets/tools/jquery.ui.datepicker/styles/ui.core.css')}}" rel="stylesheet" />
+        <link type="text/css" href="{{ asset('assets/tools/jquery.ui.datepicker/styles/ui.theme.css')}}" rel="stylesheet" />
+        <link type="text/css" href="{{ asset('assets/tools/jquery.ui.datepicker/styles/ui.datepicker.css')}}" rel="stylesheet" />
         @if(Config::get('app.dir') == 'rtl')
             <link href="{{ asset('assets/tools/bootstrap/css/bootstrap-rtl.min.css') }}" rel="stylesheet">
             <link href="{{ asset('assets/admin/css/rtl/style-rtl.css') }}" rel="stylesheet">
@@ -31,8 +33,11 @@
         <!-- plugin -->
         <script src="{{ asset('assets/tools/toastr/toastr.min.js') }}"></script>
         <script src="{{ asset('assets/tools/select2/select2.min.js') }}"></script>
-        <script src="{{ asset('assets/tools/datepicker/js/persianDatepicker.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/tools/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+        <script src="{{ asset('assets/tools/jquery.ui.datepicker/scripts/jquery.ui.core.js') }}"></script>
+        <script src="{{ asset('assets/tools/jquery.ui.datepicker/scripts/jquery.ui.datepicker-cc.js') }}"></script>
+        <script src="{{ asset('assets/tools/jquery.ui.datepicker/scripts/calendar.js') }}"></script>
+        <script src="{{ asset('assets/tools/jquery.ui.datepicker/scripts/jquery.ui.datepicker-cc-fa.js') }}"></script>
         <!-- end plugin -->
         <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
         <script src="{{ asset('assets/admin/js/custom.js') }}"></script>

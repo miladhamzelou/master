@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+        <div class="form-group">
             <label>{{ trans('auth.name') }}:</label>
             <input required title="{{ trans('validate.please fill in this field') }}" value="{{ @$personal_info['name'] }}"  type="text" class="form-control" name="frm[personal_info][name]">
         </div>
@@ -8,7 +8,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <div class="form-group{{ $errors->has('family') ? ' has-error' : '' }}">
+        <div class="form-group">
             <label>{{ trans('auth.family') }}:</label>
             <input required title="{{ trans('validate.please fill in this field') }}" value="{{ @$personal_info['family'] }}" type="text" class="form-control" name="frm[personal_info][family]">
         </div>
@@ -16,7 +16,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <div class="form-group{{ $errors->has('science_ranking_id') ? ' has-error' : '' }}">
+        <div class="form-group">
             <label>{{ trans('master.science ranking') }}:</label>
             <select required title="{{ trans('validate.please fill in this field') }}" class="form-control" name="frm[personal_info][science_ranking_id]">
                 <option value="">{{ trans('public.select') }}...</option>

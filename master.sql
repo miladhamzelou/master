@@ -10870,60 +10870,82 @@ INSERT INTO `lesson` (`id`, `title`) VALUES
 -- Dumping structure for table master.resume_articles
 CREATE TABLE IF NOT EXISTS `resume_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` int(11) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `published_in` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_articles: ~0 rows (approximately)
+-- Dumping data for table master.resume_articles: ~3 rows (approximately)
 /*!40000 ALTER TABLE `resume_articles` DISABLE KEYS */;
+INSERT INTO `resume_articles` (`id`, `title`, `published_in`, `year`) VALUES
+	(9, 'dsfdsf', 'sfsf', '1320');
 /*!40000 ALTER TABLE `resume_articles` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.resume_awards
 CREATE TABLE IF NOT EXISTS `resume_awards` (
-  `id` int(11) NOT NULL,
-  `title` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `place` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.resume_awards: ~0 rows (approximately)
 /*!40000 ALTER TABLE `resume_awards` DISABLE KEYS */;
+INSERT INTO `resume_awards` (`id`, `title`, `place`, `year`) VALUES
+	(5, 'sdfdsfdsf', 'sdfdsfs', '1365');
 /*!40000 ALTER TABLE `resume_awards` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.resume_book_compilation
 CREATE TABLE IF NOT EXISTS `resume_book_compilation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` int(11) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `publisher` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.resume_book_compilation: ~0 rows (approximately)
 /*!40000 ALTER TABLE `resume_book_compilation` DISABLE KEYS */;
+INSERT INTO `resume_book_compilation` (`id`, `title`, `publisher`, `year`) VALUES
+	(5, 'sdfsdfsd', 'sdfsdfsdf', '1320');
 /*!40000 ALTER TABLE `resume_book_compilation` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.resume_conferences
 CREATE TABLE IF NOT EXISTS `resume_conferences` (
-  `id` int(11) NOT NULL,
-  `title` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `period` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `place` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.resume_conferences: ~0 rows (approximately)
 /*!40000 ALTER TABLE `resume_conferences` DISABLE KEYS */;
+INSERT INTO `resume_conferences` (`id`, `title`, `period`, `place`, `year`) VALUES
+	(6, 'sdfsdf', '', 'sdfsdfds', '1370');
 /*!40000 ALTER TABLE `resume_conferences` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.resume_dissertation_guide
 CREATE TABLE IF NOT EXISTS `resume_dissertation_guide` (
-  `id` int(11) NOT NULL,
-  `title` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `student` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `place` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.resume_dissertation_guide: ~0 rows (approximately)
 /*!40000 ALTER TABLE `resume_dissertation_guide` DISABLE KEYS */;
+INSERT INTO `resume_dissertation_guide` (`id`, `title`, `student`, `place`, `year`) VALUES
+	(10, 'sdfdsf', '', 'sdfdsf', '1350');
 /*!40000 ALTER TABLE `resume_dissertation_guide` ENABLE KEYS */;
 
 
@@ -10936,74 +10958,62 @@ CREATE TABLE IF NOT EXISTS `resume_education` (
   `year` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `grade_id` (`grade_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.resume_education: ~0 rows (approximately)
 /*!40000 ALTER TABLE `resume_education` DISABLE KEYS */;
 INSERT INTO `resume_education` (`id`, `grade_id`, `university`, `field_trend`, `year`) VALUES
-	(1, 0, '', '', '1394');
+	(21, 2, 'sdfsdfsdf', 'sdfsdf', '1360');
 /*!40000 ALTER TABLE `resume_education` ENABLE KEYS */;
-
-
--- Dumping structure for table master.resume_education_courses
-CREATE TABLE IF NOT EXISTS `resume_education_courses` (
-  `id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table master.resume_education_courses: ~0 rows (approximately)
-/*!40000 ALTER TABLE `resume_education_courses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `resume_education_courses` ENABLE KEYS */;
-
-
--- Dumping structure for table master.resume_info
-CREATE TABLE IF NOT EXISTS `resume_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT '0',
-  `family` varchar(50) COLLATE utf8_unicode_ci DEFAULT '0',
-  `birthday` date DEFAULT NULL,
-  `personal_interest` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `educational group` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `science_ranking_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table master.resume_info: ~0 rows (approximately)
-/*!40000 ALTER TABLE `resume_info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `resume_info` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.resume_operating_activity
 CREATE TABLE IF NOT EXISTS `resume_operating_activity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `from_date` date DEFAULT NULL,
+  `to_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.resume_operating_activity: ~0 rows (approximately)
 /*!40000 ALTER TABLE `resume_operating_activity` DISABLE KEYS */;
 /*!40000 ALTER TABLE `resume_operating_activity` ENABLE KEYS */;
 
 
--- Dumping structure for table master.resume_research_projects
-CREATE TABLE IF NOT EXISTS `resume_research_projects` (
-  `id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- Dumping structure for table master.resume_personal_info
+CREATE TABLE IF NOT EXISTS `resume_personal_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `science_ranking_id` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT '0',
+  `family` varchar(50) COLLATE utf8_unicode_ci DEFAULT '0',
+  `personal_interest` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bio` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  KEY `science_ranking_id` (`science_ranking_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_research_projects: ~0 rows (approximately)
-/*!40000 ALTER TABLE `resume_research_projects` DISABLE KEYS */;
-/*!40000 ALTER TABLE `resume_research_projects` ENABLE KEYS */;
+-- Dumping data for table master.resume_personal_info: ~1 rows (approximately)
+/*!40000 ALTER TABLE `resume_personal_info` DISABLE KEYS */;
+INSERT INTO `resume_personal_info` (`id`, `science_ranking_id`, `name`, `family`, `personal_interest`, `bio`) VALUES
+	(9, 1, 'dsfsdf', 'dsfsdf', '', '');
+/*!40000 ALTER TABLE `resume_personal_info` ENABLE KEYS */;
 
 
 -- Dumping structure for table master.resume_translated_book
 CREATE TABLE IF NOT EXISTS `resume_translated_book` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` int(11) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `publisher` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table master.resume_translated_book: ~0 rows (approximately)
 /*!40000 ALTER TABLE `resume_translated_book` DISABLE KEYS */;
+INSERT INTO `resume_translated_book` (`id`, `title`, `publisher`, `year`) VALUES
+	(6, 'sdfsdf', '', '1320'),
+	(7, 'dsadasdas', 'asdsadsad', '1350');
 /*!40000 ALTER TABLE `resume_translated_book` ENABLE KEYS */;
 
 
@@ -11028,10 +11038,12 @@ CREATE TABLE IF NOT EXISTS `science_ranking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.science_ranking: ~0 rows (approximately)
+-- Dumping data for table master.science_ranking: ~1 rows (approximately)
 /*!40000 ALTER TABLE `science_ranking` DISABLE KEYS */;
+INSERT INTO `science_ranking` (`id`, `title`) VALUES
+	(1, 'sadsa');
 /*!40000 ALTER TABLE `science_ranking` ENABLE KEYS */;
 
 

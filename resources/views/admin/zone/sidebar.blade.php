@@ -45,7 +45,7 @@
             </div>
             <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                 <div class="list-group">
-                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Resume' }}" class="list-group-item">{{ trans('master.full resume') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Resume' }}" class="list-group-item">{{ trans('master.master resume full option') }}</a>
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/PersonalInfo' }}" class="list-group-item">{{ trans('master.personal info') }}</a>
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Education' }}" class="list-group-item">{{ trans('master.master education') }}</a>
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/Resume/Awards' }}" class="list-group-item">{{ trans('master.awards and honors') }}</a>

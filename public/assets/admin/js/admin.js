@@ -232,11 +232,7 @@ var Admin  = function()
             });
         },
         datePicker : function () {
-            $("input[data-datepicker]").persianDatepicker({
-                cellWidth: 35,
-                cellHeight: 25,
-                fontSize: 12,
-            });
+            $('*[data-datepicker]').datepicker();
         },
         fancyBox : function(){
             $("a#single_image").fancybox();
@@ -391,6 +387,7 @@ var Admin  = function()
             });
             new_row.find('input,select,textarea').val('').end().appendTo(_this.closest('table'));
             _this.hide();
+
         },
         deleteRow: function(obj, event) {
             event.preventDefault();
