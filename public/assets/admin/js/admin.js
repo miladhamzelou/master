@@ -385,8 +385,9 @@ var Admin  = function()
                 var num = input.match(/.*\[\w+\_(\d+)\].*/)[1];
                 $(this).attr('name', input.replace(num, parseInt(num) + 1));
             });
-            new_row.find('input,select,textarea').val('').end().appendTo(_this.closest('table'));
+            new_row.find('input,select,textarea').val('').removeClass('hasDatepicker').removeAttr('id').end().appendTo(_this.closest('table'));
             _this.hide();
+            Admin.datePicker();
 
         },
         deleteRow: function(obj, event) {
