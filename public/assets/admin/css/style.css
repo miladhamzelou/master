@@ -253,3 +253,7 @@ legend {
     font-weight: bolder;
     margin-bottom: 0;
 }
+.sidebar-active{
+    border-right: 5px solid #888888 !important;
+    background-color: #F5F5F5;
+}

@@ -6,10 +6,10 @@
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseZiro" aria-expanded="true" aria-controls="collapseZiro">
                         {{ trans('master.basic definitions') }}
                     </a>
-                    <span class="fa fa-angle-down pull-left"></span>
+                    <span class="fa fa-angle-right pull-left"></span>
                 </h4>
             </div>
-            <div id="collapseZiro" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZiro">
+            <div id="collapseZiro" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingZiro">
                 <div class="list-group">
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/FieldTree/TreeList' }}" class="list-group-item">{{ trans('master.field and trend') }}</a>
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/Lesson/LessonList' }}" class="list-group-item">{{ trans('master.teaching courses') }}</a>
@@ -24,7 +24,7 @@
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         {{ trans('master.master bundle') }}
                     </a>
-                    <span class="fa fa-angle-down pull-left"></span>
+                    <span class="fa fa-angle-right pull-left"></span>
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -40,7 +40,7 @@
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
                         {{ trans('master.master resume') }}
                     </a>
-                    <span class="fa fa-angle-down pull-left"></span>
+                    <span class="fa fa-angle-right pull-left"></span>
                 </h4>
             </div>
             <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
