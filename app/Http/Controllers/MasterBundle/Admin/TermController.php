@@ -49,7 +49,10 @@ class TermController extends Controller
         $frm['to_date'] = FarsiFacade::j2gdate($frm['to_date']);
         if($frm['from_date'] >= $frm['to_date'])
             return redirect()->back()->withInput()->with('alert-danger', trans('master.start and end dates of the term has not been entered correctly'));
-        $confilict = Term::where('from_date', '>=', $frm['from_date'])->where('to_date', '<=', $frm['to_date'])->get();
+        $confilict = Term::where('from_date', '>=', $frm['from_date'])->where('to_date', '<=', $frm['to_date'])->where(function($q) use($id) {
+            if($id)
+                return $q->where('id', '!=', $id);
+        })->get();
         if (count($confilict) > 0)
             return redirect()->back()->withInput()->with('alert-warning', trans('master.other entries interferes with the interaction term'));
         Term::store($frm, $id);

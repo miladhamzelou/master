@@ -12,8 +12,8 @@
             <div id="collapseZiro" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingZiro">
                 <div class="list-group">
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/FieldTree/TreeList' }}" class="list-group-item">{{ trans('master.field and trend') }}</a>
-                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Lesson/LessonList' }}" class="list-group-item">{{ trans('master.teaching courses') }}</a>
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/UniversityTree/TreeList' }}" class="list-group-item">{{ trans('master.university and educational centers') }}</a>
+                    <a href="{{ getCurrentURL('prefix').'/MasterBundle/Lesson/LessonList' }}" class="list-group-item">{{ trans('master.teaching courses') }}</a>
                     <a href="{{ getCurrentURL('prefix').'/MasterBundle/Term/TermList' }}" class="list-group-item">{{ trans('master.training course') }}</a>
                 </div>
             </div>
@@ -70,7 +70,6 @@
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="list-group">
                     <a href="{{ url(getCurrentURL('prefix').'/Auth/User/UsersList') }}" class="list-group-item">{{ trans('auth.users list') }}</a>
-                    <a href="{{ url(getCurrentURL('prefix').'/Auth/User/UsersList') }}" class="list-group-item">{{ trans('master.student list') }}</a>
                 </div>
             </div>
         </div>

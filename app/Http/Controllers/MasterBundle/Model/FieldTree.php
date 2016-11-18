@@ -35,7 +35,7 @@ class FieldTree extends Model
 
     public static function tree()
     {
-        $nodes = FieldTree::get()->toTree();
+        $nodes = FieldTree::withDepth()->having('depth', '=', 0)->get()->toTree();
         $tree = '<div class="tree">';
         $traverse = function ($categories) use (&$traverse , &$tree) {
             $tree .= '<ul>';

@@ -52,7 +52,8 @@ return [
     'year of publication' => 'سال انتشار',
     'publisher' => 'انتشارات',
     'personal interest' => 'علایق شخصی',
-    'master resume full option' => 'فرم رزومه کلی'
+    'master resume full option' => 'فرم رزومه کلی',
+    'university collection' => 'کالکشن دانشگاه و مراکز آموزشی'
 ]
 
 ?>

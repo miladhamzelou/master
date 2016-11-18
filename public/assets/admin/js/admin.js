@@ -247,12 +247,14 @@ var Admin  = function()
         tree : function() {
             $('.tree')
                 .jstree({
+                    'plugins': ["wholerow", "checkbox"],
                     'core': {
                         'themes': {
                             'name': 'proton',
                             'responsive': true
                         }
-                    }
+                    },
+                    checkbox : { three_state : false, cascade : '' }
                 });
         },
         treeCheckbox : function() {
@@ -264,7 +266,8 @@ var Admin  = function()
                             'name': 'proton',
                             'responsive': true
                         }
-                    }
+                    },
+                    checkbox : { three_state : false, cascade : '' }
                 });
         },
         treeRemove : function (obj,event){
