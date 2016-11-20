@@ -59,6 +59,22 @@
             </div>
         </div>
         <div class="panel">
+            <div class="panel-heading" role="tab" id="headingeight">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeight" aria-expanded="true" aria-controls="collapseOne">
+                        {{ trans('public.messenger') }}
+                    </a>
+                    <span class="fa fa-angle-right pull-left"></span>
+                </h4>
+            </div>
+            <div id="collapseeight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingeight">
+                <div class="list-group">
+                    <a href="{{ url(getCurrentURL('prefix').'/MailBundle/Mail/MailList') }}" class="list-group-item">{{ trans('mail.send mail') }}</a>
+                    <a href="{{ url(getCurrentURL('prefix').'/SMSPanelBundle/SMSPanel/SMSList') }}" class="list-group-item">{{ trans('sms.send sms') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
             <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">

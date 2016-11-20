@@ -60,4 +60,9 @@
     </div>
 </div>
 @include('admin.zone.footer')
+<script>
+    $(window).load(function(){
+        Admin.ready();
+    })
+</script>
 </body>

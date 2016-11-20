@@ -7,7 +7,7 @@
             <th><a data-field="title" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/TermList') }}"  class="has-sort" data-sort="DESC">{{ trans('public.title') }}</a></th>
             <th><a data-field="from_date" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/TermList') }}"  class="has-sort" data-sort="DESC">{{ trans('master.start date') }}</a></th>
             <th><a data-field="to_date" onclick="Admin.sort(event, this)" href="{{ url(getCurrentURL('controller').'/TermList') }}"  class="has-sort" data-sort="DESC">{{ trans('master.end date') }}</a></th>
-            <th class="last-left">اکشن</th>
+            <th class="last-left">{{ trans('public.action') }}</th>
         </tr>
         </thead>
         <tbody>

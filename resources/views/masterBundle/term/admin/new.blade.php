@@ -6,7 +6,6 @@
             </div>
             <div class="pull-left">
                 <a href="{{ url(getCurrentURL('controller').'/TermList') }}" title="{{ trans('public.return') }}" class="btn-box-tool pull-left"><i class="fa fa-arrow-circle-left"></i></a>
-                <a href="{{ url(getCurrentURL('controller')).'/Create' }}" class="btn-box-tool pull-left"><i class="fa fa-plus-square"></i></a>
             </div>
             <div class="row"></div>
         </div>

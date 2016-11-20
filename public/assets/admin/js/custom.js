@@ -1,4 +1,5 @@
-$(document).ready(function(){
+$(document).ready(function() {
+    $('*[data-toggle="tooltip"]').tooltip();
     // sidebar
     $('#sidebar a').removeClass('sidebar-active');
     $('.panel-collapse').removeClass('in');
@@ -10,5 +11,4 @@ $(document).ready(function(){
         $(this).next('span').toggleClass('fa-angle-down');
     });
     // end sidebar
-    Admin.init();
 });

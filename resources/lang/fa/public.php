@@ -24,7 +24,9 @@ return [
     'month' => 'ماه',
     'student' => 'دانشجو',
     'from date' => 'از تاریخ',
-    'to date' => 'تا تاریخ'
+    'to date' => 'تا تاریخ',
+    'messenger' => 'پیام رسان',
+    'date' => 'تاریخ'
 
 ]
 

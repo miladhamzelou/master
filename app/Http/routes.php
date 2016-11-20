@@ -14,6 +14,9 @@ if (in_array($segment, Config::get('app.locales'))) {
 $dir = App::getLocale() == 'fa' ? 'rtl' : 'ltr';
 Config::set('app.dir', $dir);
 
+$float = App::getLocale() == 'fa' ? 'left' : 'right';
+Config::set('app.float', $float);
+
 // start app router
 Route::group(['prefix' => $locale], function () use ($prefix) {
     if($prefix == 'Auth') {

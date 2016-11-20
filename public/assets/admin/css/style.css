@@ -173,6 +173,7 @@ a.DESC-sort{
 }
 #content .panel .panel-body{
     padding: 15px 15px;
+    min-height: 500px;
 }
 .text-success{
     color:#49c668;
@@ -256,4 +257,16 @@ legend {
 .sidebar-active{
     border-right: 5px solid #888888 !important;
     background-color: #F5F5F5;
+}
+.tooltip > .tooltip-inner {
+    font-family: byekan;
+}
+.en-font{
+    font-family: Tahoma !important;
+    direction: ltr;
+    font-size: 11px;
+}
+.checkbox-inline span{
+    position: relative;
+    top: 3px;
 }
