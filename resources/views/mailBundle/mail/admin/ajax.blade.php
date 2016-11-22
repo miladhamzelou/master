@@ -17,9 +17,9 @@
                 <td>{{ str_limit($ent['message'], 70) }}</td>
                 <td>{{ \App\Facades\FarsiFacade::g2jdate($ent['created_at']) }}</td>
                 <td class="table-action">
-                    <a onclick="Admin.delete(this,event)" href="{{ url(getCurrentURL('controller').'/delete/'.$ent['id']) }}"><span class="fa fa fa-trash-o"></span></a>
-                    <a href="{{ url(getCurrentURL('controller').'/edit/'.$ent['id']) }}"><span class="fa fa fa-pencil"></span></a>
-                    <a onclick="Admin.show(this, event)" href="{{ url(getCurrentURL('controller').'/Show/'.$ent['id']) }}"><span class="fa fa-tv"></span></a>
+                    <a data-toggle="tooltip" data-placement="top" title="{{ trans('public.delete') }}" onclick="Admin.delete(this,event)" href="{{ url(getCurrentURL('controller').'/delete/'.$ent['id']) }}"><span class="fa fa fa-trash-o"></span></a>
+                    {{--<a  data-toggle="tooltip" data-placement="top" title="{{ trans('public.edit') }}" href="{{ url(getCurrentURL('controller').'/edit/'.$ent['id']) }}"><span class="fa fa fa-pencil"></span></a>--}}
+                    <a data-toggle="tooltip" data-placement="top" title="{{ trans('public.show') }}" onclick="Admin.show(this, event)" href="{{ url(getCurrentURL('controller').'/Show/'.$ent['id']) }}"><span class="fa fa-tv"></span></a>
                 </td>
             </tr>
         @endforeach

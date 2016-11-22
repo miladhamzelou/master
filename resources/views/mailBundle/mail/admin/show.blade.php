@@ -9,19 +9,19 @@
                 <table class="table table-striped table-bordered">
                     <tr>
                         <td style="width: 20%"><b>{{ trans('public.title') }}:</b></td>
-                        <td>{{ $entity['title'] }}</td>
+                        <td>{{ $entity['subject'] }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 20%"><b>{{ trans('master.term code') }}:</b></td>
-                        <td>{{ $entity['code'] }}</td>
+                        <td style="width: 20%"><b>{{ trans('mail.message') }}:</b></td>
+                        <td>{{ $entity['message'] }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 20%"><b>{{ trans('master.start date') }}:</b></td>
-                        <td>{{ \App\Facades\FarsiFacade::g2jdate($entity['from_date']) }}</td>
+                        <td style="width: 20%"><b>{{ trans('public.date') }}:</b></td>
+                        <td>{{ \App\Facades\FarsiFacade::g2jDate($entity['created_at']) }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 20%"><b>{{ trans('master.end date') }}:</b></td>
-                        <td>{{ \App\Facades\FarsiFacade::g2jdate($entity['to_date']) }}</td>
+                        <td style="width: 20%"><b>{{ trans('mail.receiver') }}:</b></td>
+                        <td>@if(count($entity['mailTo']) == $group_count && count($entity['mailTo']) > 10 ) <span class="label-info label">{{ trans('mail.send group mail') }}</span> @else @foreach($entity['mailTo'] as $item) <span class="label-info label">{{ $item['mail_address'] }}</span> @endforeach @endif</td>
                     </tr>
                 </table>
             </div>

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\GeneralBundle\Model;
+namespace App\Http\Controllers\MailBundle\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Setting extends Model
+class MailerSetting extends Model
 {
-    protected $table = 'setting';
+    protected $table = 'mailer_setting';
 
     protected  $primaryKey = 'id';
 
@@ -36,7 +36,8 @@ class Setting extends Model
     public static function setting($field)
     {
         $instance = new static();
-        return DB::table($instance->table)->value($field);
+        return DB::table($instance->table)->orderBy('id', 'desc')->value($field);
     }
+
 
 }

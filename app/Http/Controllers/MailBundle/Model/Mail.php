@@ -11,6 +11,11 @@ class Mail extends Model
 
     protected  $primaryKey = 'id';
 
+    public function mailTo()
+    {
+        return $this->hasMany(MailTo::class, 'mail_id');
+    }
+
     public static function getResult()
     {
         $instance = new static();

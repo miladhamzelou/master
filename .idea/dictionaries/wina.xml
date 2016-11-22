@@ -5,7 +5,9 @@
       <w>csrf</w>
       <w>fillable</w>
       <w>jstree</w>
+      <w>mailgun</w>
       <w>myclass</w>
+      <w>smtp</w>
     </words>
   </dictionary>
 </component>

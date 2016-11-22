@@ -9,10 +9,12 @@ return [
     'message' => 'پیام',
     'mail address' => 'آدرس ایمیل',
     'send to' => 'ارسال به',
-    'emails can also enter according to the pattern' => 'میتوانید ایمیل ها دیگری با توجه به الگو وارد کنید',
+    'emails can also enter according to the pattern' => 'با توجه به الگو ایمیل های دیگری وارد کنید.',
     'send to group' => 'ارسال گروهی',
     'choice template' => 'انتخاب قالب',
-    'choice editor' => 'انتخاب ویرایشگر متن'
+    'choice editor' => 'انتخاب ویرایشگر متن',
+    'receiver' => 'گیرنده',
+    ' initial settings do' => 'تنظیمات اولیه را انجام دهید'
 ]
 
 ?>

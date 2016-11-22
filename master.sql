@@ -10793,16 +10793,18 @@ CREATE TABLE IF NOT EXISTS `field_tree` (
   KEY `parent_id` (`parent_id`),
   KEY `lft` (`lft`),
   KEY `rgt` (`rgt`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.field_tree: 5 rows
+-- Dumping data for table master.field_tree: 7 rows
 /*!40000 ALTER TABLE `field_tree` DISABLE KEYS */;
 INSERT INTO `field_tree` (`id`, `name`, `parent_id`, `lft`, `rgt`) VALUES
-	(1, 'کامپیوتر', 0, 1, 8),
-	(2, 'عمران', 0, 9, 10),
-	(3, 'نرم افزار', 1, 2, 5),
-	(4, 'سخت افزار', 1, 6, 7),
-	(5, 'zzzz', 3, 3, 4);
+	(1, 'کامپیوتر', 0, 1, 10),
+	(2, 'عمران', 0, 11, 14),
+	(3, 'نرم افزار', 1, 2, 7),
+	(4, 'سخت افزار', 1, 8, 9),
+	(5, 'zzzz', 3, 3, 4),
+	(6, 'sdfsdf', 2, 12, 13),
+	(8, 'xxxxxxx', 3, 5, 6);
 /*!40000 ALTER TABLE `field_tree` ENABLE KEYS */;
 
 
@@ -10867,6 +10869,24 @@ INSERT INTO `lesson` (`id`, `title`) VALUES
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
 
 
+-- Dumping structure for table master.mailer_setting
+CREATE TABLE IF NOT EXISTS `mailer_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `global_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `global_address` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `username` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.mailer_setting: ~2 rows (approximately)
+/*!40000 ALTER TABLE `mailer_setting` DISABLE KEYS */;
+INSERT INTO `mailer_setting` (`id`, `global_name`, `global_address`, `username`, `password`) VALUES
+	(1, 'sadsa', 'sadas', 'asdas', 'asdas'),
+	(2, 'asasd', 'das', 'sadas', 'asda');
+/*!40000 ALTER TABLE `mailer_setting` ENABLE KEYS */;
+
+
 -- Dumping structure for table master.resume_articles
 CREATE TABLE IF NOT EXISTS `resume_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -10876,7 +10896,7 @@ CREATE TABLE IF NOT EXISTS `resume_articles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_articles: ~3 rows (approximately)
+-- Dumping data for table master.resume_articles: ~1 rows (approximately)
 /*!40000 ALTER TABLE `resume_articles` DISABLE KEYS */;
 INSERT INTO `resume_articles` (`id`, `title`, `published_in`, `year`) VALUES
 	(9, 'dsfdsf', 'sfsf', '1320');
@@ -10892,7 +10912,7 @@ CREATE TABLE IF NOT EXISTS `resume_awards` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_awards: ~0 rows (approximately)
+-- Dumping data for table master.resume_awards: ~1 rows (approximately)
 /*!40000 ALTER TABLE `resume_awards` DISABLE KEYS */;
 INSERT INTO `resume_awards` (`id`, `title`, `place`, `year`) VALUES
 	(5, 'sdfdsfdsf', 'sdfdsfs', '1365');
@@ -10908,7 +10928,7 @@ CREATE TABLE IF NOT EXISTS `resume_book_compilation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_book_compilation: ~0 rows (approximately)
+-- Dumping data for table master.resume_book_compilation: ~1 rows (approximately)
 /*!40000 ALTER TABLE `resume_book_compilation` DISABLE KEYS */;
 INSERT INTO `resume_book_compilation` (`id`, `title`, `publisher`, `year`) VALUES
 	(5, 'sdfsdfsd', 'sdfsdfsdf', '1320');
@@ -10925,7 +10945,7 @@ CREATE TABLE IF NOT EXISTS `resume_conferences` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_conferences: ~0 rows (approximately)
+-- Dumping data for table master.resume_conferences: ~1 rows (approximately)
 /*!40000 ALTER TABLE `resume_conferences` DISABLE KEYS */;
 INSERT INTO `resume_conferences` (`id`, `title`, `period`, `place`, `year`) VALUES
 	(6, 'sdfsdf', '', 'sdfsdfds', '1370');
@@ -10942,7 +10962,7 @@ CREATE TABLE IF NOT EXISTS `resume_dissertation_guide` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_dissertation_guide: ~0 rows (approximately)
+-- Dumping data for table master.resume_dissertation_guide: ~1 rows (approximately)
 /*!40000 ALTER TABLE `resume_dissertation_guide` DISABLE KEYS */;
 INSERT INTO `resume_dissertation_guide` (`id`, `title`, `student`, `place`, `year`) VALUES
 	(10, 'sdfdsf', '', 'sdfdsf', '1350');
@@ -10960,7 +10980,7 @@ CREATE TABLE IF NOT EXISTS `resume_education` (
   KEY `grade_id` (`grade_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_education: ~0 rows (approximately)
+-- Dumping data for table master.resume_education: ~1 rows (approximately)
 /*!40000 ALTER TABLE `resume_education` DISABLE KEYS */;
 INSERT INTO `resume_education` (`id`, `grade_id`, `university`, `field_trend`, `year`) VALUES
 	(21, 2, 'sdfsdfsdf', 'sdfsdf', '1360');
@@ -11009,7 +11029,7 @@ CREATE TABLE IF NOT EXISTS `resume_translated_book` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.resume_translated_book: ~0 rows (approximately)
+-- Dumping data for table master.resume_translated_book: ~2 rows (approximately)
 /*!40000 ALTER TABLE `resume_translated_book` DISABLE KEYS */;
 INSERT INTO `resume_translated_book` (`id`, `title`, `publisher`, `year`) VALUES
 	(6, 'sdfsdf', '', '1320'),
@@ -11047,10 +11067,102 @@ INSERT INTO `science_ranking` (`id`, `title`) VALUES
 /*!40000 ALTER TABLE `science_ranking` ENABLE KEYS */;
 
 
+-- Dumping structure for table master.send_mail
+CREATE TABLE IF NOT EXISTS `send_mail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8_unicode_ci,
+  `attachment` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.send_mail: ~34 rows (approximately)
+/*!40000 ALTER TABLE `send_mail` DISABLE KEYS */;
+INSERT INTO `send_mail` (`id`, `subject`, `message`, `attachment`, `created_at`) VALUES
+	(1, 'sdsadas', 'asdasd', NULL, '2016-11-20 22:01:50'),
+	(2, NULL, NULL, NULL, '2016-11-20 22:16:45'),
+	(3, 'asdsad', 'asdsadsad', NULL, '2016-11-21 23:57:08'),
+	(4, 'ASasAS', 'asS', NULL, '2016-11-21 23:59:41'),
+	(5, 'sada', 'asdasd', NULL, '2016-11-22 00:01:24'),
+	(6, 'sada', 'asdasd', NULL, '2016-11-22 00:02:03'),
+	(7, 'sada', 'asdasd', NULL, '2016-11-22 00:02:42'),
+	(8, 'sada', 'asdasd', NULL, '2016-11-22 00:05:30'),
+	(9, 'sada', 'asdasd', NULL, '2016-11-22 00:06:08'),
+	(10, 'asdasd', 'sadsadsasdadsad', NULL, '2016-11-22 00:11:06'),
+	(13, 'sads', 'adsadad', NULL, '2016-11-22 22:02:10'),
+	(14, 'sads', 'adsadad', NULL, '2016-11-22 22:02:33'),
+	(15, 'sads', 'adsadad', NULL, '2016-11-22 22:03:11'),
+	(16, 'sads', 'adsadad', NULL, '2016-11-22 22:04:52'),
+	(17, 'sads', 'adsadad', NULL, '2016-11-22 22:13:25'),
+	(18, 'سال نو مبارک', 'شسسشیسششسی', NULL, '2016-11-22 22:13:51'),
+	(19, 'سال نو مبارک', 'شسسشیسششسی', NULL, '2016-11-22 22:31:03'),
+	(20, 'سال نو مبارک', 'شسسشیسششسی', NULL, '2016-11-22 22:38:39'),
+	(21, 'سلام', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-22 23:44:15'),
+	(22, 'سلام', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-22 23:48:03'),
+	(23, 'سلام', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-22 23:49:25'),
+	(24, 'سلام', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-22 23:51:36'),
+	(25, 'سلام', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-22 23:53:32'),
+	(26, 'سلام', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-22 23:55:02'),
+	(27, 'sdas', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-23 00:04:11'),
+	(28, 'sdas', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.', NULL, '2016-11-23 00:04:55'),
+	(29, 'مهرداد معصومی', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.\r\n\r\nهمچنین مدیرعامل باشگاه استقلال با تشکر از حضور شجاعی در این جلسه درباره خدمات منصور پورحیدری به این باشگاه و نقش تاثیر گذار او برای حاضرین به صحبت پرداخت.\r\n\r\nبا فوت منصور پورحیدری هیات مدیره استقلال اکنون تنها 4 عضو دارد و طبق شنیده ها دکتر شجاعی که سابقه حضور در باشگاه استقلال و هیات رئیسه فدراسیون فوتبال را در کارنامه خود دارد، شانس زیادی برای حضور در ترکیب جدید هیات مدیره باشگاه استقلال خواهد داشت.', NULL, '2016-11-23 00:12:32'),
+	(30, 'lsdasdas', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.\r\n\r\nهمچنین مدیرعامل باشگاه استقلال با تشکر از حضور شجاعی در این جلسه درباره خدمات منصور پورحیدری به این باشگاه و نقش تاثیر گذار او برای حاضرین به صحبت پرداخت.\r\n\r\nبا فوت منصور پورحیدری هیات مدیره استقلال اکنون تنها 4 عضو دارد و طبق شنیده ها دکتر شجاعی که سابقه حضور در باشگاه استقلال و هیات رئیسه فدراسیون فوتبال را در کارنامه خود دارد، شانس زیادی برای حضور در ترکیب جدید هیات مدیره باشگاه استقلال خواهد داشت.', NULL, '2016-11-23 00:13:50'),
+	(31, 'علی خوتنلو', 'به گزارش "ورزش سه"، دکتر فریده شجاعی، همسر مرحوم منصور پورحیدری روز سه شنبه با دعوت مدیرعامل و اعضای هیات مدیره باشگاه استقلال در جلسه اعضای هیات مدیره باشگاه استقلال شرکت کرد. شجاعی در این جلسه ضمن تشکر از مدیران باشگاه استقلال برای حضور و تدارک مراسم تشییع و بزرگداشت منصور پورحیدری، دقایقی درباره پیشکسوت باشگاه استقلال صحبت کرد.\r\n\r\nهمچنین مدیرعامل باشگاه استقلال با تشکر از حضور شجاعی در این جلسه درباره خدمات منصور پورحیدری به این باشگاه و نقش تاثیر گذار او برای حاضرین به صحبت پرداخت.\r\n\r\nبا فوت منصور پورحیدری هیات مدیره استقلال اکنون تنها 4 عضو دارد و طبق شنیده ها دکتر شجاعی که سابقه حضور در باشگاه استقلال و هیات رئیسه فدراسیون فوتبال را در کارنامه خود دارد، شانس زیادی برای حضور در ترکیب جدید هیات مدیره باشگاه استقلال خواهد داشت.', NULL, '2016-11-23 00:17:14'),
+	(32, 'سیشسیسشیشسی', 'به گزارش "ورزش سه"، فردا دو تیم روستوف و بایرن بازی برگشت مرحله گروهی خود را در روسیه برگزار خواهند کرد.\r\n \r\nایوان دانیلیانتس؛\r\n \r\nبایرن مونیخ بدون 5 بازیکن اصلی خود در این دیدار حضور پیدا خواهد کرد. آیا این تغییرات تاکتیک شما را تغییر می دهد؟\r\n \r\nمن از ترکیب بایرن اطلاعی ندارم اما ما در برابر یکی از باکیفیت ترین تیم های اروپا بازی خواهیم کرد که این برای ما معنی زیادی خواهد داشت.\r\n \r\nآیا روستوف از ابتدا هجومی بازی خواهد کرد؟\r\n \r\nاین بازی از نقطه نظرات زیادی برای ما اهمیت دارد زیرا قرار است در مقابل یکی از قوی ترین تیم های جهان به میدان برویم. در بازی رفت در برابر بایرن، ما از بازیکنان جوان زیادی استفاده کردیم و انتظار داریم که با تیمی بزرگ و ترکیب قوی روبرو شویم. مسائل زیادی از جمله تاکتیک های اتخاذ شده از سوی سرمربیان، تکلیف نتیجه را مشخص خواهد کرد.\r\n \r\nاز بازی رفت برابر بایرن چه نکاتی را آموختید؟\r\n \r\nآن دیدار، اولین بازی ما در مرحله گروهی بود و این اتفاق در باشگاه ما سابقه نداشت. در بازی رفت ما تا دقیقه 27 خیلی خوب بازی کردیم و آنها موقعیت زیادی روی دروازه ما ایجاد نکردند. بایرن گل اول را روی یک پنالتی مشکوک به ثمر رساند و علیرغم اینکه سرعت بازی ما به اندازه آنها نبود، اما بازیکنان ما تجربه خوبی از آن مسابقه به دست آوردند که امیدواریم فردا بتوانم از آن استفاده کنیم.\r\n \r\nآیا همه بازیکنان برای بازی فردا آماده هستند؟\r\n \r\nکانان در تمرینات دیروز غایب بود و به صورت انفرادی تمرین کرد. ملوت نیز آسیب دیدگی کوچکی دارد اما ما امیدوارم که همه بازیکنان برای این دیدار آماده باشند.\r\n \r\nآیا کانان به این بازی می رسد؟\r\n \r\nکانان مدت زیادی است که از ناحیه شانه درد احساس می کند. او بازیکن با اراده ای است و امیدوارم تا شروع بازی، همه چیز خوب پیش برود.', NULL, '2016-11-23 00:21:46'),
+	(33, 'سیشسیسشیشسی', 'به گزارش "ورزش سه"، فردا دو تیم روستوف و بایرن بازی برگشت مرحله گروهی خود را در روسیه برگزار خواهند کرد.\r\n \r\nایوان دانیلیانتس؛\r\n \r\nبایرن مونیخ بدون 5 بازیکن اصلی خود در این دیدار حضور پیدا خواهد کرد. آیا این تغییرات تاکتیک شما را تغییر می دهد؟\r\n \r\nمن از ترکیب بایرن اطلاعی ندارم اما ما در برابر یکی از باکیفیت ترین تیم های اروپا بازی خواهیم کرد که این برای ما معنی زیادی خواهد داشت.\r\n \r\nآیا روستوف از ابتدا هجومی بازی خواهد کرد؟\r\n \r\nاین بازی از نقطه نظرات زیادی برای ما اهمیت دارد زیرا قرار است در مقابل یکی از قوی ترین تیم های جهان به میدان برویم. در بازی رفت در برابر بایرن، ما از بازیکنان جوان زیادی استفاده کردیم و انتظار داریم که با تیمی بزرگ و ترکیب قوی روبرو شویم. مسائل زیادی از جمله تاکتیک های اتخاذ شده از سوی سرمربیان، تکلیف نتیجه را مشخص خواهد کرد.\r\n \r\nاز بازی رفت برابر بایرن چه نکاتی را آموختید؟\r\n \r\nآن دیدار، اولین بازی ما در مرحله گروهی بود و این اتفاق در باشگاه ما سابقه نداشت. در بازی رفت ما تا دقیقه 27 خیلی خوب بازی کردیم و آنها موقعیت زیادی روی دروازه ما ایجاد نکردند. بایرن گل اول را روی یک پنالتی مشکوک به ثمر رساند و علیرغم اینکه سرعت بازی ما به اندازه آنها نبود، اما بازیکنان ما تجربه خوبی از آن مسابقه به دست آوردند که امیدواریم فردا بتوانم از آن استفاده کنیم.\r\n \r\nآیا همه بازیکنان برای بازی فردا آماده هستند؟\r\n \r\nکانان در تمرینات دیروز غایب بود و به صورت انفرادی تمرین کرد. ملوت نیز آسیب دیدگی کوچکی دارد اما ما امیدوارم که همه بازیکنان برای این دیدار آماده باشند.\r\n \r\nآیا کانان به این بازی می رسد؟\r\n \r\nکانان مدت زیادی است که از ناحیه شانه درد احساس می کند. او بازیکن با اراده ای است و امیدوارم تا شروع بازی، همه چیز خوب پیش برود.', NULL, '2016-11-23 00:22:15'),
+	(34, 'asdsadsadad', 'آن دیدار، اولین بازی ما در مرحله گروهی بود و این اتفاق در باشگاه ما سابقه نداشت. در بازی رفت ما تا دقیقه 27 خیلی خوب بازی کردیم و آنها موقعیت زیادی روی دروازه ما ایجاد نکردند. بایرن گل اول را روی یک پنالتی مشکوک به ثمر رساند و علیرغم اینکه سرعت بازی ما به اندازه آنها نبود، اما بازیکنان ما تجربه خوبی از آن مسابقه به دست آوردند که امیدواریم فردا بتوانم از آن استفاده کنیم.', NULL, '2016-11-23 00:22:53'),
+	(35, 'asdasdas', 'این بازی از نقطه نظرات زیادی برای ما اهمیت دارد زیرا قرار است در مقابل یکی از قوی ترین تیم های جهان به میدان برویم. در بازی رفت در برابر بایرن، ما از بازیکنان جوان زیادی استفاده کردیم و انتظار داریم که با تیمی بزرگ و ترکیب قوی روبرو شویم. مسائل زیادی از جمله تاکتیک های اتخاذ شده از سوی سرمربیان، تکلیف نتیجه را مشخص خواهد کرد.\r\n \r\nاز بازی رفت برابر بایرن چه نکاتی را آموختید؟\r\n \r\nآن دیدار، اولین بازی ما در مرحله گروهی بود و این اتفاق در باشگاه ما سابقه نداشت. در بازی رفت ما تا دقیقه 27 خیلی خوب بازی کردیم و آنها موقعیت زیادی روی دروازه ما ایجاد نکردند. بایرن گل اول را روی یک پنالتی مشکوک به ثمر رساند و علیرغم اینکه سرعت بازی ما به اندازه آنها نبود، اما بازیکنان ما تجربه خوبی از آن مسابقه به دست آوردند که امیدواریم فردا بتوانم از آن استفاده کنیم.', NULL, '2016-11-23 00:26:41'),
+	(36, 'asdasdasdas', 'dsadsadadad', NULL, '2016-11-23 00:30:16');
+/*!40000 ALTER TABLE `send_mail` ENABLE KEYS */;
+
+
+-- Dumping structure for table master.send_mail_to
+CREATE TABLE IF NOT EXISTS `send_mail_to` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail_id` int(11) NOT NULL DEFAULT '0',
+  `mail_address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mail_id` (`mail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table master.send_mail_to: ~26 rows (approximately)
+/*!40000 ALTER TABLE `send_mail_to` DISABLE KEYS */;
+INSERT INTO `send_mail_to` (`id`, `mail_id`, `mail_address`) VALUES
+	(9, 9, 'programmer@gmail.com'),
+	(10, 10, 'info@alikhotanlo.ir'),
+	(13, 13, 'programmer@gmail.com'),
+	(14, 14, 'programmer@gmail.com'),
+	(15, 15, 'programmer@gmail.com'),
+	(16, 16, 'programmer@gmail.com'),
+	(17, 17, 'programmer@gmail.com'),
+	(18, 18, 'programmer@gmail.com'),
+	(19, 19, 'programmer@gmail.com'),
+	(20, 20, 'programmer@gmail.com'),
+	(21, 21, 'mehrdad.masoumi517@gmail.com'),
+	(22, 22, 'mehrdad.masoumi517@gmail.com'),
+	(23, 23, 'mehrdad.masoumi517@gmail.com'),
+	(24, 24, 'mehrdad.masoumi517@gmail.com'),
+	(25, 25, 'mehrdad.masoumi517@gmail.com'),
+	(26, 26, 'mehrdad.masoumi517@gmail.com'),
+	(27, 27, 'mehrdad.masoumi517@gmail.com'),
+	(28, 28, 'mehrdad.masoumi517@gmail.com'),
+	(29, 29, 'mehrdad.masoumi517@gmail.com'),
+	(30, 30, 'mehrdad.masoumi517@gmail.com'),
+	(31, 31, 'mehrdad.masoumi517@gmail.com'),
+	(32, 32, 'mehrdad.masoumi517@gmail.com'),
+	(33, 33, 'mehrdad.masoumi517@gmail.com'),
+	(34, 34, 'mehrdad.masoumi517@gmail.com'),
+	(35, 35, 'mehrdad.masoumi517@gmail.com'),
+	(36, 36, 'mehrdad.masoumi517@gmail.com');
+/*!40000 ALTER TABLE `send_mail_to` ENABLE KEYS */;
+
+
 -- Dumping structure for table master.setting
 CREATE TABLE IF NOT EXISTS `setting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `admin_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `info_mail` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `site_title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `instagram` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telegram` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -11063,8 +11175,8 @@ CREATE TABLE IF NOT EXISTS `setting` (
 
 -- Dumping data for table master.setting: ~1 rows (approximately)
 /*!40000 ALTER TABLE `setting` DISABLE KEYS */;
-INSERT INTO `setting` (`id`, `admin_name`, `site_title`, `instagram`, `telegram`, `telegram_channel`, `facebook`, `linkedin`, `twitter`) VALUES
-	(1, 'as', 'sdfsdf', 'asdasd', 'sdffsdf', 'sdfsdf', 'asdasd', NULL, 'asdasd');
+INSERT INTO `setting` (`id`, `admin_name`, `info_mail`, `site_title`, `instagram`, `telegram`, `telegram_channel`, `facebook`, `linkedin`, `twitter`) VALUES
+	(1, 'ali khotanlo', 'info@alikhotanlo.com', 'sdfsdf', 'asdasd', 'sdffsdf', 'sdfsdf', 'asdasd', NULL, 'asdasd');
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 
 
@@ -11145,13 +11257,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_username_unique` (`username`),
   UNIQUE KEY `user_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.user: 2 rows
+-- Dumping data for table master.user: 5 rows
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `is_active`, `remember_token`, `created_at`) VALUES
-	(1, 'programmer', 'programmer@gmail.com', '$2y$10$72Hdaq5kMQF42p0DFNxLYOYETB5N9C43B8.u/6Zcd15bYZg1PsOly', 1, 'nlepX62IANFDF4SoV1j7XUdPXoaGGzJ7tAy1yZxw7GQkFJXsfwpkFYmKOOPY', NULL),
-	(2, 'alikhotanlo', 'info@alikhotanlo.ir', '$2y$10$8QZu213gElXE1Hwi2nV2Gux2Yx/z3z2KK0ycaP/T5t1K6kGuAJVZC', 1, NULL, '2016-11-01 22:28:26');
+	(1, 'programmer', 'mehrdad.masoumi517@gmail.com', '$2y$10$72Hdaq5kMQF42p0DFNxLYOYETB5N9C43B8.u/6Zcd15bYZg1PsOly', 1, 'nlepX62IANFDF4SoV1j7XUdPXoaGGzJ7tAy1yZxw7GQkFJXsfwpkFYmKOOPY', NULL),
+	(2, 'alikhotanlo', 'info@alikhotanlo.ir', '$2y$10$8QZu213gElXE1Hwi2nV2Gux2Yx/z3z2KK0ycaP/T5t1K6kGuAJVZC', 1, NULL, '2016-11-01 22:28:26'),
+	(20, '', 'mehrdad@gmail.com', '$2y$10$qV2kSMr4Vi9nTrHEQbyY2.jDxW5qKmaKPxH8N/054asEy4Fnphknq', 0, NULL, '2016-11-13 18:40:58'),
+	(21, 'sadasda', 'asdass', '$2y$10$fLPnEIrXjRrZg5s3j57lTezkvWsv3fIxn4evFApy9F2jwj/WEzJnS', 0, NULL, '2016-11-13 18:41:30'),
+	(22, 'qqqqqqq', 'aaa@gmail.com', '$2y$10$lKs7OiSs.FbQL9kMLXajFOOofNMrcGsbU9My9PJMKKCJRYZIoYN4m', 0, NULL, '2016-11-13 18:42:26');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
@@ -11178,11 +11293,12 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   PRIMARY KEY (`role_id`,`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table master.user_role: 2 rows
+-- Dumping data for table master.user_role: 3 rows
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 	(1, 1),
-	(2, 2);
+	(2, 2),
+	(1, 3);
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

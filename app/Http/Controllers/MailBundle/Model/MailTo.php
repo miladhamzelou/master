@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\GeneralBundle\Model;
+namespace App\Http\Controllers\MailBundle\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Setting extends Model
+class MailTo extends Model
 {
-    protected $table = 'setting';
+    protected $table = 'send_mail_to';
 
     protected  $primaryKey = 'id';
+
+    public function mail()
+    {
+        return $this->belongsTo(Mail::class, 'id');
+    }
 
     public static function getResult()
     {
@@ -31,12 +36,6 @@ class Setting extends Model
             return DB::table($instance->table)->insertGetId($frm);
         else
             return DB::table($instance->table)->where($instance->primaryKey, $id)->update($frm);
-    }
-
-    public static function setting($field)
-    {
-        $instance = new static();
-        return DB::table($instance->table)->value($field);
     }
 
 }

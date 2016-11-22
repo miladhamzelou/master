@@ -5,8 +5,8 @@
                 <h4 class="panel-title">{{ trans('mail.send mail') }}</h4>
             </div>
             <div class="pull-left">
-                <a onclick="Admin.reload(event)" href="{{ url(getCurrentURL('controller').'/MailList') }}"><span class="fa fa-refresh"></span></a>
-                <a  href="{{ url(getCurrentURL('controller').'/NewMail') }}"><span class="fa fa-plus-square"></span></a>
+                <a data-toggle="tooltip" data-placement="top" title="{{ trans('public.reload') }}" onclick="Admin.reload(event)" href="{{ url(getCurrentURL('controller').'/MailList') }}"><span class="fa fa-refresh"></span></a>
+                <a  data-toggle="tooltip" data-placement="top" title="{{ trans('public.new') }}" href="{{ url(getCurrentURL('controller').'/NewMail') }}"><span class="fa fa-plus-square"></span></a>
             </div>
             <div class="row"></div>
         </div>

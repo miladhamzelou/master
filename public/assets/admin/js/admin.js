@@ -12,7 +12,6 @@ var Admin  = function()
             Admin.fancyBox();
             Admin.tree();
             Admin.treeCheckbox();
-            Admin.tooltip();
         },
         ready : function () {
             Admin.datePicker();
@@ -22,7 +21,6 @@ var Admin  = function()
             Admin.fancyBox();
             Admin.tree();
             Admin.treeCheckbox();
-            Admin.tooltip();
         },
         reload : function(event){
             event.preventDefault();

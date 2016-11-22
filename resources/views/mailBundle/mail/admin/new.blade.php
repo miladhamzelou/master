@@ -1,4 +1,5 @@
 @section('content')
+    <img src="{{ asset('assets/admin/img/ajax-loader.gif') }}" class="ajax display-none"/>
     <div class="panel">
         <div class="panel-heading">
             <div class="pull-right">
@@ -28,49 +29,18 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('frm.subject') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('frm.mail.subject') ? ' has-error' : '' }}">
                                     <label>{{ trans('mail.subject') }}:<span class="required">*</span></label>
-                                    <input required title="{{ trans('validate.please fill in this field') }}." type="text" name="frm[subject]" class="form-control" value="{{ old('frm.subject') }}">
+                                    <input required title="{{ trans('validate.please fill in this field') }}." type="text" name="frm[mail][subject]" class="form-control" value="{{ old('frm.mail.subject') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('frm.subject') ? ' has-error' : '' }}">
+                                <div class="form-group">
                                     <label class="checkbox-inline">
-                                        <input checked type="checkbox" id="choice-send"><span>{{ trans('mail.send to group') }}</span>
+                                        <input name="send_group"  checked  type="checkbox" id="choice-send"><span>{{ trans('mail.send to group') }}</span>
                                     </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row show-send" style="display: none">
-                            <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('frm.subject') ? ' has-error' : '' }}">
-                                    <label>{{ trans('mail.send to') }}:</label>
-                                    <input  class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('frm.subject') ? ' has-error' : '' }}">
-                                    <label>{{ trans('mail.mail address') }}:</label>
-                                    <input placeholder="exampe@gmail.com, example2@yhoo.com, ..." type="text" name="frm[subject]" class="en-font form-control text-left" value="{{ old('frm.subject') }}">
-                                    <p class="help-block">{{ trans('mail.emails can also enter according to the pattern') }}.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('frm.message') ? ' has-error' : '' }}">
-                                    <label>{{ trans('mail.message') }}:<span class="required">*</span></label>
-                                    <textarea rows="5" required title="{{ trans('validate.please fill in this field') }}." type="text" name="frm[message]" class="form-control">{{ old('frm.message') }}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('frm.message') ? ' has-error' : '' }}">
                                     <label class="checkbox-inline">
                                         <input id="choice-template"  type="checkbox"><span>{{ trans('mail.choice template') }}</span>
                                     </label>
@@ -78,6 +48,42 @@
                                         <input id="choice-editor"   type="checkbox"><span>{{ trans('mail.choice editor') }}</span>
                                     </label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row show-send" style="display: none">
+                            <div class="col-md-12">
+                                <div class="form-group{{ $errors->has('frm.to') ? ' has-error' : '' }}">
+                                    <label>{{ trans('mail.mail address') }}:</label>
+                                    <input   id="mails" placeholder="example@gmail.com, example@yahoo.com, ..." type="text" name="frm[to]" class="en-font form-control text-left" value="{{ old('frm.to') }}">
+                                    <p class="help-block">{{ trans('mail.emails can also enter according to the pattern') }}.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group{{ $errors->has('frm.mail.message') ? ' has-error' : '' }}">
+                                    <label>{{ trans('mail.message') }}:<span class="required">*</span></label>
+                                    <textarea rows="5" required title="{{ trans('validate.please fill in this field') }}." type="text" name="frm[mail][message]" class="form-control">{{ old('frm.mail.message') }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                <div class="input-group image-preview">
+                                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <input type="file" multiple  name="input-file-preview"/> <!-- rename it -->
+                    </div>
+                </span>
+                                </div><!-- /input-group image-preview [TO HERE]-->
                             </div>
                         </div>
                         <div class="row">
@@ -91,21 +97,77 @@
         </div>
     </div>
     <script>
-            $(window).load(function() {
-                $('#choice-template, #choice-editor').change(function() {
-                    var _this = $(this);
+        $(window).load(function() {
+            $('form').validate();
+            $('form').submit(function(e) {
+                if (!$("input[name=send_group]").prop('checked') && !$("input[name='frm[to]']").val()) {
+                    e.preventDefault();
                     if ($('html').attr('dir') == 'rtl')
-                        toastr.error('این سرویس برای شما غیرفعال است.');
+                        toastr.error('حداقل یک گیرنده الکترونیک وارد کنید.');
                     else
-                        toastr.error('This service is disabled for you.');
-                    setTimeout(function() {
-                       _this.attr('checked', false);
-                    },2000);
-                });
-                $('#choice-send').change(function() {
-                    var _this = $(this);
-                    $(".show-send").toggle('slow');
-                });
-            })
+                        toastr.error('Please enter at least one recipient.');
+                    return ;
+                }
+                $('.ajax').fadeToggle('slow');
+            });
+            $('#choice-template, #choice-editor').change(function() {
+                var _this = $(this);
+                if ($('html').attr('dir') == 'rtl')
+                    toastr.info('این سرویس برای شما غیرفعال است.');
+                else
+                    toastr.error('This service is disabled for you.');
+                setTimeout(function() {
+                    _this.attr('checked', false);
+                },2000);
+            });
+            $('#choice-send').change(function() {
+                var _this = $(this);
+                $(".show-send").toggle('slow');
+            });
+            function split( val ) {
+                return val.split( /,\s*/ );
+            }
+            function extractLast( term ) {
+                return split( term ).pop();
+            }
+
+            $( "#mails" )
+            // don't navigate away from the field on tab when selecting an item
+                    .on( "keydown", function( event ) {
+                        if ( event.keyCode === $.ui.keyCode.TAB &&
+                                $( this ).autocomplete( "instance" ).menu.active ) {
+                            event.preventDefault();
+                        }
+                    })
+                    .autocomplete({
+                        source: function( request, response ) {
+                            $.getJSON( $(this).attr('data-href'), {
+                                term: extractLast( request.term )
+                            }, response );
+                        },
+                        search: function() {
+                            // custom minLength
+                            var term = extractLast( this.value );
+                            if ( term.length < 2 ) {
+                                return false;
+                            }
+                        },
+                        focus: function() {
+                            // prevent value inserted on focus
+                            return false;
+                        },
+                        select: function( event, ui ) {
+                            var terms = split( this.value );
+                            // remove the current input
+                            terms.pop();
+                            // add the selected item
+                            terms.push( ui.item.value );
+                            // add placeholder to get the comma-and-space at the end
+                            terms.push( "" );
+                            this.value = terms.join( ", " );
+                            return false;
+                        }
+                    });
+        })
     </script>
 @endsection
