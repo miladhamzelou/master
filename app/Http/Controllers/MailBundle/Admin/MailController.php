@@ -77,10 +77,21 @@ class MailController extends Controller
         return redirect()->back()->with(['alert-success' => trans('validate.done successfully')]);
     }
 
-
     public function delete($id) {
         Mail::destroy($id);
         MailTo::where('mail_id', $id)->delete();
         die;
+    }
+
+    public function attachment()
+    {
+        $request = App::make(\Illuminate\Http\Request::class);
+        if($request->file('file')) {
+            foreach($request->file('file') as $file) {
+                $imageName = time() . '_' . $file->getClientOriginalName();
+                $file->move(
+                    public_path() . '/mailer-attachment/tmp/', $imageName);
+            }
+        }
     }
 }

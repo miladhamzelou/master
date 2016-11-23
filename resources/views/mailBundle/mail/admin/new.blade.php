@@ -69,21 +69,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <div class="input-group image-preview">
-                                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                <span class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <input type="file" multiple  name="input-file-preview"/> <!-- rename it -->
-                    </div>
-                </span>
-                                </div><!-- /input-group image-preview [TO HERE]-->
+                                <div class="form-group{{ $errors->has('frm.mail.message') ? ' has-error' : '' }}">
+                                    <label>{{ trans('mail.attachment') }}:<span class="required">*</span></label>
+                                    <input data-href="{{ getCurrentURL('controller').'/attachment' }}" multiple type="file" name="frm[attachment][]">
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -168,6 +157,28 @@
                             return false;
                         }
                     });
-        })
+            $('input[type=file]').change(function(e) {
+                // with no form
+                var file_data = $(this).prop("files");
+                var form_data = new FormData();
+                for(var i = 0; i < file_data.length ; i++) {
+                    form_data.append("file[]", file_data[i]);
+                }
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: $(this).attr('data-href'),
+                    type: 'post',
+                    data: form_data,
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success : function (response) {
+
+                    }
+                });
+            })
+        });
     </script>
 @endsection
