@@ -21,7 +21,11 @@
                     </tr>
                     <tr>
                         <td style="width: 20%"><b>{{ trans('mail.receiver') }}:</b></td>
-                        <td>@if(count($entity['mailTo']) == $group_count && count($entity['mailTo']) > 10 ) <span class="label-info label">{{ trans('mail.send group mail') }}</span> @else @foreach($entity['mailTo'] as $item) <span class="label-info label">{{ $item['mail_address'] }}</span> @endforeach @endif</td>
+                        <td>@if(count($entity['mailTo']) == $group_count && count($entity['mailTo']) > 10 ) <span class="label-info label">{{ trans('mail.send group mail') }}</span> @else @foreach($entity['mailTo'] as $item) <span class="label-info label"><span class="en-font">{{ $item['mail_address'] }}</span></span> @endforeach @endif</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%"><b>{{ trans('mail.attachment') }}:</b></td>
+                        <td>@if(count($entity['mailAttachment']) == 0)  - @else @foreach($entity['mailAttachment'] as $item) <a href="{{ asset('mailer-attachment/'.$item['name']) }}" target="_blank"><span class="label-info label"><span class="en-font">{{ $item['name'] }}</span></span></a> @endforeach @endif</td>
                     </tr>
                 </table>
             </div>
@@ -31,3 +35,10 @@
         </div>
     </div>
 </div>
+<style>
+    .label{
+        margin-bottom:10px;
+        font-weight: normal;
+        white-space:inherit;
+    }
+</style>

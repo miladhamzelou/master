@@ -14,7 +14,10 @@ return [
     'choice template' => 'انتخاب قالب',
     'choice editor' => 'انتخاب ویرایشگر متن',
     'receiver' => 'گیرنده',
-    ' initial settings do' => 'تنظیمات اولیه را انجام دهید'
+    ' initial settings do' => 'تنظیمات اولیه را انجام دهید',
+    'attachment' => 'پیوست فایل',
+    'send again' => 'ارسال مجدد',
+    'this service is not active for you' => 'این سرویس برای شما فعال نیست.'
 ]
 
 ?>

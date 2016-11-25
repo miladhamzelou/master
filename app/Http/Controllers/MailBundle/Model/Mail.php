@@ -16,6 +16,10 @@ class Mail extends Model
         return $this->hasMany(MailTo::class, 'mail_id');
     }
 
+    public function mailAttachment() {
+        return $this->hasMany(MailAttachment::class, 'mail_id');
+    }
+
     public static function getResult()
     {
         $instance = new static();

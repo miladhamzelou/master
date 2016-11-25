@@ -18,8 +18,8 @@
                 <td>{{ \App\Facades\FarsiFacade::g2jdate($ent['created_at']) }}</td>
                 <td class="table-action">
                     <a data-toggle="tooltip" data-placement="top" title="{{ trans('public.delete') }}" onclick="Admin.delete(this,event)" href="{{ url(getCurrentURL('controller').'/delete/'.$ent['id']) }}"><span class="fa fa fa-trash-o"></span></a>
-                    {{--<a  data-toggle="tooltip" data-placement="top" title="{{ trans('public.edit') }}" href="{{ url(getCurrentURL('controller').'/edit/'.$ent['id']) }}"><span class="fa fa fa-pencil"></span></a>--}}
                     <a data-toggle="tooltip" data-placement="top" title="{{ trans('public.show') }}" onclick="Admin.show(this, event)" href="{{ url(getCurrentURL('controller').'/Show/'.$ent['id']) }}"><span class="fa fa-tv"></span></a>
+                    <a  data-toggle="tooltip" data-placement="top" title="{{ trans('mail.send again') }}" href="{{ url(getCurrentURL('controller').'/SendAgain/'.$ent['id']) }}"><span class="fa fa fa-mail-forward"></span></a>
                 </td>
             </tr>
         @endforeach

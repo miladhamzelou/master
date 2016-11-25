@@ -69,15 +69,20 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('frm.mail.message') ? ' has-error' : '' }}">
-                                    <label>{{ trans('mail.attachment') }}:<span class="required">*</span></label>
-                                    <input data-href="{{ getCurrentURL('controller').'/attachment' }}" multiple type="file" name="frm[attachment][]">
+                                <div class="form-group">
+                                    <label>{{ trans('mail.attachment') }}:</label>
+                                    <div class="row"></div>
+                                    <label class="btn btn-default">
+                                        <input style="display: none" data-unlink="{{ getCurrentURL('controller').'/unlink' }}" data-href="{{ getCurrentURL('controller').'/attachment' }}" multiple type="file">
+                                        <i  class="fa fa-paperclip"></i> {{ trans('public.select file') }}
+                                    </label>
+                                    <p class="help-block">{{ trans('validate.maximum  size of each file: 8 MB') }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary">{{ trans('public.send request') }}</button>
+                                <button class="btn   btn-primary">{{ trans('public.send request') }}</button>
                             </div>
                         </div>
                     </form>
@@ -96,8 +101,10 @@
                     else
                         toastr.error('Please enter at least one recipient.');
                     return ;
+                } else if($('form').valid()) {
+                    $('.ajax').fadeIn('slow');
+                    $("input[type=file]").val("");
                 }
-                $('.ajax').fadeToggle('slow');
             });
             $('#choice-template, #choice-editor').change(function() {
                 var _this = $(this);
@@ -120,8 +127,94 @@
                 return split( term ).pop();
             }
 
+            $('input[type=file]').change(function(e) {
+                var file_data = $(this).prop("files");
+                var unlink = $(this).attr('data-unlink');
+                _this = $(this);
+                for(var i = 0; i < file_data.length ; i++) {
+                    (function(i) {
+                        var form_data = new FormData();
+                        form_data.append("file[]", file_data[i]);
+                        var file_size = parseFloat((file_data[i].size / 1024) / 1024);
+                        if (file_size < 8) {
+                            $('form').append("<input type='hidden' value='"+file_data[i]['name']+"' name='file[]'>");
+                            _this.closest('div.form-group').append(' <div class="well well-sm"> ' +
+                                    '<div class="row"> ' +
+                                    '<div class="col-md-12 text-left"> <a class="unlink-file fa fa-remove" data-file="'+ file_data[i]["name"] +'" href="'+unlink+'"></a> <span class="en-font">'+ file_data[i]["name"] +'</span></div> ' +
+                                    '</div> ' +
+                                    '<div class="row"> ' +
+                                    '<div class="col-md-12"> ' +
+                                    '<div style="margin-bottom: 8px;" class="progress"> ' +
+                                    '<div class="progress-bar progress-bar-' +i+ ' progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">0%</div> ' +
+                                    '</div> ' +
+                                    '</div> ' +
+                                    '</div> ' +
+                                    '</div>');
+                            $.ajax({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                url: _this.attr('data-href'),
+                                type: 'post',
+                                data: form_data,
+                                contentType: false,
+                                cache: false,
+                                processData: false,
+                                xhr: function () {
+                                    var xhr = $.ajaxSettings.xhr();
+                                    if (xhr.upload) {
+                                        xhr.upload.addEventListener('progress', function (event) {
+                                            progress(i, event);
+                                        }, false);
+                                    }
+                                    return xhr;
+                                },
+                                mimeType: "multipart/form-data"
+                            }, i).done(function() {
+                                setTimeout(function() {
+                                    $('.progress-bar-'+i).closest('.progress').remove();
+                                },2000)
+                            });
+                        } else {
+                            $(this).val("");
+                            if ($('html').attr('lang') == 'fa')
+                                toastr.error('حجم فایل '+file_data[i]["name"]+' بیشتر از 8 مگابایت است.');
+                            else
+                                toastr.error('The file '+ file_data[i]["name"]+' exceeds the limit set.');
+                        }
+                    })(i);
+                }
+            });
+            $(document).on('click','.unlink-file',function(event) {
+                event.preventDefault();
+                var _this = $(this);
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: _this.attr('href'),
+                    type: 'post',
+                    data : { 'file' : $(this).attr('data-file') },
+                    success : function(response) {
+                        _this.closest('div.well').fadeOut('slow', function() {
+                           _this.remove();
+                            $("input[value='"+_this.attr('data-file')+"']").remove();
+                        });
+                    }
+                });
+            });
+            function  progress (i,event) {
+                var percent = 0;
+                var position = event.loaded || event.position;
+                var total = event.total;
+                if (event.lengthComputable) {
+                    percent = Math.ceil(position / total * 100);
+                }
+                $(".progress-bar-"+i).css("width", + percent +"%").text(percent +"%");
+                if (parseInt(percent) == 100)
+                    $('.progress-bar-'+i).removeClass('progress-bar-info').addClass('progress-bar-success');
+            }
             $( "#mails" )
-            // don't navigate away from the field on tab when selecting an item
                     .on( "keydown", function( event ) {
                         if ( event.keyCode === $.ui.keyCode.TAB &&
                                 $( this ).autocomplete( "instance" ).menu.active ) {
@@ -157,28 +250,6 @@
                             return false;
                         }
                     });
-            $('input[type=file]').change(function(e) {
-                // with no form
-                var file_data = $(this).prop("files");
-                var form_data = new FormData();
-                for(var i = 0; i < file_data.length ; i++) {
-                    form_data.append("file[]", file_data[i]);
-                }
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: $(this).attr('data-href'),
-                    type: 'post',
-                    data: form_data,
-                    contentType: false,
-                    cache: false,
-                    processData:false,
-                    success : function (response) {
-
-                    }
-                });
-            })
         });
     </script>
 @endsection

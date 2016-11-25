@@ -6,12 +6,14 @@ use App\Http\Controllers\AdminController as Controller;
 use App\Http\Controllers\Auth\Model\User;
 use App\Http\Controllers\GeneralBundle\Model\Setting;
 use App\Http\Controllers\MailBundle\Model\Mail;
+use App\Http\Controllers\MailBundle\Model\MailAttachment;
 use App\Http\Controllers\MailBundle\Model\MailerSetting;
 use App\Http\Controllers\MailBundle\Model\MailTo;
 use App\Http\Requests;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Mockery\CountValidator\Exception;
 use Request;
 use Mail as mailer;
 
@@ -50,30 +52,47 @@ class MailController extends Controller
 
     public function store()
     {
-        $setting = MailerSetting::orderBy('id', 'desc')->first();
-        if(empty($setting))
-            return redirect()->back()->with(['alert-danger' => trans('mail.the initial settings do')]);
+        ini_set('max_execution_time', 600);
         $request = App::make(\Illuminate\Http\Request::class);
+        $attachment = [];
         $frm = $request->get('frm');
+        $files = Input::get('file');
+        // store in db
         if($request->get('send_group')) {
             $to = User::select('email')->whereHas('role', function($q) {
                 $q->where('role_id', 3);
             })->lists('email');
         } else
             $to = explode(',' , $frm['to']);
-        mailer::send('mailBundle.mail.template.default', [ 'mail' => $frm['mail']] , function ($m) use ($frm, $to) {
-            $m->from(Setting::setting('info_mail'), Setting::setting('admin_name'));
-            $mail_id = Mail::store($frm['mail']);
-            foreach($to as $item) {
-                if (!$item || $item == ' ') continue;
-                $m->to($item)->subject($frm['mail']['subject']);
-                $m->attach(public_path().'/3.jpg');
-                MailTo::store([
+
+        $mail_id = Mail::store($frm['mail']);
+        foreach($to as $item) {
+            if (!$item || $item == ' ') continue;
+            MailTo::store([
+                'mail_id' => $mail_id,
+                'mail_address' => trim($item)
+            ]);
+            $final_to[] = $item;
+        }
+        if($files)
+            foreach($files as $file) {
+                rename(public_path().'/mailer-attachment/tmp/'.$file, public_path().'/mailer-attachment/'.time().'_'.$file);
+                $attachment[] =  public_path().'/mailer-attachment/'.time().'_'.$file;
+                MailAttachment::store([
                     'mail_id' => $mail_id,
-                    'mail_address' => trim($item)
+                    'name' => time().'_'.$file
                 ]);
             }
-        });
+        try {
+            mailer::send('mailBundle.mail.template.default', [ 'mail' => $frm['mail']] , function ($m) use ($frm, $final_to, $attachment) {
+                $m->from(Setting::setting('info_mail'), Setting::setting('admin_name'));
+                $m->to($final_to)->subject($frm['mail']['subject']);
+                foreach($attachment as $attach)
+                    $m->attach($attach);
+            });
+        } catch(\Exception $e) {
+            return redirect()->back()->with(['alert-danger' => trans('validate.error')]);
+        }
         return redirect()->back()->with(['alert-success' => trans('validate.done successfully')]);
     }
 
@@ -88,10 +107,24 @@ class MailController extends Controller
         $request = App::make(\Illuminate\Http\Request::class);
         if($request->file('file')) {
             foreach($request->file('file') as $file) {
-                $imageName = time() . '_' . $file->getClientOriginalName();
+                $imageName = $file->getClientOriginalName();
                 $file->move(
                     public_path() . '/mailer-attachment/tmp/', $imageName);
             }
         }
+        die;
+    }
+
+    public function unlink()
+    {
+        $file = Input::get('file');
+        if(file_exists(public_path().'/mailer-attachment/tmp/'.$file))
+            unlink(public_path().'/mailer-attachment/tmp/'.$file);
+        die;
+    }
+
+    public function sendAgain()
+    {
+        $this->layout->content = view('mailBundle.mail.admin.edit');
     }
 }

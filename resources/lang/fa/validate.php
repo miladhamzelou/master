@@ -11,7 +11,9 @@ return [
     'min length is 6 character' => 'حداقل شش حرف میبایست تایپ کنید.',
     'your current password is not correct' => 'پسورد وارد شده با مقدار فعلی یکسان نیست.',
     'enter as models' => 'مانند الگو وارد کنید.',
-    'required' => 'الزامی'
+    'required' => 'الزامی',
+    'maximum  size of each file: 8 MB' => 'حداکثر حجم هر فایل 8 مگابایت',
+    'error' => 'خطایی رخ داده است.'
 ];
 
 ?>
