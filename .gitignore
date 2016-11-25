@@ -6,3 +6,4 @@ Homestead.json
 vendor/
 storage
 .idea
+/public/mailer-attachment/
